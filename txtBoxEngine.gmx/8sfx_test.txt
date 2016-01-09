@@ -1,0 +1,2 @@
+This is a test of the sound effect system.
+Hello,[P:10] how are y[S:R]...[S:N][P:20]![F:0,0][P:60]#What is wrong with your face?

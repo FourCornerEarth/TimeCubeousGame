@@ -1,0 +1,2 @@
+This is a test of several colors on the same line.
+[C:1]Red [C:2]Blue [C:3]Green [C:4]Gray[C:C][P:30]#Since the text engine only supports up to four colors by default,#[P:20][C:1]this text isn't red[C:C].
