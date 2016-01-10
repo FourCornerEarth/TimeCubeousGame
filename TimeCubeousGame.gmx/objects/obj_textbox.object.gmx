@@ -195,7 +195,7 @@ textbox_name_anim_speed=0;
 textbox_name_anim_subimgs=0;
 
 textbox_text_x=textbox_x+40;
-textbox_text_y=textbox_y+40;
+textbox_text_y=textbox_y+75;
 textbox_text_color=$000000; //black
 textbox_text_alpha=1;
 textbox_text_paused=0; //if this is set to 1, the textbox will wait until the variable is reset
@@ -681,7 +681,7 @@ surface_reset_target();
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
