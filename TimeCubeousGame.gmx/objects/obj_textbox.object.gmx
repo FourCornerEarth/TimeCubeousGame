@@ -173,7 +173,7 @@ textbox_anim_speed=0;
 textbox_anim_subimgs=0;
 
 textbox_arrow_draw=0;
-textbox_arrow_x= (textbox_x+800)-40;
+textbox_arrow_x = (textbox_x+800)-40;
 textbox_arrow_y=textbox_y+125;
 textbox_arrow_sprite=spr_textbox_arrow;
 textbox_arrow_color=$000000; //black
@@ -194,8 +194,8 @@ textbox_name_anim_index=0;
 textbox_name_anim_speed=0;
 textbox_name_anim_subimgs=0;
 
-textbox_text_x=textbox_x+50;
-textbox_text_y=textbox_y+20;
+textbox_text_x=textbox_x+40;
+textbox_text_y=textbox_y+40;
 textbox_text_color=$000000; //black
 textbox_text_alpha=1;
 textbox_text_paused=0; //if this is set to 1, the textbox will wait until the variable is reset
@@ -204,7 +204,7 @@ draw_set_font(global.fnt_textbox); //for the next calculation to work correctly
 textbox_font_height= string_height("#"); //so we don't have to run string_height every time we need to use it
 
 textbox_name_text_x=textbox_name_x+20;
-textbox_name_text_y=textbox_name_y+10;
+textbox_name_text_y=textbox_name_y+24;
 textbox_name_text_color=$000000; //also black
 textbox_name_text_alpha=1;
 

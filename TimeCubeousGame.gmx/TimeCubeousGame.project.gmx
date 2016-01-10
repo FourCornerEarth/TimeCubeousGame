@@ -35,6 +35,19 @@
     <sound>sound\snd_textbox_close</sound>
   </sounds>
   <sprites name="sprites">
+    <sprites name="MainSprites">
+      <sprite>sprites\spr_neku_left</sprite>
+      <sprite>sprites\spr_neku_right</sprite>
+      <sprite>sprites\spr_neku_stand_down</sprite>
+      <sprite>sprites\spr_neku_stand_right</sprite>
+      <sprite>sprites\spr_neku_stand_left</sprite>
+      <sprite>sprites\spr_neku_up</sprite>
+      <sprite>sprites\spr_neku_stand_up</sprite>
+      <sprite>sprites\spr_neku_down</sprite>
+    </sprites>
+    <sprites name="MenuSprites">
+      <sprite>sprites\spr_pointer</sprite>
+    </sprites>
     <sprite>sprites\spr_textbox</sprite>
     <sprite>sprites\spr_textbox_arrow</sprite>
     <sprite>sprites\spr_textbox_cursor</sprite>
@@ -42,16 +55,8 @@
     <sprite>sprites\spr_textbox_questionbox</sprite>
     <sprite>sprites\spr_textbox_questionbox_cursor</sprite>
     <sprite>sprites\spr_fontmain</sprite>
-    <sprite>sprites\spr_collision</sprite>
-    <sprite>sprites\spr_neku_down</sprite>
-    <sprite>sprites\spr_neku_left</sprite>
-    <sprite>sprites\spr_neku_right</sprite>
-    <sprite>sprites\spr_neku_stand_down</sprite>
-    <sprite>sprites\spr_neku_stand_left</sprite>
-    <sprite>sprites\spr_neku_stand_right</sprite>
-    <sprite>sprites\spr_neku_stand_up</sprite>
-    <sprite>sprites\spr_neku_up</sprite>
     <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_collision</sprite>
     <sprite>sprites\spr_warp</sprite>
     <sprites name="TEST">
       <sprite>sprites\spr_TEST_cutin1</sprite>
@@ -83,11 +88,17 @@
     <script>scripts\textbox_question_pointer.gml</script>
     <script>scripts\textbox_loadbox.gml</script>
     <script>scripts\scr_text.gml</script>
+    <scripts name="Menu Loading">
+      <script>scripts\scr_startMenu.gml</script>
+    </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_codersCrux</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_textbox</object>
-    <objects name="TEST">
-      <object>objects\obj_LOADTEST</object>
+    <objects name="Menu">
+      <object>objects\obj_startMenu</object>
     </objects>
     <object>objects\obj_collisioner</object>
     <object>objects\obj_neku</object>
@@ -97,7 +108,7 @@
     <object>objects\obj_warp</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_TESTGOTO</room>
+    <room>rooms\rm_menu</room>
     <room>rooms\rm_TEST</room>
     <room>rooms\rm_day_street</room>
     <room>rooms\rm_shop</room>

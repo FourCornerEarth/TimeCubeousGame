@@ -1,9 +1,13 @@
+/* Use this to allow you to change textboxes dynamically by giving a pointer. */
+
+
 //textbox_question_pointer(pointer)
 //gets the textbox specified by the pointer
 var pointer, temp_fname, temp_text_pointer;
 //temp_text_pointer is how many lines to skip
 
-pointer=argument0;
+
+pointer = argument0;
 
 switch(pointer)
 {
