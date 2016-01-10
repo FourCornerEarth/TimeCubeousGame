@@ -1,1 +1,0 @@
-[S:R]This is a [P:20]"test"[P:20]s of the pausing system.[S:N]

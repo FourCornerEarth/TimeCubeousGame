@@ -1,2 +1,0 @@
-This is a test of the yes/no question system.
-Do you know what's up with this?[QT:0,Probably.][QT:1,Not a clue.][QP:0,1][QP:1,2][Q:Y]

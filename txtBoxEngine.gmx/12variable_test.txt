@@ -1,3 +1,0 @@
-This is a test of the [C:1]in-text variable system[C:C].
-You are on level [X:test_level].
-The variable "test_level" is now [XS:test_level,38][X:test_level].

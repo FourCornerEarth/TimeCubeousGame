@@ -1,2 +1,0 @@
-This is a test of the question box system.
-So many options![P:20]#How do you like it?[QT:0,A little bit][QT:1,YAAAY OPTIONS!][QT:2,OK, that's enough][QT:3,Seriously, now][QT:4,You can't possibly need this many][QT:5,I give up][Q:6]

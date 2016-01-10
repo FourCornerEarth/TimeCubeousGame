@@ -1,2 +1,0 @@
-This is a test of the color system.
-This text is [C:1]red[C:C].[P:30]#This text is [C:2]green[C:C].[P:30]#This text is [C:3]blue[C:C].[P:30]#This text is [C:4]gray[C:C].

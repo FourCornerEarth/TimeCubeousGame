@@ -1,2 +1,0 @@
-You can talk normally,[P:20]#[S:S]you can talk slow[S:N],[P:20]#and you can talk [S:R]REALLY[S:N] slow.
-Test with four lines.#test#blah#blargen

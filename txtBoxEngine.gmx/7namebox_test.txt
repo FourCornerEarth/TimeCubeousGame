@@ -1,3 +1,0 @@
-This is a test of the name box system.
-[N:Random guy]Hello World!
-[N:0]This line has no name box.

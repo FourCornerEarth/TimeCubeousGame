@@ -1,4 +1,0 @@
-[N:nacho101]This is a test of the [C:1]Cut-in System[C:C].
-[N:Random name][IN:0,0,N,80][IA:0,1,Y,Y][IA:0,2,Y,Y][S:S]I don't like this one bit[IS:0,1].
-[IM:0,270][IN:1,0,N,80][IA:0,1,Y,Y][IA:0,2,Y,Y]Still, it's better than that one time[IS:0,1]...
-[IC:0][IW:1,0][S:N]And he proceeded to think about what happened that time.

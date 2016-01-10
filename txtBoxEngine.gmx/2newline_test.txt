@@ -1,2 +1,0 @@
-This is a test of the textbox engine v5.#Newlines are added in a single line of text!
-[S:S]And this is a [S:R]totally new box.[S:N]
