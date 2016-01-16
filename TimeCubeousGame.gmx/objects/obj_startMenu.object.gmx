@@ -42,7 +42,6 @@ cursorPos = 0; // move[cursorPos] returns the item the cursor is pointing to.
    // the actual cursor should be pointing to "Start Game" in the menu. 
 
 
-
 </string>
           </argument>
         </arguments>
@@ -103,6 +102,35 @@ var select;
 select = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_shift), keyboard_check_released(ord("Z")), 0);
 
 if (select == 1) { scr_startMenu(); }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//on game start
+
+//this boolean will be our textbox checker to freeze other game processes while it's on
+//if it's off, nothing happens.
+globalvar textbox_ON;
+
+textbox_ON = false;
 </string>
           </argument>
         </arguments>

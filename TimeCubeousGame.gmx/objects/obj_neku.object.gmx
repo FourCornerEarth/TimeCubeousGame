@@ -69,34 +69,39 @@ var left_key = keyboard_check(vk_left);
 var up_key = keyboard_check(vk_up);
 var down_key = keyboard_check(vk_down);
 
-// Move right
-if(right_key) {
-    phy_position_x += spd;
-    sprite_index = spr_neku_right;
-    image_speed = img_spd;
-}
-
-// Move left
-if(left_key) {
-    phy_position_x -= spd;
-    sprite_index = spr_neku_left;
-    image_speed = img_spd;
-}
-
-// Move up
-if(up_key) {
-    phy_position_y -= spd; // note that the -y direction is up.
-    sprite_index = spr_neku_up;
-    image_speed = img_spd;
-    //image_speed = .2;
-}
-
-// Move down
-if(down_key) {
-    phy_position_y += spd;
-    sprite_index = spr_neku_down;
-    image_speed = img_spd;
-    //image_speed = .2;
+//verify if textbox is on or off
+//if it's on you don't  move
+if (!global.textbox_ON)
+    {
+    // Move right
+    if(right_key) {
+        phy_position_x += spd;
+        sprite_index = spr_neku_right;
+        image_speed = img_spd;
+    }
+    
+    // Move left
+    if(left_key) {
+        phy_position_x -= spd;
+        sprite_index = spr_neku_left;
+        image_speed = img_spd;
+    }
+    
+    // Move up
+    if(up_key) {
+        phy_position_y -= spd; // note that the -y direction is up.
+        sprite_index = spr_neku_up;
+        image_speed = img_spd;
+        //image_speed = .2;
+    }
+    
+    // Move down
+    if(down_key) {
+        phy_position_y += spd;
+        sprite_index = spr_neku_down;
+        image_speed = img_spd;
+        //image_speed = .2;
+    }
 }
 
 // Stop animation depending on the current frame
