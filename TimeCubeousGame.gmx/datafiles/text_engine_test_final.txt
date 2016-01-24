@@ -1,11 +1,1 @@
 [N:Riley][V:M]Hello! This is my altered version oooooof...
-[P:20]"The Definitive Dynamic Textbox Engine V5.1!".
-I bet you're wondering why it's so amazing!
-[P:20]Well,[P:20] first off:
-The typing speed of the textbox can be changed within#the text engine itself.
-You can talk normally,[P:20]#[S:S]you can talk slow[S:N],[P:20]#and you can talk [S:R]REALLY[S:N] slow.
-You can also change the 'voice' used for talking.
-[V:L]The low voice is useful for older males.[P:20]#[V:M]The medium voice is useful for most people.[P:20]#[V:H]The high voice can be used for most females.
-[N:0][V:T](And there's a thought voice as well.)
-[N:Riley][V:M]Another thing you can do in this engine is add a pause.[P:60]  Hm...[P:20]#I bet you noticed it by now!
-[V:M]You've also probably noticed the name box.[P:20]#This is also fully customizable.

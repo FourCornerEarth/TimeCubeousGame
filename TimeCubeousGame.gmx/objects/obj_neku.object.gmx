@@ -71,7 +71,7 @@ var down_key = keyboard_check(vk_down);
 
 //verify if textbox is on or off
 //if it's on you don't  move
-if (!global.textbox_ON)
+if (!global.textbox_ON &amp;&amp; !global.gameMenu_ON)
     {
     // Move right
     if(right_key) {

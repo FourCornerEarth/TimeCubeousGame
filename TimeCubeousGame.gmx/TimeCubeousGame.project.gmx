@@ -47,6 +47,8 @@
     </sprites>
     <sprites name="MenuSprites">
       <sprite>sprites\spr_pointer</sprite>
+      <sprite>sprites\spr_gameMenu</sprite>
+      <sprite>sprites\spr_menuItem</sprite>
     </sprites>
     <sprite>sprites\spr_textbox</sprite>
     <sprite>sprites\spr_textbox_arrow</sprite>
@@ -90,6 +92,11 @@
     <script>scripts\scr_text.gml</script>
     <scripts name="Menu Loading">
       <script>scripts\scr_startMenu.gml</script>
+      <script>scripts\scr_gameMenu.gml</script>
+    </scripts>
+    <scripts name="Inventory Management">
+      <script>scripts\scr_add_item.gml</script>
+      <script>scripts\scr_remove_item.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -99,6 +106,7 @@
     <object>objects\obj_textbox</object>
     <objects name="Menu">
       <object>objects\obj_startMenu</object>
+      <object>objects\obj_gameMenu</object>
     </objects>
     <object>objects\obj_collisioner</object>
     <object>objects\obj_neku</object>
@@ -106,6 +114,15 @@
     <object>objects\obj_spawner</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_warp</object>
+    <objects name="Inventory">
+      <object>objects\obj_item</object>
+      <object>objects\obj_healItem</object>
+      <object>objects\obj_defItem</object>
+      <object>objects\obj_atkItem</object>
+      <object>objects\obj_eventItem</object>
+      <object>objects\obj_inventory</object>
+      <object>objects\obj_inventoryGUI</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
