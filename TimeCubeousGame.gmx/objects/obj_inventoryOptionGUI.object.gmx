@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,39 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialize in game menu.
-// Note that this item is not instantly created.
-// It is made when "inventory" is selected in the game menu, and 
-// destroyed when the player goes back or hits shift to exit the menu.
+            <string>/// Manage the inventory options.
 
-
-// For use with the textbox engine, don't remove until we know more.
-global.fnt_textbox = font_add_sprite(spr_fontmain,ord(" "),1,1);
-
-// Make a list solely for inventory GUI creation.
-
-// List will stack items that you have more than one of.
-inventoryGUI = ds_list_create();
-
-for (var i = 0; i &lt; ds_list_size(global.inventory); i++) {
-    var item = global.inventory[| i];
-    var iName = global.inventory[| i].name;
-    var ind = ds_list_find_index(inventoryGUI, iName);
-    if (ind &gt; -1) {
-       count[ind]++;
-    }
-    else {
-         itemList[i] = item; // Store the item ID so we can access it for the remove function
-         ds_list_add(inventoryGUI, iName);
-         count[i] = 1;
-    }
-}
-
-// Turn on the inventory GUI.
-global.inventoryGUI_ON = 1;
+// Set flag to on.
+global.itemMenu_ON = 1;
+//The item selected from the inventory is now a selected item.
+selectedItem = obj_inventoryGUI.selectedItem;
 
 // Declare the amount of vertical space between menu items.
-gMenuSpace = 50;
+gMenuSpace = 30;
 
 // Declare the index within the move array where the cursor should be.
 cursorPos = 0; // move[cursorPos] returns the item the cursor is pointing to.
@@ -86,18 +62,18 @@ cursorPos = 0; // move[cursorPos] returns the item the cursor is pointing to.
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Code to move up and down menu.
+            <string>/// Check where the user is moving the cursor in the menu.
 
 // If we're appropriately in the menu and the inventory was selected
-if (global.gameMenu_ON &amp;&amp; global.inventoryGUI_ON &amp;&amp; !global.textbox_ON &amp;&amp; !global.itemMenu_ON)
+if (global.gameMenu_ON &amp;&amp; global.inventoryGUI_ON &amp;&amp; !global.textbox_ON &amp;&amp; global.itemMenu_ON)
 {
     var move = 0;
 
-// move will dec by 1 if you're pressing the up arrow or W key.
-   move -= max(keyboard_check_pressed(vk_up), keyboard_check_pressed(ord("W")), 0);
+// move will dec by 1 if you're pressing the left array key or A
+   move -= max(keyboard_check_pressed(vk_left), keyboard_check_pressed(ord("A")), 0);
 
-// move will inc by 1 if you're pressing down arrow or S key.
-   move += max(keyboard_check_pressed(vk_down), keyboard_check_pressed(ord("S")), 0);
+// move will inc by 1 if you're pressing right arrow key or D
+   move += max(keyboard_check_pressed(vk_right), keyboard_check_pressed(ord("D")), 0);
 
 // move = 0 means that right now, we don't want to move.
 
@@ -105,30 +81,24 @@ if (global.gameMenu_ON &amp;&amp; global.inventoryGUI_ON &amp;&amp; !global.text
    if (move != 0) {
       cursorPos += move;
       if (cursorPos &lt; 0) {
-         cursorPos = ds_list_size(inventoryGUI) - 1;
+         cursorPos = 1;
       }
-      if (cursorPos &gt;= ds_list_size(inventoryGUI)) {
+      if (cursorPos &gt;= 2) {
             cursorPos = 0;
       }
    }
 
-// Check for the selection key push.
-// Will be used later to remove items that we don't want anymore.
-
+    // Select an item and do the thing.
     var select;
     select = max(keyboard_check_released(vk_enter), keyboard_check_released(ord("Z")), 0);
 
     if (select == 1) { 
-       selectedItem = itemList[cursorPos];
-       instance_create(0, 0, obj_inventoryOptionGUI);
-       //scr_inventoryOptions(itemList[cursorPos]); 
+       scr_inventoryOptions(selectedItem);
     }
 
 }
 
 else { cursorPos = 0; }
-
-
 </string>
           </argument>
         </arguments>
@@ -151,25 +121,20 @@ else { cursorPos = 0; }
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw the GUI for the inventory.
+            <string>/// Draw itemops GUI
 
-if (global.gameMenu_ON &amp;&amp; global.inventoryGUI_ON &amp;&amp; !global.textbox_ON) {
-   draw_set_color(c_black);
-
-    draw_sprite(spr_menuItem, 0, 256, 64);
-    draw_sprite(spr_pointer, 0, x + 16 + 256, y + 136 + (cursorPos * gMenuSpace));
+// Draw pointer
+draw_sprite(spr_pointer, 0, x + 16 + 256 + (cursorPos * 60), y + 350);
     
-    var i;
-    for (i = 0; i &lt; ds_list_size(inventoryGUI); i += 1) {
-        draw_text(x + 16 + 256 + gMenuSpace, y + 150 + (i * gMenuSpace), string(string(itemList[i].name) + ": " + string(count[i])));
-        }
-}
+// Draw info and remove options.
+draw_text(x + 16 + 256 + 25, y + 350, string("Info"));
+draw_text(x + 16 + 256 + 90, y + 350, string("Remove"));
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="10" enumb="37">
+    <event eventtype="10" enumb="38">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -186,12 +151,14 @@ if (global.gameMenu_ON &amp;&amp; global.inventoryGUI_ON &amp;&amp; !global.text
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Allow player to go back to main menu.
+            <string>/// Eliminate this object when done with it.
+
+/// Allow player to go back to main menu.
 // without needing to close both inventory and menu.
 
-if (global.inventoryGUI_ON &amp;&amp; !global.itemMenu_ON) {
-   global.inventoryGUI_ON = 0;
-   with(obj_inventoryGUI) {
+if (global.itemMenu_ON) {
+   global.itemMenu_ON = 0;
+   with(obj_inventoryOptionGUI) {
           instance_destroy();
    }
 }
@@ -218,17 +185,17 @@ if (global.inventoryGUI_ON &amp;&amp; !global.itemMenu_ON) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Toggle the menu on and off with the shift key.
+            <string>/// Eliminate this object when done with it.
 
-// Shut this inventory menu down with the full menu.
+/// Allow player to go back to main menu.
+// without needing to close both inventory and menu.
 
-if (global.inventoryGUI_ON) {
-   global.inventoryGUI_ON = 0;
-   with(obj_inventoryGUI) {
+if (global.itemMenu_ON) {
+   global.itemMenu_ON = 0;
+   with(obj_inventoryOptionGUI) {
           instance_destroy();
    }
 }
-
 
 </string>
           </argument>

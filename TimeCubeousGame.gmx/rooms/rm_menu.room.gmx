@@ -52,12 +52,12 @@
   </views>
   <instances>
     <instance objName="obj_startMenu" x="48" y="128" name="inst_A791C821" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gameMenu" x="0" y="0" name="inst_217ABAA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_eventItem" x="0" y="16" name="inst_64E7F6F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_atkItem" x="0" y="64" name="inst_74490FB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_defItem" x="0" y="112" name="inst_A506418E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_healItem" x="0" y="160" name="inst_33F032FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_inventory" x="0" y="208" name="inst_8866A585" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gameStart" x="0" y="0" name="inst_F3FF5DFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

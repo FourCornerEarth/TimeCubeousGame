@@ -31,6 +31,8 @@
 name = "Knife";
 description = "Increases ATK by 5.";
 bonus = 5;
+cost = 25;
+sellP = (2*cost)/3;
 </string>
           </argument>
         </arguments>

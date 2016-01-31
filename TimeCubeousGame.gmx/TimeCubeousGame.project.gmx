@@ -76,6 +76,33 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="Inventory Management">
+      <script>scripts\scr_add_item.gml</script>
+      <script>scripts\scr_remove_item.gml</script>
+    </scripts>
+    <scripts name="State Management">
+      <script>scripts\scr_getCurrentState.gml</script>
+      <script>scripts\scr_addPersistent.gml</script>
+      <script>scripts\scr_setState.gml</script>
+      <script>scripts\scr_notifyPersistent.gml</script>
+    </scripts>
+    <scripts name="Menu Loading Scripts">
+      <script>scripts\scr_startMenu.gml</script>
+      <script>scripts\scr_gameMenu.gml</script>
+      <script>scripts\scr_inventoryOptions.gml</script>
+      <script>scripts\scr_itemSelected.gml</script>
+    </scripts>
+    <scripts name="Menu Engine Scripts">
+      <script>scripts\scr_baseMenuOff.gml</script>
+      <script>scripts\scr_createNewMenuModule.gml</script>
+      <script>scripts\scr_getParent.gml</script>
+      <script>scripts\scr_isBaseChild_ON.gml</script>
+      <script>scripts\scr_isChildMenu_ON.gml</script>
+      <script>scripts\scr_menuDestroy.gml</script>
+      <script>scripts\scr_menuMovement.gml</script>
+      <script>scripts\scr_setKeysByOrientation.gml</script>
+      <script>scripts\scr_startNewModule.gml</script>
+    </scripts>
     <script>scripts\textbox_cmd_delete.gml</script>
     <script>scripts\textbox_cmd_load.gml</script>
     <script>scripts\textbox_cmd_execute.gml</script>
@@ -90,44 +117,46 @@
     <script>scripts\textbox_question_pointer.gml</script>
     <script>scripts\textbox_loadbox.gml</script>
     <script>scripts\scr_text.gml</script>
-    <scripts name="Menu Loading">
-      <script>scripts\scr_startMenu.gml</script>
-      <script>scripts\scr_gameMenu.gml</script>
-    </scripts>
-    <scripts name="Inventory Management">
-      <script>scripts\scr_add_item.gml</script>
-      <script>scripts\scr_remove_item.gml</script>
-    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_codersCrux</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_textbox</object>
-    <objects name="Menu">
-      <object>objects\obj_startMenu</object>
-      <object>objects\obj_gameMenu</object>
+    <objects name="Game Startup">
+      <object>objects\obj_gameStart</object>
+      <object>objects\obj_gameState</object>
     </objects>
+    <objects name="Inventory and Items">
+      <object>objects\obj_atkItem</object>
+      <object>objects\obj_defItem</object>
+      <object>objects\obj_healItem</object>
+      <object>objects\obj_item</object>
+      <object>objects\obj_eventItem</object>
+      <object>objects\obj_inventory</object>
+    </objects>
+    <objects name="Inventory Menu Objects">
+      <object>objects\obj_inventoryMenu</object>
+      <object>objects\obj_inventoryOptions</object>
+    </objects>
+    <objects name="Main Menu Objects">
+      <object>objects\obj_startMenu</object>
+    </objects>
+    <objects name="Menu Engine Objects">
+      <object>objects\menu_baseMenu</object>
+      <object>objects\menu_menuModule</object>
+    </objects>
+    <object>objects\obj_textbox</object>
     <object>objects\obj_collisioner</object>
     <object>objects\obj_neku</object>
     <object>objects\obj_riku</object>
     <object>objects\obj_spawner</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_warp</object>
-    <objects name="Inventory">
-      <object>objects\obj_item</object>
-      <object>objects\obj_healItem</object>
-      <object>objects\obj_defItem</object>
-      <object>objects\obj_atkItem</object>
-      <object>objects\obj_eventItem</object>
-      <object>objects\obj_inventory</object>
-      <object>objects\obj_inventoryGUI</object>
-    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
-    <room>rooms\rm_TEST</room>
     <room>rooms\rm_day_street</room>
+    <room>rooms\rm_TEST</room>
     <room>rooms\rm_shop</room>
   </rooms>
   <help>

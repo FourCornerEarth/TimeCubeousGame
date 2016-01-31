@@ -30,6 +30,8 @@
 // would be read in from script, through generic item object
 name = "Harp";
 description = "Plays beautiful synhronizing music.";
+cost = 25;
+sellP = (2*cost)/3;
 </string>
           </argument>
         </arguments>

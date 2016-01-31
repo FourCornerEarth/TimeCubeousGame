@@ -31,6 +31,8 @@
 name = "Shield";
 description = "Increases DEF by 2.";
 bonus = 2;
+cost = 25;
+sellP = (2*cost)/3;
 </string>
           </argument>
         </arguments>

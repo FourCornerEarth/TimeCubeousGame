@@ -27,9 +27,6 @@
             <kind>1</kind>
             <string>/// Initialize in game menu.
 
-global.gameMenu_ON = 0;
-global.inventoryGUI_ON = 0;
-
 // For use with the textbox engine, don't remove until we know more.
 global.fnt_textbox=font_add_sprite(spr_fontmain,ord(" "),1,1);
 

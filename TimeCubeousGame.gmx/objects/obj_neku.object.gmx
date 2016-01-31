@@ -27,18 +27,26 @@
             <kind>1</kind>
             <string>/// Set Neku global variables
 
+// Neku's player stats
+global.HP = 20;
+global.atk = 10;
+global.def = 5;
+global.syncBonus = 2;
+global.equippedWeapon = "Nothing";
+global.equippedArmor = "Nothing";
+
 // Fix char so it doesn't rotate when it hits corners.
 phy_fixed_rotation = true;
 
 // Set a speed that can be changed throughout the game.
+// Used for character movement speed.
 spd = 10;
+
+// Used for the speed at which the animation will run.
 img_spd = .3;
 
-// Set image speed to 0 to start.
+// Set image speed to 0 to start. Used for animation speed.
 image_speed = 0;
-
-//sprite_height = 2*sprite_height;
-//sprite_width = 2*sprite_width;
 </string>
           </argument>
         </arguments>
@@ -71,7 +79,7 @@ var down_key = keyboard_check(vk_down);
 
 //verify if textbox is on or off
 //if it's on you don't  move
-if (!global.textbox_ON &amp;&amp; !global.gameMenu_ON)
+if (!global.textbox_ON &amp;&amp; !global.baseMenu_ON)
     {
     // Move right
     if(right_key) {
@@ -149,29 +157,6 @@ if (!right_key and !left_key and !up_key and !down_key and sprite_index == spr_n
             <string>/// Collide!
 
 phy_fixed_rotation = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_textbox">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Collide!
 </string>
           </argument>
         </arguments>

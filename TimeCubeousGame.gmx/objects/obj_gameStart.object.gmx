@@ -25,23 +25,40 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialize inventory object.
+            <string>/// Declare global variables here.
 
-// Create the list
-global.inventory = ds_list_create();
+globalvar textbox_ON;
+globalvar baseMenu_ON;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Set variables for game start
 
+// Set Menu Booleans
 
-// At this point, if there were a save game with data for the 
-// inventory, it would be stored now.
+global.textbox_ON = false;
+global.baseMenu_ON = false;
 
-// Add some base variables for testing.
-heal = instance_create(0, 0, obj_healItem);
-def = instance_create(0, 0, obj_defItem);
-atk = instance_create(0, 0, obj_atkItem);
-event = instance_create(0, 0, obj_eventItem);
-heal2 = instance_create(0, 0, obj_healItem);
-
-ds_list_add(global.inventory, heal, def, atk, event, heal2);
+// Set other booleans here.
 </string>
           </argument>
         </arguments>
