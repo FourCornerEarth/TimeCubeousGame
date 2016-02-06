@@ -103,28 +103,39 @@
       <script>scripts\scr_setKeysByOrientation.gml</script>
       <script>scripts\scr_startNewModule.gml</script>
     </scripts>
-    <script>scripts\textbox_cmd_delete.gml</script>
-    <script>scripts\textbox_cmd_load.gml</script>
-    <script>scripts\textbox_cmd_execute.gml</script>
-    <script>scripts\textbox_specialchar_check.gml</script>
-    <script>scripts\textbox_voice_play.gml</script>
-    <script>scripts\textbox_var_get.gml</script>
-    <script>scripts\textbox_var_set.gml</script>
-    <script>scripts\textbox_sfx_play.gml</script>
-    <script>scripts\textbox_color_get.gml</script>
-    <script>scripts\textbox_cutin_sprite_set.gml</script>
-    <script>scripts\textbox_cutin_swap.gml</script>
-    <script>scripts\textbox_question_pointer.gml</script>
-    <script>scripts\textbox_loadbox.gml</script>
+    <scripts name="Name Selection">
+      <script>scripts\scr_nameSelect.gml</script>
+    </scripts>
+    <scripts name="Textbox Scripts">
+      <script>scripts\textbox_cutin_swap.gml</script>
+      <script>scripts\textbox_cmd_load.gml</script>
+      <script>scripts\textbox_cmd_delete.gml</script>
+      <script>scripts\textbox_specialchar_check.gml</script>
+      <script>scripts\textbox_cmd_execute.gml</script>
+      <script>scripts\textbox_sfx_play.gml</script>
+      <script>scripts\textbox_voice_play.gml</script>
+      <script>scripts\textbox_var_get.gml</script>
+      <script>scripts\textbox_var_set.gml</script>
+      <script>scripts\textbox_color_get.gml</script>
+      <script>scripts\textbox_cutin_sprite_set.gml</script>
+      <script>scripts\textbox_loadbox.gml</script>
+      <script>scripts\textbox_question_pointer.gml</script>
+    </scripts>
     <script>scripts\scr_text.gml</script>
+    <script>scripts\scr_resetTextSettings.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_codersCrux</font>
+    <font>fonts\fnt_wizardsManse40</font>
+    <font>fonts\fnt_magicForest24</font>
+    <font>fonts\fnt_codersCrux32</font>
   </fonts>
   <objects name="objects">
     <objects name="Game Startup">
       <object>objects\obj_gameStart</object>
       <object>objects\obj_gameState</object>
+      <object>objects\obj_nameSelectScreen</object>
+      <object>objects\obj_startMenu</object>
     </objects>
     <objects name="Inventory and Items">
       <object>objects\obj_atkItem</object>
@@ -134,16 +145,17 @@
       <object>objects\obj_eventItem</object>
       <object>objects\obj_inventory</object>
     </objects>
-    <objects name="Inventory Menu Objects">
-      <object>objects\obj_inventoryMenu</object>
-      <object>objects\obj_inventoryOptions</object>
-    </objects>
     <objects name="Main Menu Objects">
-      <object>objects\obj_startMenu</object>
+      <objects name="Inventory Menu Objects">
+        <object>objects\obj_inventoryMenu</object>
+        <object>objects\obj_inventoryOptions</object>
+      </objects>
+      <object>objects\obj_status</object>
     </objects>
     <objects name="Menu Engine Objects">
       <object>objects\menu_baseMenu</object>
       <object>objects\menu_menuModule</object>
+      <object>objects\obj_exampleModule</object>
     </objects>
     <object>objects\obj_textbox</object>
     <object>objects\obj_collisioner</object>
@@ -156,6 +168,8 @@
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
     <room>rooms\rm_day_street</room>
+    <room>rooms\rm_base</room>
+    <room>rooms\rm_nameSelection</room>
     <room>rooms\rm_TEST</room>
     <room>rooms\rm_shop</room>
   </rooms>

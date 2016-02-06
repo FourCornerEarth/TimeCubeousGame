@@ -1,4 +1,6 @@
 /// Remove an item from the inventory.
+// scr_remove_item(itemName)
+// itemName is a string.
 
 // Search for the item by name. If they match, delete it from list,
 // then destroy object instance.

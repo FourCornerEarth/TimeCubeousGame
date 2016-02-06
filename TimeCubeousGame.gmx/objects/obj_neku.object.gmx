@@ -27,14 +27,6 @@
             <kind>1</kind>
             <string>/// Set Neku global variables
 
-// Neku's player stats
-global.HP = 20;
-global.atk = 10;
-global.def = 5;
-global.syncBonus = 2;
-global.equippedWeapon = "Nothing";
-global.equippedArmor = "Nothing";
-
 // Fix char so it doesn't rotate when it hits corners.
 phy_fixed_rotation = true;
 

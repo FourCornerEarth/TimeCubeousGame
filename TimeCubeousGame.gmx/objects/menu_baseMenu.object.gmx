@@ -56,8 +56,9 @@ lastCursorPos = 0;
 /* Feel free to change these to suit your game. */
 
 // Main menu items. User should fill these out.
-baseMenu[0] = "Inventory";
-baseMenu[1] = "Quit";
+baseMenu[0] = "Status";
+baseMenu[1] = "Inventory";
+baseMenu[2] = "Quit";
 
 // Stores the amt of space between items on the menu
 space = 50;
@@ -158,9 +159,9 @@ if (global.baseMenu_ON &amp;&amp; !global.textbox_ON) {
 
     draw_sprite(spr_gameMenu, 0, 0, 0);
     draw_sprite(spr_pointer, 0, x + 16, y + 232 + (cursorPos * space));
-    draw_text(x+50, y+50, "Neku");
-    draw_text(x+50, y+80, "HP:  50");
-    draw_text(x+50, y+110, "MP:  10");
+    draw_text(x+50, y+50, global.name);
+    draw_text(x+50, y+80, "HP:  " + string(global.HP));
+    draw_text(x+50, y+110, "MP:  " +  string(global.MP));
     
     
     var i;

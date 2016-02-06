@@ -26,9 +26,25 @@
           <argument>
             <kind>1</kind>
             <string>/// Declare global variables here.
-
+show_debug_overlay(true);
 globalvar textbox_ON;
 globalvar baseMenu_ON;
+
+/* Player Info */
+//Set default name for now.
+global.name = "Near";
+global.HP = 20;
+global.MP = 5;
+global.atk = 10;
+global.def = 5;
+global.syncBonus = 2;
+global.equippedWeapon = "Nothing";
+global.equippedArmor = "Nothing";
+
+/* Our own colors. */
+
+globalvar c_resynchGreen;
+c_resynchGreen = make_color_rgb(32, 214, 9);
 </string>
           </argument>
         </arguments>

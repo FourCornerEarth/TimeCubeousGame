@@ -1,1 +1,1 @@
-currentState = obj_gameState.currentState;
+return obj_gameState.currentState;

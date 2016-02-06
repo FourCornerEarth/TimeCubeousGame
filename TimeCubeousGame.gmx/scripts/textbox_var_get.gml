@@ -2,10 +2,10 @@
 //gets the value of the variable under the specified pointer and returns the value as a string
 var pointer;
 
-pointer=argument0;
+pointer = argument0;
 
 switch(pointer)
 {
-  case "test_level": return (string(test_level)); break;
+  case "name": return (string(global.name)); break;
   default: return ("!ERROR!");
 }

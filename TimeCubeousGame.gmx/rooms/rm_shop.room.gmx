@@ -51,7 +51,7 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_warp" x="0" y="450" name="inst_071D5F77" locked="0" code="target_x = 730;&#xA;target_y = 430;&#xA;target_r = rm_day_street;&#xA;" scaleX="0.119999997317791" scaleY="1.50999999046326" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warp" x="0" y="450" name="inst_071D5F77" locked="0" code="target_x = 730;&#xA;target_y = 430;&#xA;target_r = rm_day_street;&#xA;&#xA;" scaleX="0.119999997317791" scaleY="1.50999999046326" colour="4294967295" rotation="0"/>
     <instance objName="obj_warp" x="785" y="450" name="inst_53C08385" locked="0" code="target_x = 30;&#xA;target_y = 430;&#xA;target_r = rm_day_street;&#xA;" scaleX="0.150000005960464" scaleY="1.4949494600296" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="0" y="0" name="inst_6FCCC609" locked="0" code="" scaleX="8.02000045776367" scaleY="4.51000022888184" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="0" y="585" name="inst_6CF999F5" locked="0" code="" scaleX="8.01000022888184" scaleY="0.159999996423721" colour="4294967295" rotation="0"/>
