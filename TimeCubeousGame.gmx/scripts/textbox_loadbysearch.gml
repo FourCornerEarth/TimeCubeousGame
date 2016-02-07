@@ -1,11 +1,12 @@
-//textbox_loadbox(fname, line to start on)
+//textbox_loadbysearch(fname, searchtag)
 //loads variables vital to the textbox's functions
 
-//file name, pointer, and the file
-var temp_fname, temp_pointer, file;
+//file name, searchtag, the file and a check
+var temp_fname, temp_searchtag, file, checkfinished;
 
 temp_fname=argument0; //file name
-temp_pointer=argument1; //pointer
+temp_searchtag=argument1; //search tag, how we will find the thing
+checkfinished = 0;
 
 current_text=0; //the current textbox that is being drawn
 current_chr=0; //the current character for the "typewriting" effect
@@ -47,21 +48,50 @@ question_amount=0; //the total number of questions
 text_queue=ds_queue_create(); //queue for loading into the array
 file=file_text_open_read(temp_fname); //the file name
 
-//looks through until it finds the pointer
-//this will later be changed for the search
-repeat(temp_pointer)
+//NEW: search engine
+//previous code below
+/*repeat(temp_pointer)
 {
   file_text_readln(file);
+}*/
+//now new code
+//adding searchtag in full to not be confused with any text that might contain the
+//variable
+temp_searchtag = "[SE:" + temp_searchtag + "]";
+//checks for the searchtext
+while(!checkfinished)
+{
+    //puts it as temporary text to run a check
+    //here we insert the current line on the string
+    var testcheck =file_text_read_string(file);
+    //if it matches the search at least once
+    if (string_count(temp_searchtag,testcheck)>0)
+    {
+    //we have found our text
+      checkfinished = 1;
+    }else{
+    //reads next line of file
+    file_text_readln(file);
+    }
 }
-
 
 loop_end=0;
 
 //while the end of the loop is false
 while (!loop_end)
 {
-  //reads the string on the file
-  temp_text=file_text_read_string(file);
+   //read the file line 
+   //due to a bug i am still testing it will not pick up a line
+   //if it has been read already, so we will perform a check if it's the first time 
+   //the while loops to compensate
+   //this is unacceptable as final code unless we find no other way
+   if (checkfinished)
+   {
+        temp_text=testcheck;
+        checkfinished = 0;
+   }else{
+        temp_text=file_text_read_string(file);
+  }
   //puts it on the queue
   ds_queue_enqueue(text_queue,temp_text);
   //reds next line

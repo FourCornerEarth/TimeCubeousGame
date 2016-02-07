@@ -9,6 +9,7 @@ var pointer, temp_fname, temp_text_pointer;
 
 pointer = argument0;
 
+//depending on the answer, it will change where the textbox goes next, even the text file
 switch(pointer)
 {
   case 1: temp_fname="11cutin_test"; temp_text_pointer=0; break;
@@ -18,8 +19,11 @@ switch(pointer)
   default: return (0);
 }
 
+//adds .txt to the extension
 temp_fname+=TEXT_FILE_EXTENSION;
 
+//uses loadbox to load up the text
+//might have to retire this
 textbox_loadbox(temp_fname, temp_text_pointer);
 
 return (1);

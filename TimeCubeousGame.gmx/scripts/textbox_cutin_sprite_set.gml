@@ -1,14 +1,19 @@
 //textbox_cutin_sprite_set(cut-in id, sprite)
-//gets the sprite pointer output by the command parser and changes it to an actual sprite
+//gets the sprite pointer output by the command parser 
+//and changes it to an actual sprite
 var i, cutin_id, temp_input;
 
-cutin_id=argument0
-temp_input=argument1;
+cutin_id=argument0 //id of the cutin
+temp_input=argument1; //sprite
 
 switch(temp_input)
-{
+{ 
+  //checks the type of cutin
+  
+  //normal
   case CUTIN_TEST_NORMAL:
   {
+    //sets the part amounts, their sprites, animation values, offsets and subimages
     textbox_cutin_parts[cutin_id]=3;
     textbox_cutin_sprite[cutin_id,0]=spr_TEST_cutin1; //body
       textbox_cutin_anim_wait[cutin_id,0]=0;
@@ -31,7 +36,7 @@ switch(temp_input)
       textbox_cutin_anim_subimgs[cutin_id,2]=4;
       textbox_cutin_part_x_offset[cutin_id,2]=-7;
       textbox_cutin_part_y_offset[cutin_id,2]=-142;
-      for (i=0; i<textbox_cutin_parts[cutin_id]; i+=1) //misc common variables
+      for (i=0; i<textbox_cutin_parts[cutin_id]; i+=1) //sets animation values
       {
         textbox_cutin_anim[cutin_id,i]=0;
         textbox_cutin_anim_loop[cutin_id,i]=0;
@@ -39,8 +44,10 @@ switch(temp_input)
       }
     break;
   }
+  //angry
   case CUTIN_TEST_ANGRY:
   {
+    //sets the part amounts, their sprites, animation values, offsets and subimages
     textbox_cutin_parts[cutin_id]=3;
     textbox_cutin_sprite[cutin_id,0]=spr_TEST_cutin2; //body
       textbox_cutin_anim_wait[cutin_id,0]=0;
@@ -63,7 +70,7 @@ switch(temp_input)
       textbox_cutin_anim_subimgs[cutin_id,2]=4;
       textbox_cutin_part_x_offset[cutin_id,2]=-13;
       textbox_cutin_part_y_offset[cutin_id,2]=-139;
-      for (i=0; i<textbox_cutin_parts[cutin_id]; i+=1) //misc common variables
+      for (i=0; i<textbox_cutin_parts[cutin_id]; i+=1) //sets animation values
       {
         textbox_cutin_anim[cutin_id,i]=0;
         textbox_cutin_anim_loop[cutin_id,i]=0;

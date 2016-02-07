@@ -33,24 +33,39 @@
 //             Do not use without proper permissions //
 //---------------------------------------------------*/
 
-current_text=-1; //set to negative one so we can check if the alarm "creation" has been called or not
-alarm[1]=1; //stupid GM not having a way to set creation codes through other instances
+//as a check for the alarm creation being called, the current text is set to
+//negative one temporarily
+current_text=-1; 
+//this turns on the alarm 1, which is basically the initialization of the code
+alarm[1]=1; 
 
-//this stuff down here is so the game doesn't crash in the Begin Step event
-key_left=vk_left; //for easy porting to other systems in GM:S
+//original text: this stuff down here is so the game doesn't crash in the Begin Step event
+//it sets the keys for usage of the textbox engine
+//without this the game will crash when it attempts to begin a step
+//as there are no set keys to do it.
+
+//the variables picked are for simplicity and easy porting
+key_left=vk_left;
 key_right=vk_right;
 key_up=vk_up;
 key_down=vk_down;
 key_advance=vk_space;
-keycheck_left=keyboard_check_pressed(key_left); //for easy porting to other systems in GM:S
+keycheck_left=keyboard_check_pressed(key_left); 
 keycheck_right=keyboard_check_pressed(key_right);
 keycheck_up=keyboard_check_pressed(key_up);
 keycheck_down=keyboard_check_pressed(key_down);
 keycheck_advance=keyboard_check_pressed(key_advance);
 
+//It creates a room where the text box will be temporarily displayed
 textbox_surface=surface_create(room_width,room_width);
 
-start_pointer=0; //this is the pointer for the text loader to know where to start; it's for after you've merged all the text files into one
+//this start pointer will dictate the start of the dialogue
+//in your merged text file. Normally, it's the first line, or line 0
+
+//however since w2e are using loadbysearch and not the normal loadbox
+//we need this to look for the first line via the tag 'Start'
+//and so..
+start_pointer="Start"; 
 </string>
           </argument>
         </arguments>
@@ -73,7 +88,7 @@ start_pointer=0; //this is the pointer for the text loader to know where to star
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//cleans data
+            <string>//cleans data on the queue bestroying it
 ds_queue_destroy(cmd_data_queue);
 ds_queue_destroy(cmd_pos_queue);
 
@@ -103,202 +118,251 @@ global.textbox_ON = false;
             <kind>1</kind>
             <string>var i, file, temp_fname, text_queue, temp_text, loop_end;
 
-temp_fname="text_engine_test_final.txt"; //db
+//name of text file
+temp_fname="text_engine_test_final.txt"; 
 test_level=32; //db
 
-//soon-to-be constants
-CMD_TEXTSPEED="S"; //db
-CMD_TEXTVOICE="V"; //db
-CMD_TEXTPAUSE="P"; //db
-CMD_TEXTVARIABLE="X"; //db
-CMD_TEXTVARIABLESET="XS"; //db
-CMD_TEXTEFFECT="F"; //db
-CMD_TEXTCOLOR="C"; //db
-CMD_TEXTNAME="N"; //db
-CMD_TEXTQUESTION="Q"; //db
-CMD_TEXTQUESTIONTEXT="QT"; //db
-CMD_TEXTQUESTIONPOINTER="QP"; //db
-CMD_CUTINCLEAR="IC"; //db
-CMD_CUTINNEW="IN"; //db
-CMD_CUTINOLD="IO"; //db
-CMD_CUTINMOVE="IM"; //db
-CMD_CUTINANIMATE="IA"; //db
-CMD_CUTINANIMATESTOP="IS"; //db
-CMD_CUTINSWAP="IW"; //db
-CMD_END="E"; //db
-CMD_TEXTSPEED_NORMAL="N"; //db
-CMD_TEXTSPEED_SLOW="S"; //db
-CMD_TEXTSPEED_SLOWER="R"; //db
-CMD_TEXTEFFECT_SFX="0"; //db
-CMD_TEXTEFFECT_SFX_SHOCK="0"; //db
-CMD_TEXTVOICE_NULL="0"; //db
-CMD_TEXTVOICE_LOW="L"; //db
-CMD_TEXTVOICE_MED="M"; //db
-CMD_TEXTVOICE_HIGH="H"; //db
-CMD_TEXTVOICE_THOUGHT="T"; //db
-CMD_TEXTCOLOR_CLEAR="C"; //db
-CMD_TEXTCOLOR_BLACK=0; //db
-CMD_TEXTCOLOR_RED=1; //db
-CMD_TEXTCOLOR_GREEN=2; //db
-CMD_TEXTCOLOR_BLUE=3; //db
-CMD_TEXTCOLOR_GRAY=4; //db
+//sets up the tags that it will read within brackets to call commands
+
+//NEW: command line for tags
+CMD_SEARCHTAG="SE"; //tag added per label after an end dialogue to point to it
+
+CMD_TEXTSPEED="S"; //text speed variable
+CMD_TEXTVOICE="V"; //text voice variable
+CMD_TEXTPAUSE="P"; //text pause variable
+
+CMD_TEXTVARIABLE="X"; //text input variable
+CMD_TEXTVARIABLESET="XS"; //text input variable if it's a set
+
+CMD_TEXTEFFECT="F"; //text effect
+CMD_TEXTCOLOR="C"; //text color
+
+CMD_TEXTNAME="N"; //namebox name
+
+CMD_TEXTQUESTION="Q"; //question
+CMD_TEXTQUESTIONTEXT="QT"; //question text
+CMD_TEXTQUESTIONPOINTER="QP"; //what text the question answers will point to
+
+//i actually dont understand much of cut-ins yet tbh
+CMD_CUTINCLEAR="IC"; //cut-in clear
+CMD_CUTINNEW="IN"; 
+CMD_CUTINOLD="IO"; 
+CMD_CUTINMOVE="IM"; 
+CMD_CUTINANIMATE="IA"; 
+CMD_CUTINANIMATESTOP="IS";
+CMD_CUTINSWAP="IW"; 
+//end cut-ins
+
+CMD_END="E"; //ending command
+
+CMD_TEXTSPEED_NORMAL="N"; //normal text speed variable
+CMD_TEXTSPEED_SLOW="S"; //slow text speed variable
+CMD_TEXTSPEED_SLOWER="R"; //slower text speed variable
+
+CMD_TEXTEFFECT_SFX="0"; //text effect: special effect variable
+CMD_TEXTEFFECT_SFX_SHOCK="0"; //special effect of 'shock'
+
+CMD_TEXTVOICE_NULL="0"; //no voice
+CMD_TEXTVOICE_LOW="L"; //low voice
+CMD_TEXTVOICE_MED="M"; //medium voice
+CMD_TEXTVOICE_HIGH="H"; //high voice
+CMD_TEXTVOICE_THOUGHT="T"; //thought voice
+
+CMD_TEXTCOLOR_CLEAR="C"; //clear current color
+
+CMD_TEXTCOLOR_BLACK=0; //black color
+CMD_TEXTCOLOR_RED=1; //red color
+CMD_TEXTCOLOR_GREEN=2; //green color
+CMD_TEXTCOLOR_BLUE=3; //blue color
+CMD_TEXTCOLOR_GRAY=4; //grey color
+
 CMD_TEXTNAME_NULL="0"; //db
-CMD_TEXTQUESTION_YN="Y"; //db
-CMD_CUTINCLEAR_ALL="A"; //db
-CMD_CUTIN_UNFLIPPED=1; //db
-CMD_CUTIN_FLIPPED=-1; //db
 
-CUTIN_TEST_NORMAL=0; //db
-CUTIN_TEST_ANGRY=1; //db
+CMD_TEXTQUESTION_YN="Y"; //if a question is y/n
 
-TEXT_FILE_EXTENSION=".txt";
+CMD_CUTINCLEAR_ALL="A"; //above with cutin, clears all of them
+CMD_CUTIN_UNFLIPPED=1; //cutin not flipped
+CMD_CUTIN_FLIPPED=-1; //cutin flipped
+
+CUTIN_TEST_NORMAL=0; //normal cutin
+CUTIN_TEST_ANGRY=1; //angry cutin
+
+TEXT_FILE_EXTENSION=".txt"; //file extension for the file with dialogue
 
 //textbox data
-textbox_maxlines=4;
-textbox_maxcolors=4;
-textbox_maxcutins=6;
-textbox_maxoptions=6;
+textbox_maxlines=4; //maximum lines per page
+textbox_maxcolors=4; //maximum colors
+textbox_maxcutins=6; //maximum amount of cutins
+textbox_maxoptions=6; //maximum amount of question options
 
-//initialize random variables
+//initialize variables
+
+//textbox
 textbox_closing=0; //if this is set to one, the textbox begins closing
 textbox_fade_perstep=.1; //how much the textbox fades per step
 
-textbox_overall_alpha_max=.9;
-textbox_overall_alpha=0; //for the textbox surface
+textbox_overall_alpha_max=.9; //maximum alpha of the textbox 
+textbox_overall_alpha=0; //textbox overall current transparency
 
-textbox_x=0;
-textbox_y=room_height-160;
-textbox_sprite=spr_textbox;
-textbox_alpha=1;
-textbox_anim=0; //for animated textboxes
+textbox_x=0; //location of textbox in x axis
+textbox_y=room_height-160; //location of textbox in y axis
+textbox_sprite=spr_textbox; //sprite for textbox
+textbox_alpha=1; //alpha for textbox
+
+//for animated textboxes
+textbox_anim=0; 
 textbox_anim_index=0;
 textbox_anim_speed=0;
 textbox_anim_subimgs=0;
 
+//where to draw the arrow pointing down
 textbox_arrow_draw=0;
-textbox_arrow_x = (textbox_x+800)-40;
-textbox_arrow_y=textbox_y+125;
-textbox_arrow_sprite=spr_textbox_arrow;
-textbox_arrow_color=$000000; //black
-textbox_arrow_alpha=1;
-textbox_arrow_anim=1; //for animated arrows
+textbox_arrow_x = (textbox_x+800)-40; //location of arrow (x)
+textbox_arrow_y=textbox_y+125; //location of arrow (y)
+textbox_arrow_sprite=spr_textbox_arrow; //arrow's sprite
+textbox_arrow_color=$000000; //color of arrow, currently it's black in hexadecimal
+textbox_arrow_alpha=1; //arrow transparency
+
+//for animated arrows
+textbox_arrow_anim=1;
 textbox_arrow_anim_index=0;
 textbox_arrow_anim_speed=.1;
 textbox_arrow_anim_subimgs=4;
 
+//name box
 textbox_name_enabled=0; //disables the name box by default
-textbox_name_text="";
-textbox_name_x=0;
-textbox_name_y=room_height-199;
-textbox_name_sprite=spr_textbox_namebox;
-textbox_name_alpha=1;
-textbox_name_anim=0; //for animated name boxes
+textbox_name_text=""; //empties text of the namebox
+textbox_name_x=0; //location of namebox on x axis
+textbox_name_y=room_height-199; //location of namebox on y axis
+textbox_name_sprite=spr_textbox_namebox; //sprite for namebox
+textbox_name_alpha=1; //transparency for namebox
+
+//animated name boxes
+textbox_name_anim=0; 
 textbox_name_anim_index=0;
 textbox_name_anim_speed=0;
 textbox_name_anim_subimgs=0;
 
-textbox_text_x=textbox_x+40;
-textbox_text_y=textbox_y+75;
-textbox_text_color=$000000; //black
-textbox_text_alpha=1;
-textbox_text_paused=0; //if this is set to 1, the textbox will wait until the variable is reset
+//textbox text
+textbox_text_x=textbox_x+40; //textbox's text initial location on x
+textbox_text_y=textbox_y+75; //textbox's text initial location on y
+textbox_text_color=$000000; //textbox's text color, set to black
+textbox_text_alpha=1; //textbox text transparency/alpha
+textbox_text_paused=0; //pause variable for the text. If this is set to 1, the textbox will wait until the variable is reset
 
-draw_set_font(global.fnt_textbox); //for the next calculation to work correctly
+//font
+draw_set_font(global.fnt_textbox); //prepares to draw the font of the text
 textbox_font_height= string_height("#"); //so we don't have to run string_height every time we need to use it
+//it sets the height of the string
 
-textbox_name_text_x=textbox_name_x+20;
-textbox_name_text_y=textbox_name_y+24;
-textbox_name_text_color=$000000; //also black
-textbox_name_text_alpha=1;
+//textbox name, text
+textbox_name_text_x=textbox_name_x+20; //name text x location
+textbox_name_text_y=textbox_name_y+24; // name text y location
+textbox_name_text_color=$000000; //name text color, set to black
+textbox_name_text_alpha=1; //name text alpha/transparency
 
-textbox_question_enabled=0;
+
+//questions
+textbox_question_enabled=0; //checks if a question is currently being asked or not. We initialize at 0
 textbox_question_text_x_offset=24; //how much the question text is offset from the left end of the textbox
 textbox_question_text_y_offset=6; //how much the question text is offset from the normal newline y
-textbox_question_text_x_separation=32; //how much space is between the two questions
-textbox_question_text_x[0]=textbox_question_text_x_offset;
-textbox_question_text_x[1]=0; //this is set when the command is called
+textbox_question_text_x_separation=32; //how much space is between the two options
+
+//question text elaboration
+textbox_question_text_x[0]=textbox_question_text_x_offset; //gives the first option an offset
+textbox_question_text_x[1]=0; //this is set when the command is called, for now it's at 0
 textbox_question_text_y=textbox_text_y+(textbox_font_height*(textbox_maxlines-1)); //so that the question text displays on the last line of the textbox
-textbox_question_text_color=$7f7f7f; //gray
-textbox_question_text_alpha=1;
-textbox_question_text[0]="Yes";
-textbox_question_text[1]="No";
+textbox_question_text_color=$7f7f7f; //text color of the questions, set to a grey
+textbox_question_text_alpha=1; //alpha/transparency for questions and answers
+textbox_question_text[0]="Yes"; //default question text, yes
+textbox_question_text[1]="No"; //default question text, no
+
+//when questions have more than two answers, it runs a cycle to input text
 for (i=2; i&lt;textbox_maxoptions; i+=1) //the maximum amount of question options is 6
 {
-  textbox_question_text[i]="";
+  textbox_question_text[i]="";//for now, the text is set as empty
 }
 textbox_question_text_width=string_width(textbox_question_text[0]);
 
+//question cursors
 textbox_question_cursor_x_offset=4; //how far away the cursor is from the text
 textbox_question_cursor_y_offset=3; //how far down the cursor is compared to the actual position of the text
 for (i=0; i&lt;2; i+=1)
 {
-  textbox_question_cursor_x[i]=0;
+  textbox_question_cursor_x[i]=0;//cursor location set for yes/no questions
 }
-textbox_question_cursor_y=0;
-textbox_question_cursor_sprite=spr_textbox_questionbox_cursor;
-textbox_question_cursor_sprite_xsize=8;
-textbox_question_cursor_color=$000000; //black
-textbox_question_cursor_alpha=1;
+textbox_question_cursor_y=0; //cursor location on y axis
+textbox_question_cursor_sprite=spr_textbox_questionbox_cursor; //sprite for question cursor
+textbox_question_cursor_sprite_xsize=8; //size of cursor
+textbox_question_cursor_color=$000000; //color of cursor in hex, black
+textbox_question_cursor_alpha=1; //transparency for question cursor
 textbox_question_cursor_anim=1; //for animated cursors
-textbox_question_cursor_anim_index=0;
-textbox_question_cursor_anim_speed=0.067;
-textbox_question_cursor_anim_subimgs=2;
+textbox_question_cursor_anim_index=0; //for animated cursor
+textbox_question_cursor_anim_speed=0.067; //speed for animating the cursor
+textbox_question_cursor_anim_subimgs=2; //the amount of sibling sprites the animation has
 
+//question boxes in visual novel style
 textbox_vnquestion_enabled=0; //for visual-novel-styled question boxes
-textbox_vnquestion_sprite=spr_textbox_questionbox;
-textbox_vnquestion_x=view_wview[view_current]/2;
-textbox_vnquestion_y=64;
+textbox_vnquestion_sprite=spr_textbox_questionbox; //sprite for the question box
+textbox_vnquestion_x=view_wview[view_current]/2; //location on x
+textbox_vnquestion_y=64; //location on y
 textbox_vnquestion_y_offset=0; //this is relative to how many answers there are
 textbox_vnquestion_height=12; //the height of each individual part of the question box
-textbox_vnquestion_alpha=1;
+textbox_vnquestion_alpha=1;  //box transparency
 
-textbox_vnquestion_text_x=textbox_vnquestion_x;
-textbox_vnquestion_text_y=textbox_vnquestion_y+5;
-textbox_vnquestion_text_color=$000000; //black
-textbox_vnquestion_text_alpha=1;
+//vn style question box text
+textbox_vnquestion_text_x=textbox_vnquestion_x; //text location x
+textbox_vnquestion_text_y=textbox_vnquestion_y+5; //text location y
+textbox_vnquestion_text_color=$000000; //text color, black on hexadecimal
+textbox_vnquestion_text_alpha=1; //text transparency
 
-textbox_vnquestion_cursor_x=textbox_vnquestion_x;
-textbox_vnquestion_cursor_y_offset=1;
-for (i=0; i&lt;textbox_maxoptions; i+=1)
+//vn style question cursor
+textbox_vnquestion_cursor_x=textbox_vnquestion_x; //location of cursor on x, set on the question
+textbox_vnquestion_cursor_y_offset=1;//offset of cursor on y
+for (i=0; i&lt;textbox_maxoptions; i+=1) //cycles through the max amount of questions
 {
-  textbox_vnquestion_cursor_y[i]=textbox_vnquestion_text_y+textbox_vnquestion_cursor_y_offset+(i*12);
+  textbox_vnquestion_cursor_y[i]=textbox_vnquestion_text_y+textbox_vnquestion_cursor_y_offset+(i*12); //set's cursor's y location per answer
 }
 textbox_vnquestion_cursor_y_move=1; //for moving the cursor gradually when choosing a different selection
-textbox_vnquestion_cursor_current_y=textbox_vnquestion_cursor_y[0];
-textbox_vnquestion_cursor_sprite=spr_textbox_questionbox_cursor;
-textbox_vnquestion_cursor_alpha=.5;
-textbox_vnquestion_cursor_anim=0; //for animated cursors
+textbox_vnquestion_cursor_current_y=textbox_vnquestion_cursor_y[0]; //current cursor location
+textbox_vnquestion_cursor_sprite=spr_textbox_questionbox_cursor; //cursor sprite
+textbox_vnquestion_cursor_alpha=.5; //cursor transparency
+//for animated cursors
+textbox_vnquestion_cursor_anim=0; 
 textbox_vnquestion_cursor_anim_index=0;
 textbox_vnquestion_cursor_anim_speed=0;
 textbox_vnquestion_cursor_anim_subimgs=0;
 
+//textbox cursor
 textbox_cursor_option=0; //which option is highlighted
 for (i=0; i&lt;textbox_maxoptions; i+=1)
 {
   textbox_cursor_option_pointer[i]=0; //which text file to go to for each option
 }
 
-//cut-in data initialization
+//cut-ins
+//data initialization
 textbox_cutin_enabled=1; //for CPU saving
 textbox_cutin_fade=1; //whether cut-ins fade in and out upon creation and destruction
-textbox_cutin_fade_perstep=.1; //how much cutins fade in and out per step
+textbox_cutin_fade_perstep= .1; //how much cutins fade in and out per step
+//a cycle is made to give all these properties to the potential cutins
 for (i=0; i&lt;textbox_maxcutins; i+=1)
 {
   textbox_cutin_draw[i]=0; //whether this cut-in is being drawn or not
-  textbox_cutin_x[i]=0;
-  textbox_cutin_sprite[i,0]=-1;
-  textbox_cutin_flipped[i]=CMD_CUTIN_UNFLIPPED;
-  if (textbox_cutin_fade)
+  textbox_cutin_x[i]=0; //location in x
+  textbox_cutin_sprite[i,0]=-1; //sprite of the cut-in
+  textbox_cutin_flipped[i]=CMD_CUTIN_UNFLIPPED; //unflipped variable
+  if (textbox_cutin_fade)//checks if it's supposed to fade
   {
     textbox_cutin_alpha[i]=0; //if the cutins fade in and out, we need to start at zero
   }
   else
   {
-    textbox_cutin_alpha[i]=1;
+    textbox_cutin_alpha[i]=1; //doesnt start at 0 if the thing does not fade
   }
   textbox_cutin_parts[i]=1; //how many parts the sprite is composed of (for RAM-saving animation of eyes, mouth, etc.)
 }
-textbox_cutin_y=room_height;
+textbox_cutin_y=room_height;//makes the height of the cutin the height of the room
 
 //sound effects init
 textbox_sound_open=snd_textbox_open;
@@ -310,7 +374,12 @@ textbox_sound_close=snd_textbox_close;
 //init variables
 current_cutins=0; //the current amount of cut-ins used
 
-textbox_loadbox(temp_fname,start_pointer);
+//textbox_loadbox(temp_fname,start_pointer); //loads textbox, using the start pointer and file name
+
+//loads textbox, using the needed tag to start
+//as well as the file name, so it can
+//search the needed dialogue
+textbox_loadbysearch(temp_fname,start_pointer);
 </string>
           </argument>
         </arguments>
@@ -333,7 +402,7 @@ textbox_loadbox(temp_fname,start_pointer);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//input states
+            <string>//inputs what will be used as left, right, up, down and confirm
 keycheck_left=keyboard_check_pressed(key_left);
 keycheck_right=keyboard_check_pressed(key_right);
 keycheck_up=keyboard_check_pressed(key_up);
@@ -357,75 +426,80 @@ keycheck_advance=keyboard_check_pressed(key_advance);
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>other</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var i, i2, temp_current_chr_str, fade_waiting;
+            <string>//Actions taken per step
+
+var i, i2, temp_current_chr_str, fade_waiting;
 
 fade_waiting=0; //so that the typing and closing system will wait while the cut-ins are fading
 
 //Cut-in Animation
+
+//checks if there are more than zero cutins
 if (current_cutins&gt;0)
 {
   for (i=0; i&lt;current_cutins; i+=1) //repeats for every cut-in
   {
-    if (textbox_closing)
+    if (textbox_closing) //if the textbox is closing
     {
-      if (textbox_cutin_alpha[i]&gt;0)
+      if (textbox_cutin_alpha[i]&gt;0) //checks if not invisible
       {
-        textbox_cutin_alpha[i]-=textbox_cutin_fade_perstep;
+        textbox_cutin_alpha[i]-=textbox_cutin_fade_perstep; //fadeout
         fade_waiting+=1;
       }
     }
-    else
+    else //not closing
     {
-      if (textbox_cutin_fade)
+      if (textbox_cutin_fade) //checks if it's a fade
       {
-        if (textbox_cutin_draw[i])
+        if (textbox_cutin_draw[i]) //if there is something to draw
         {
-          if (textbox_cutin_alpha[i]&lt;1)
+          if (textbox_cutin_alpha[i]&lt;1) //if the cutin is not opaque
           {
-            textbox_cutin_alpha[i]+=textbox_cutin_fade_perstep;
+            textbox_cutin_alpha[i]+=textbox_cutin_fade_perstep; //fades
             fade_waiting+=1;
           }
         }
-        else
+        else //nothing to draw
         {
-          if (textbox_cutin_alpha[i]&gt;0)
+          if (textbox_cutin_alpha[i]&gt;0) //if cutin is not invisible
           {
-            textbox_cutin_alpha[i]-=textbox_cutin_fade_perstep;
-            if (textbox_cutin_alpha[i]==0)
+            textbox_cutin_alpha[i]-=textbox_cutin_fade_perstep; //fades
+            if (textbox_cutin_alpha[i]==0) //if it finishes fading
             {
-              current_cutins-=1;
+              current_cutins-=1; //removes a cutin
             }
-            else
+            else //not done
             {
-              fade_waiting+=1;
+              fade_waiting+=1; //fades it out
             }
           }
         } 
       }
-      if (textbox_cutin_draw[i])
+      if (textbox_cutin_draw[i]) //not a fade and something to draw
       {
         for (i2=0; i2&lt;textbox_cutin_parts[i]; i2+=1) //draws each part individually
         {
           if (textbox_cutin_anim[i,i2]) //checks if this part is to be animated, and if this cutin should be drawn
           {
-            if (textbox_cutin_anim_index[i,i2]&lt;textbox_cutin_anim_subimgs[i,i2])
+            if (textbox_cutin_anim_index[i,i2]&lt;textbox_cutin_anim_subimgs[i,i2]) //index is smaller than the amount of subimages
             {
-             textbox_cutin_anim_index[i,i2]+=textbox_cutin_anim_speed[i,i2];
+             textbox_cutin_anim_index[i,i2]+=textbox_cutin_anim_speed[i,i2]; //animates
             } 
-            else
+            else //not smaller than subindex
             {
               if (textbox_cutin_anim_time_waited[i,i2]&lt;textbox_cutin_anim_wait[i,i2]) //checks to see if we need to wait a while before performing the animation again (i.e. blinking eyes)
               {
-                textbox_cutin_anim_time_waited[i,i2]+=1;
+                textbox_cutin_anim_time_waited[i,i2]+=1; //waits
               }
-              else
+              else //no need to wait for blinking eye
               {
+                //animates
                 textbox_cutin_anim_index[i,i2]=0;
                 textbox_cutin_anim_time_waited[i,i2]=0;
                 if (!textbox_cutin_anim_loop[i,i2]) //stops the animation if it's not supposed to loop
@@ -447,61 +521,68 @@ if (current_cutins&gt;0)
 
 if (textbox_closing &amp;&amp; fade_waiting==0) //quit the textbox if everything is already faded out
 {
-  instance_destroy();
+  instance_destroy(); //bye
 }
 
 //typing functioning
-if (!textbox_text_paused &amp;&amp; !textbox_closing &amp;&amp; fade_waiting==0 &amp;&amp; textbox_overall_alpha&gt;=textbox_overall_alpha_max) //if drawing the text is paused, we obviously don't want it to keep going
+
+//if drawing the text is paused, we obviously don't want it to keep going
+//it also checks if the box isnt closing, no fade is in waiting and
+//the overall alpha is bigger or equal to the maximum
+if (!textbox_text_paused &amp;&amp; !textbox_closing &amp;&amp; fade_waiting==0 &amp;&amp; textbox_overall_alpha&gt;=textbox_overall_alpha_max) 
 {
+  //checks current character the text engine, or its location, to the lenght of the text
   if (current_chr&lt;string_length(edited_text[current_text]))
   {
-    if (pause_time_to&gt;0) //for text pauses to function
+    if (pause_time_to&gt;0) //if pause time is bigger than zero
     {
-      if (pause_time_waited==pause_time_to) //increases the waiting time if it has not yet reached the goal
+      if (pause_time_waited==pause_time_to) //checks if the time waited is equivalent to the amount of time that has to pause
       {
-        pause_time_waited=0; //inits the pause timers
-        pause_time_to=0;
+        pause_time_waited=0; //resets time waited
+        pause_time_to=0; //resets time to wait
       }
-      else
+      else //not the same yet
       {
-        pause_time_waited+=1; //raise the timer so it can stop
+        pause_time_waited+=1; //adds to the counter of steps waited
       }
     }
-    else
+    else //pause time isnt bigger than 0
     {
-      if (waiting_time mod text_draw_speed==0) //only progresses the text according to the text speed
+      if (waiting_time mod text_draw_speed==0) //this is to check if, according to the speed, it's time to print again
       {
-        if (current_chr==next_cmd_pos &amp;&amp; ds_queue_size(cmd_pos_queue)&gt;0)
+        if (current_chr==next_cmd_pos &amp;&amp; ds_queue_size(cmd_pos_queue)&gt;0) //checks if it reaches the end
         {
           ds_queue_dequeue(cmd_pos_queue);
           textbox_cmd_execute(ds_queue_dequeue(cmd_data_queue));
           next_cmd_pos=ds_queue_head(cmd_pos_queue);
         }
-        else
+        else //not finished yet
         {
           current_chr+=1; //advance the text by one character for the typewriter effect
-          output_text=string_copy(edited_text[current_text],1,current_chr); //sets the final text to be outputted
+          output_text=string_copy(edited_text[current_text],1,current_chr); //sets the final text to be outputted, removing the letter already printed
           temp_current_chr_str=string_char_at(output_text,current_chr); //to save CPU calling the check a few times
           line_chr[current_line]+=1; //for any equations involving how many characters are in a specific line
           line_text[current_line]+=temp_current_chr_str;//string_char_at(output_text,current_chr);
           if (temp_current_chr_str=="#") //checks for a newline, and changes current_line thusly
           {
-            current_line+=1;
+            current_line+=1; //moves to the next line
           }
-          if (drawing_color==1)
+          if (drawing_color==1) //checks if drawing color is true
           {
+          //changes the color
             current_color_chr_end[current_colors-1]+=1;
             color_text[current_colors-1]=string_copy(output_text,current_color_chr_start[current_colors-1],current_color_chr_end[current_colors-1]);
           }
           waiting_time=1; //resets time for waiting
-          textbox_voice_play(text_voice,text_draw_speed);
+          textbox_voice_play(text_voice,text_draw_speed); //plays the voice
         }
       }
-      else
+      else //not the speed marked, so it's not time to print yet
       {
-        waiting_time+=1; //for the previous modulo calculation and modifying text speed
+        waiting_time+=1; //waits
       }
     }
+    
     //this next block of code executes any commands that may lie after the main text
     while (current_chr==string_length(edited_text[current_text]) &amp;&amp; ds_queue_size(cmd_pos_queue)&gt;0)
     {
@@ -510,7 +591,7 @@ if (!textbox_text_paused &amp;&amp; !textbox_closing &amp;&amp; fade_waiting==0 
       next_cmd_pos=ds_queue_head(cmd_pos_queue);
     }
   }
-  else //if the text is finished drawing, we still want to do a couple of things
+  else //if the text is finished drawing, we still want to do a couple of things, here we draw the arrow
   {
     if (textbox_arrow_draw==0 &amp;&amp; (textbox_question_enabled==0 &amp;&amp; textbox_vnquestion_enabled==0))
     {
@@ -522,99 +603,110 @@ if (!textbox_text_paused &amp;&amp; !textbox_closing &amp;&amp; fade_waiting==0 
 //Textbox Fade-in
 if (textbox_overall_alpha&lt;textbox_overall_alpha_max)
 {
-  textbox_overall_alpha+=textbox_fade_perstep;
+  textbox_overall_alpha+=textbox_fade_perstep; //fades in
 }
 
-//Misc. Sprite Animation and Cursor Movement
-if (textbox_arrow_draw==1 &amp;&amp; textbox_arrow_anim==1) //animates the textbox arrow if it can animate
+//Sprite Animation and Cursor Movement
+//Textbox arrow
+if (textbox_arrow_draw==1 &amp;&amp; textbox_arrow_anim==1) 
 {
-  if (textbox_arrow_anim_index&lt;textbox_arrow_anim_subimgs)
+  if (textbox_arrow_anim_index&lt;textbox_arrow_anim_subimgs) //checks for subimages
   {
-    textbox_arrow_anim_index+=textbox_arrow_anim_speed;
+    textbox_arrow_anim_index+=textbox_arrow_anim_speed; //animates subimages by cycling through them
   }
-  else
+  else //no subimages or index is equal to the last
   {
-    textbox_arrow_anim_index=0;
+    textbox_arrow_anim_index=0; //animation ends
   }
 }
+//Question box cursor
 if (textbox_question_enabled) //animates the question box cursor if it can animate
 {
-  if (keycheck_left ^^ keycheck_right) //exclusive-or; learn it or fail
+  if (keycheck_left ^^ keycheck_right) //exclusive-or/xor, if one is true the other is not, checks for where you press
   {
-    audio_play_sound(textbox_sound_move,0,1);
-    switch (textbox_cursor_option) //a bit of cheating here because pushing left or right would do the same thing in this situation
+    audio_play_sound(textbox_sound_move,0,1); //cursor movement sound
+    switch (textbox_cursor_option) //checks for the option to know where to putit
     {
-      case 0: textbox_cursor_option=1; break;
+      case 0: textbox_cursor_option=1; break; 
       case 1: textbox_cursor_option=0; break;
-      default: /*seriously, if you even manage to get the code here, you're doing something wrong.*/ break;
+      default: break;
     }
   }
+  //if the cursor is animated
   if (textbox_question_cursor_anim==1)
   {
     if (textbox_question_cursor_anim_index&lt;textbox_question_cursor_anim_subimgs)
     {
+      //if there are subimages to select from, it uses these
       textbox_question_cursor_anim_index+=textbox_question_cursor_anim_speed;
     }
     else
     {
+      //no subimages no deal
       textbox_question_cursor_anim_index=0;
     }
   }
 }
+//if the questions are styled like a visual novel
 if (textbox_vnquestion_enabled)
 {
-  if (keycheck_up &amp;&amp; !keycheck_down)
+  if (keycheck_up &amp;&amp; !keycheck_down) //pressing up
   {
-    audio_play_sound(textbox_sound_move,1,0);
+    audio_play_sound(textbox_sound_move,1,0); //cursor movement sound
+    //swaps location based on where the cursor was
+    //if the option was bigger than the first, it goes up
     if (textbox_cursor_option&gt;0)
     {
-      textbox_cursor_option-=1;
+      textbox_cursor_option-=1; 
     }
+    //otherwise it goes all the way down
     else
     {
-      textbox_cursor_option=question_amount-1;
+      textbox_cursor_option=question_amount-1; 
     }
   }
+  //checks if you press down and not up
   if (keycheck_down &amp;&amp; !keycheck_up)
   {
-    audio_play_sound(textbox_sound_move,1,0);
-    if (textbox_cursor_option&lt;question_amount-1)
+    audio_play_sound(textbox_sound_move,1,0); //movement sound
+    if (textbox_cursor_option&lt;question_amount-1) //checks if cursor is not at the last option
     {
-      textbox_cursor_option+=1;
+      textbox_cursor_option+=1; //moves down
     }
-    else
+    else //if it's the last option
     {
-      textbox_cursor_option=0;
-    }
-  }
-  if (textbox_vnquestion_cursor_y_move==1) //for moving the textbox gradually
-  {
-    if (textbox_vnquestion_cursor_current_y&lt;textbox_vnquestion_cursor_y[textbox_cursor_option])
-    {
-      if (textbox_vnquestion_cursor_current_y&lt;textbox_vnquestion_cursor_y[textbox_cursor_option]-4) //we want the cursor to move at different speeds depending on how much it has to travel
-      {
-        textbox_vnquestion_cursor_current_y+=4;
-      }
-      else if (textbox_vnquestion_cursor_current_y&lt;textbox_vnquestion_cursor_y[textbox_cursor_option])
-      {
-        textbox_vnquestion_cursor_current_y+=1;
-      }
-    }
-    else if (textbox_vnquestion_cursor_current_y&gt;textbox_vnquestion_cursor_y[textbox_cursor_option])
-    {
-      if (textbox_vnquestion_cursor_current_y&gt;textbox_vnquestion_cursor_y[textbox_cursor_option]+4)
-      {
-        textbox_vnquestion_cursor_current_y-=4;
-      }
-      else if (textbox_vnquestion_cursor_current_y&gt;textbox_vnquestion_cursor_y[textbox_cursor_option])
-      {
-        textbox_vnquestion_cursor_current_y-=1;
-      }
+      textbox_cursor_option=0; //goes back to the first
     }
   }
-  else
+  if (textbox_vnquestion_cursor_y_move==1) //for moving the textbox gradually, checks if cursor moves on y
   {
-    textbox_vnquestion_cursor_current_y=textbox_vnquestion_cursor_y[textbox_cursor_option];
+    if (textbox_vnquestion_cursor_current_y&lt;textbox_vnquestion_cursor_y[textbox_cursor_option])//checks if it's going up (??)
+    {
+    //we want the cursor to move at different speeds depending on how much it has to travel
+      if (textbox_vnquestion_cursor_current_y&lt;textbox_vnquestion_cursor_y[textbox_cursor_option]-4)//cursor location and new location are 4 spaces apart 
+      {
+        textbox_vnquestion_cursor_current_y+=4; //moves four spaces 
+      }
+      else if (textbox_vnquestion_cursor_current_y&lt;textbox_vnquestion_cursor_y[textbox_cursor_option]) //one space apart
+      {
+        textbox_vnquestion_cursor_current_y+=1; //move one space 
+      }
+    }
+    else if (textbox_vnquestion_cursor_current_y&gt;textbox_vnquestion_cursor_y[textbox_cursor_option])//checks if going down (??)
+    {
+      if (textbox_vnquestion_cursor_current_y&gt;textbox_vnquestion_cursor_y[textbox_cursor_option]+4)//cursor location and new location are 4 spaces apart
+      {
+        textbox_vnquestion_cursor_current_y-=4;//moves four spaces 
+      }
+      else if (textbox_vnquestion_cursor_current_y&gt;textbox_vnquestion_cursor_y[textbox_cursor_option])//only one space apart
+      {
+        textbox_vnquestion_cursor_current_y-=1;//moves one space 
+      }
+    }
+  }
+  else //cursor not moving
+  {
+    textbox_vnquestion_cursor_current_y=textbox_vnquestion_cursor_y[textbox_cursor_option]; //stays where it is
   }
 }
 
@@ -624,60 +716,94 @@ if (textbox_vnquestion_enabled)
 ----
 ----
 ----*/
-if (!surface_exists(textbox_surface)) //for solving annoying glitches
+if (!surface_exists(textbox_surface)) //in case the surface does not yet exist
 {
-  textbox_surface=surface_create(room_width,room_width);
+  textbox_surface=surface_create(room_width,room_width);//creates it, a failsafe
 }
-surface_set_target(textbox_surface);
-  draw_clear_alpha($ffffff,0);
+//time to draw
+
+//sets target on where to draw, in this case its the textbox surface
+surface_set_target(textbox_surface); 
+  //we clear the alpha to apply our own later, here it's set to white transparent
+  draw_clear_alpha($ffffff,0); 
+  //we draw the textbox sprite here, setting the sprite, animation index
+  //x and y locations, color, alpha, etc
   draw_sprite_ext(textbox_sprite,textbox_anim_index,textbox_x,textbox_y,1,1,0,$ffffff,textbox_alpha);
+  //fetches font for the textbox
   draw_set_font(global.fnt_textbox);
+  //checks if there's a textbox name box to draw as well
   if (textbox_name_enabled)
   {
+    //gives it its color
     draw_set_color(textbox_name_text_color)
+    //its sprite and location/color/alpha details
     draw_sprite(textbox_name_sprite,textbox_name_anim_index,textbox_name_x,textbox_name_y);
+    //and where to draw the text for the namebox, position details and the text for the name
     draw_text(textbox_name_text_x,textbox_name_text_y,textbox_name_text);
   }
+  //fetches textbox text color
   draw_set_color(textbox_text_color);
+  //begins to draw the text based on position and the output text
   draw_text(textbox_text_x,textbox_text_y,output_text);
+  //checks for colors
   for (i=0; i&lt;current_colors; i+=1)
   {
+    //sets the color for the text and draws it with color
     draw_set_color(color_id[i]);
     draw_text(color_x[i],color_y[i],color_text[i]);
   }
+  //checks if arrow has to be drawn
   if (textbox_arrow_draw==1)
   {
+    //fetches arrow's sprite, location, animation index, etc to draw it
     draw_sprite_ext(textbox_arrow_sprite,textbox_arrow_anim_index,textbox_arrow_x,textbox_arrow_y,1,1,0,textbox_arrow_color,textbox_arrow_alpha);
   }
   
   //in-box questions
+  
+  //checks if questions are currently active
   if (textbox_question_enabled)
   {
+    //fetches the color
     draw_set_color(textbox_question_text_color);
+    
+    //cycles to print out the options, if its two
     for (i=0; i&lt;2; i+=1)
     {
+      //draws the text per location, fetching where it'd be on x, y and the question text
       draw_text(textbox_question_text_x[i],textbox_question_text_y,textbox_question_text[i]);
     }
+    //draws the textbox cursor, its animation and its location
     draw_sprite_ext(spr_textbox_cursor,textbox_question_cursor_anim_index,textbox_question_cursor_x[textbox_cursor_option],textbox_question_cursor_y,1,1,0,textbox_question_cursor_color,textbox_question_cursor_alpha);
   }
 
-  //question boxes
+  //question boxes if the vn style ones are enabled
   if (textbox_vnquestion_enabled)
   {
+    //draws the color for the vn style text colors
     draw_set_color(textbox_vnquestion_text_color);
+    //draws the sprite for the textbox used for vn style questions
     draw_sprite_ext(textbox_vnquestion_sprite,0,textbox_vnquestion_x,textbox_vnquestion_y+textbox_vnquestion_y_offset,1,1,0,$ffffff,textbox_vnquestion_alpha);
+    //draws the answer selection based on how many there are
     for (i=0; i&lt;question_amount-1; i+=1)
     {
+      //draws the sprites per question, it's location on the x axis, etc
       draw_sprite_ext(textbox_vnquestion_sprite,1,textbox_vnquestion_x,textbox_vnquestion_y+textbox_vnquestion_y_offset+((i+1)*textbox_vnquestion_height),1,1,0,$ffffff,textbox_vnquestion_alpha);
     }
+    //draws full sprite for the vn textbox
     draw_sprite_ext(textbox_vnquestion_sprite,2,textbox_vnquestion_x,textbox_vnquestion_y+textbox_vnquestion_y_offset+(question_amount*textbox_vnquestion_height),1,1,0,$ffffff,textbox_vnquestion_alpha);
+    //aligns the set drawn to the middle
     draw_set_halign(fa_middle);
+    //now, per question, it draws the text
     for (i=0; i&lt;question_amount; i+=1)
     {
+      //text per question
       draw_text(textbox_vnquestion_text_x,textbox_vnquestion_text_y+textbox_vnquestion_y_offset+(i*textbox_vnquestion_height),textbox_question_text[i]);
     }
+    //aligns text to the left
     draw_set_halign(fa_left);
   }
+//resets target for drawing
 surface_reset_target();
 </string>
           </argument>
@@ -706,24 +832,33 @@ surface_reset_target();
 //turn global textbox variable on
 global.textbox_ON = true;
 
-if (current_text&gt;-1) //checks if the alarm "create event" has been completed
+//here we check if the alarm "create event" has been completed
+//it's why we initialized current_text as -1 beforehand, as if Alarm1 hasn't been run
+//it will still be -1
+if (current_text&gt;-1) 
 {
   //drawing cut-ins first so that the textbox can cover them
+  //if there have been any listed
   if (current_cutins&gt;0)
   {
     for (i=0; i&lt;current_cutins; i+=1) //repeats for every cut-in
     {
       for (i2=0; i2&lt;textbox_cutin_parts[i]; i2+=1) //draws each part individually
       {
+        //it'll draw per sprite for the cut-in so long as it has any
         draw_sprite_ext(textbox_cutin_sprite[i,i2],textbox_cutin_anim_index[i,i2],textbox_cutin_x[i]+(textbox_cutin_part_x_offset[i,i2]*textbox_cutin_flipped[i]),textbox_cutin_y+textbox_cutin_part_y_offset[i,i2],textbox_cutin_flipped[i],1,0,$ffffff,textbox_cutin_alpha[i]);
       }
     }
   }
+  //as long as the text box isnt closing this will run
   if (!textbox_closing)
   {
+    //it draws the textbox surface
     draw_surface_ext(textbox_surface,0,0,1,1,0,$ffffff,textbox_overall_alpha);
+    //checks if vn questions are enabled, since it's a different sprite
     if (textbox_vnquestion_enabled)
-    {
+    { 
+      //draws the vn style sprite for the textbox 
       draw_sprite_ext(textbox_vnquestion_cursor_sprite,textbox_vnquestion_cursor_anim_index,textbox_vnquestion_cursor_x,textbox_vnquestion_cursor_current_y+textbox_vnquestion_y_offset,1,1,0,$ffffff,textbox_vnquestion_cursor_alpha);
     }
   }
@@ -754,13 +889,25 @@ if (current_text&gt;-1) //checks if the alarm "create event" has been completed
 
 if (current_chr&gt;=string_length(edited_text[current_text]))
 {
+  //here it checks if there is a new line to make rather than
+  //the line being finished completely, which would either signal
+  //if it's that a question has been selected or
+  //if it's the end of the text
   if (current_text&lt;total_boxes)
   {
-    if (textbox_arrow_draw) //putting this here stops a bug where pushing space before the arrow is drawn closes the textbox altogether
+  //original comment:
+  //putting this here stops a bug where pushing space before the arrow is drawn 
+  //closes the textbox altogether
+  
+  //what it's checking here is if the textbox arrow is being drawn currently or not
+    if (textbox_arrow_draw) 
     {
-      output_text=""; //resets for prevention of bugs
+      //we reset variables to pretent bugs like previous ones passing over to the 
+      //next variables
+      output_text=""; 
       current_chr=0;
       current_colors=0;
+      //here it clears the colors as well
       for (i=0; i&lt;textbox_maxcolors; i+=1)
       {
         current_color_chr_start[i]=0;
@@ -768,34 +915,42 @@ if (current_chr&gt;=string_length(edited_text[current_text]))
         color_id[i]=0;
         color_text[i]="";
       }
+      //turn off the arrow
       textbox_arrow_draw=0;
       textbox_arrow_anim_index=0;
+      //resets line and text
       current_text+=1;
       current_line=0;
+      //goes through and clears the data in the line text and characters as well
       for (i=0; i&lt;textbox_maxlines; i+=1)
       {
         line_text[i]="";
         line_chr[i]=0;
       }
+      //loads next text, if there is any
       textbox_cmd_load(input_text[current_text]);
       next_cmd_pos=ds_queue_head(cmd_pos_queue);
     }
   }
   else
-  {
+  { 
+    //we now check if questions or vn questions are enabled to allow the player to select
     if (textbox_question_enabled || textbox_vnquestion_enabled)
     {
+      //plays sound for selecting an option
       audio_play_sound(textbox_sound_select,1,0);
+      //grabs option the player selected by pressing space
       textbox_question_pointer(textbox_cursor_option_pointer[textbox_cursor_option]);
+      //turns off questions as the selection has been made
       textbox_question_enabled=0;
       textbox_vnquestion_enabled=0;
     }
     else
     {
-      if (!textbox_closing)
+      if (!textbox_closing) //closing is false and the text is finished
       {
-        audio_play_sound(textbox_sound_close,1,0);
-        textbox_closing=1;
+        audio_play_sound(textbox_sound_close,1,0); //sound for textbox closing
+        textbox_closing=1; //closes textbox
       }
     }
   }

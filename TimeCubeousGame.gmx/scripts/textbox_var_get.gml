@@ -1,5 +1,6 @@
 //textbox_var_get(pointer)
-//gets the value of the variable under the specified pointer and returns the value as a string
+//gets the value of the variable under the specified pointer 
+//and returns the value as a string
 var pointer;
 
 pointer=argument0;

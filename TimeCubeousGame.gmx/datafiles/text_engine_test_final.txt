@@ -1,1 +1,6 @@
-[N:Riley][V:M]Hello! This is my altered version oooooof...
+[SE:Start][N:Riley][V:M]Hello!
+[N:Conan][V:M] That's... [P:10]All.[E:0]
+
+[SE:Conan1][N:Conan][V:M]Test1[E:0]
+
+[SE:Riley1][N:Riley][V:M]Test2, find me![E:0]
