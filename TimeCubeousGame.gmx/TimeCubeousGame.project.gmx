@@ -119,6 +119,7 @@
       <script>scripts\textbox_color_get.gml</script>
       <script>scripts\textbox_cutin_sprite_set.gml</script>
       <script>scripts\textbox_loadbox.gml</script>
+      <script>scripts\textbox_loadbysearch.gml</script>
       <script>scripts\textbox_question_pointer.gml</script>
     </scripts>
     <script>scripts\scr_text.gml</script>
