@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// For use with the textbox engine, don't remove until we know more.
+            <string>/// Set initial variables.
+
+// For use with the textbox engine, don't remove until we know more.
 global.fnt_textbox=font_add_sprite(spr_fontmain,ord(" "),1,1);
 
 // The following stores the icons for the start menu!
@@ -64,7 +66,7 @@ cursorPos = 0; // move[cursorPos] returns the item the cursor is pointing to.
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/* Code to move up and down the menu */
+            <string>/// Code to move up and down the menu.
 
 // Step events run periodically, a few times per second or so.
 
@@ -124,7 +126,9 @@ if (select == 1) { scr_startMenu(); }
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_left);
+            <string>// Draw the start menu
+
+draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 draw_set_font(fnt_codersCrux);
 draw_set_color(c_white);
@@ -136,29 +140,6 @@ for (i = 0; i &lt; array_length_1d(menu); i += 1) {
 }
 
 draw_sprite(sprite_index, 0, x + 16, y - 16 + (cursorPos * vertSpace));
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>room_goto(rm_day_street);
 </string>
           </argument>
         </arguments>

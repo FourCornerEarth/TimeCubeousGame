@@ -19,5 +19,5 @@ else {
      currentItem = instance_create(0, 0, obj_eventItem);
 }
 
-
+// add object to the inventory
 ds_list_add(global.inventory, currentItem);

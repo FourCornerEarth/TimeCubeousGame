@@ -5,7 +5,7 @@ switch(cursorPos) {
     // If Start Game, start the game.
     case 0: 
     {
-        room_goto(rm_day_street);
+        room_goto(rm_nameSelection);
         break;
     }
     
