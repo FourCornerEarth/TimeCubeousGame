@@ -30,6 +30,7 @@ switch(cursorPos) {
              instance_destroy(); 
         }
         with(obj_inventoryMenu) {
+            ds_list_destroy(menu);
             instance_destroy();
         }
         

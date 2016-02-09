@@ -5,9 +5,9 @@ switch(menu_IsArray) {
     case 0: {
             
             if (cursorPos < 0) {
-               cursorPos = ds_list_size(inventoryGUI) - 1;
+               cursorPos = ds_list_size(menu) - 1;
             }
-            if (cursorPos >= ds_list_size(inventoryGUI)) {
+            if (cursorPos >= ds_list_size(menu)) {
                cursorPos = 0;
             }
             break;

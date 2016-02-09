@@ -39,23 +39,22 @@ scriptToRun = scr_itemSelected;
 menu_IsArray = 0;
 
 // List will stack items that you have more than one of.
-inventoryGUI = ds_list_create();
+menu = ds_list_create();
 
 for (var i = 0; i &lt; ds_list_size(global.inventory); i++) {
     var item = global.inventory[| i];
     var iName = global.inventory[| i].name;
-    var ind = ds_list_find_index(inventoryGUI, iName);
+    var ind = ds_list_find_index(menu, iName);
     if (ind &gt; -1) {
        count[ind]++;
     }
     else {
          itemList[i] = item; // Store the item ID so we can access it for the remove function
-         ds_list_add(inventoryGUI, iName);
+         ds_list_add(menu, iName);
          count[i] = 1;
     }
 }
 
-menu = inventoryGUI;
 
 // Turn the menu on once you build the menu.
 menu_ON = 1;
@@ -118,8 +117,8 @@ if (global.state[objStateID] &amp;&amp; menu_ON){
     //draw_sprite(spr_pointer, 0, x + 16 + 256, y + 136 + (cursorPos * space));
     
     var i;
-    for (i = 0; i &lt; ds_list_size(inventoryGUI); i += 1) {
-        draw_text(WID + GAP + HBORDER + HPOINTEROFFSET + space, VGAP + VBORDER + VPOINTEROFFSET + (i * space), string(inventoryGUI[| i] + ": " + string(count[i])));
+    for (i = 0; i &lt; ds_list_size(menu); i += 1) {
+        draw_text(WID + GAP + HBORDER + HPOINTEROFFSET + space, VGAP + VBORDER + VPOINTEROFFSET + (i * space), string(menu[| i] + ": " + string(count[i])));
         //draw_text(x + 16 + 256 + space, y + 150 + (i * space), string(inventoryGUI[| i] + ": " + string(count[i])));
     }
 }
