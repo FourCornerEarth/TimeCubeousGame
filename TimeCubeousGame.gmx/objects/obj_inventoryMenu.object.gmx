@@ -107,7 +107,8 @@ event_inherited();
             <kind>1</kind>
             <string>/// Draw the GUI for the inventory.
 
-if (global.baseMenu_ON &amp;&amp; menu_ON &amp;&amp; !global.textbox_ON) {
+if (global.state[objStateID] &amp;&amp; menu_ON){
+//if (global.baseMenu_ON &amp;&amp; menu_ON &amp;&amp; !global.textbox_ON) {
     draw_set_color(c_black);
 
     draw_sprite(spr_menuItem, 0, WID + GAP,VGAP);

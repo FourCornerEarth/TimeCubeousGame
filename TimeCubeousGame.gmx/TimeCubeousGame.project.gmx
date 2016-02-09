@@ -81,10 +81,10 @@
       <script>scripts\scr_remove_item.gml</script>
     </scripts>
     <scripts name="State Management">
-      <script>scripts\scr_getCurrentState.gml</script>
-      <script>scripts\scr_addPersistent.gml</script>
-      <script>scripts\scr_setState.gml</script>
       <script>scripts\scr_notifyPersistent.gml</script>
+      <script>scripts\scr_addSelfToRegistry.gml</script>
+      <script>scripts\scr_stepFuncOK.gml</script>
+      <script>scripts\scr_toggleStepFunc.gml</script>
     </scripts>
     <scripts name="Menu Loading Scripts">
       <script>scripts\scr_startMenu.gml</script>
@@ -134,7 +134,6 @@
   <objects name="objects">
     <objects name="Game Startup">
       <object>objects\obj_gameStart</object>
-      <object>objects\obj_gameState</object>
       <object>objects\obj_nameSelectScreen</object>
       <object>objects\obj_startMenu</object>
     </objects>

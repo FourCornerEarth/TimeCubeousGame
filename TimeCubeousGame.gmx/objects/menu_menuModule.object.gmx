@@ -73,6 +73,8 @@ menu[0] = "";
 // Declare the amount of vertical space between menu items.
 space = 50;
 
+// Declare objStateID to be the baseMenu's
+objStateID = menu_baseMenu.objStateID;
 
 /**********************************************************/
 
@@ -103,7 +105,8 @@ space = 50;
 
 childMenus_ON = scr_isChildMenu_ON();
 
-if (global.baseMenu_ON &amp;&amp; menu_ON &amp;&amp; !childMenus_ON &amp;&amp; !global.textbox_ON)
+if (global.state[objStateID] &amp;&amp; menu_ON &amp;&amp; !childMenus_ON)
+//if (global.baseMenu_ON &amp;&amp; menu_ON &amp;&amp; !childMenus_ON &amp;&amp; !global.textbox_ON)
 {
     var move = 0;
 

@@ -33,6 +33,9 @@
 //             Do not use without proper permissions //
 //---------------------------------------------------*/
 
+// Give an objStateID
+objStateID = 0;
+
 //as a check for the alarm creation being called, the current text is set to
 //negative one temporarily
 current_text=-1; 
@@ -93,7 +96,8 @@ ds_queue_destroy(cmd_data_queue);
 ds_queue_destroy(cmd_pos_queue);
 
 //text box variable off
-global.textbox_ON = false;
+//global.textbox_ON = false;
+global.state[objStateID] = 0;
 </string>
           </argument>
         </arguments>
@@ -830,7 +834,18 @@ surface_reset_target();
             <string>var i, i2;
 
 //turn global textbox variable on
-global.textbox_ON = true;
+//global.textbox_ON = true;
+
+// Replaced old code with proper state code.
+
+// Turn this state on.
+global.state[objStateID] = 1;
+
+// Turn all other states off. Used since the textbox is created and destroyed repeatedly.
+// And it may pop up at any time, as well.
+// Since the textbox may show up during an event, we'll want to specify this more
+// when we know exactly what the textbox will be used for.
+scr_notifyPersistent();
 
 //here we check if the alarm "create event" has been completed
 //it's why we initialized current_text as -1 beforehand, as if Alarm1 hasn't been run

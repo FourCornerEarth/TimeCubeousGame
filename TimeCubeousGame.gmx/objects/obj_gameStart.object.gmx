@@ -29,6 +29,12 @@
 show_debug_overlay(true);
 globalvar textbox_ON;
 globalvar baseMenu_ON;
+globalvar registry;
+globalvar state;
+
+registry = ds_list_create();
+global.state[0] = 0; //Stored var for textbox.
+global.state[2] = 0; // Stored var for player obj.
 
 /* Player Info */
 //Set default name for now.
@@ -42,7 +48,6 @@ global.equippedWeapon = "Nothing";
 global.equippedArmor = "Nothing";
 
 /* Our own colors. */
-
 globalvar c_resynchGreen;
 c_resynchGreen = make_color_rgb(32, 214, 9);
 </string>

@@ -62,6 +62,9 @@ baseMenu[2] = "Quit";
 
 // Stores the amt of space between items on the menu
 space = 50;
+
+// Add self to state tracking registry.
+scr_addSelfToRegistry(1);
 </string>
           </argument>
         </arguments>
@@ -89,8 +92,8 @@ space = 50;
 // Check if the child menus are on, first.
 childMenus_ON = scr_isBaseChild_ON();
 
-
-if (global.baseMenu_ON &amp;&amp; !childMenus_ON &amp;&amp; !global.textbox_ON)
+if (global.state[objStateID] &amp;&amp; scr_stepFuncOK() &amp;&amp; !childMenus_ON)
+//if (global.baseMenu_ON &amp;&amp; !childMenus_ON &amp;&amp; !global.textbox_ON)
 {
     var move = 0;
     
@@ -128,7 +131,9 @@ if (global.baseMenu_ON &amp;&amp; !childMenus_ON &amp;&amp; !global.textbox_ON)
 else { cursorPos = lastCursorPos; }
 
 if (keyboard_check_released(MENU_EXIT)){
-   scr_baseMenuOff();
+   //scr_baseMenuOff();
+   scr_toggleStepFunc();
+   cursorPos = 0;
 }
 </string>
           </argument>
@@ -154,7 +159,9 @@ if (keyboard_check_released(MENU_EXIT)){
             <kind>1</kind>
             <string>/// Draw the base menu GUI
 
-if (global.baseMenu_ON &amp;&amp; !global.textbox_ON) {
+if (global.state[objStateID])
+//if (global.baseMenu_ON &amp;&amp; !global.textbox_ON) 
+{
    draw_set_color(c_black);
 
     draw_sprite(spr_gameMenu, 0, 0, 0);

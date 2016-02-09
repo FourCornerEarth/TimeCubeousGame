@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>/// Set Neku global variables
 
+scr_addSelfToRegistry(2);
 // Fix char so it doesn't rotate when it hits corners.
 phy_fixed_rotation = true;
 
@@ -71,7 +72,9 @@ var down_key = keyboard_check(vk_down);
 
 //verify if textbox is on or off
 //if it's on you don't  move
-if (!global.textbox_ON &amp;&amp; !global.baseMenu_ON)
+
+if (scr_stepFuncOK())
+//if (!global.textbox_ON &amp;&amp; !global.baseMenu_ON)
     {
     // Move right
     if(right_key) {
