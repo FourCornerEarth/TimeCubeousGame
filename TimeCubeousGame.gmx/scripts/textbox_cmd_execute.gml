@@ -123,17 +123,32 @@ switch(temp_type)
     }
     break;
   }
+  //name for character in namebox
   case CMD_TEXTNAME:
   {
+  //if empty
     if (temp_data[0]==CMD_TEXTNAME_NULL)
     {
       textbox_name_enabled=0;
       textbox_name_text="";
     }
+    //not empty
     else
     {
-      textbox_name_enabled=1;
-      textbox_name_text=temp_data[0];
+    //if it contains variable
+      if (string_count(CMD_TEXTVARIABLE,temp_data[0])>0)
+      {
+        //first we need to clean the input
+        //so we need to remove [X: from the string
+        temp_data[0] = string_replace(temp_data[0], '[X:', '');
+        //now we finally input the text
+        textbox_name_enabled=1;
+        textbox_name_text=textbox_var_get(temp_data[0]);
+      } else //no variable
+      {
+          textbox_name_enabled=1;
+          textbox_name_text=temp_data[0];
+      }
     }
     break;
   }
@@ -158,7 +173,7 @@ switch(temp_type)
       case "1": 
       {
         textbox_question_enabled=0;
-        return (0); //really?  putting one option in a question box?
+        return (0); //a single option? kk
       }
       case "2": 
       {

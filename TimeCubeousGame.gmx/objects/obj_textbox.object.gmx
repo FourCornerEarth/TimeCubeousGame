@@ -68,7 +68,10 @@ textbox_surface=surface_create(room_width,room_width);
 //however since w2e are using loadbysearch and not the normal loadbox
 //we need this to look for the first line via the tag 'Start'
 //and so..
-start_pointer="Start"; 
+//we would set it here to start, but we want to call this box whenever and edit the variable
+//so we dont set the pointer here actually, we set it on instance call
+//remember to start the pointer!
+//start_pointer="Start"; 
 </string>
           </argument>
         </arguments>

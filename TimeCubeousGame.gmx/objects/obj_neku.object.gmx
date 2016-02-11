@@ -40,6 +40,14 @@ img_spd = .3;
 
 // Set image speed to 0 to start. Used for animation speed.
 image_speed = 0;
+
+//quick instance test
+var inst;
+inst = instance_create(0, 0, obj_textbox);
+with (inst)
+   {
+        obj_textbox.start_pointer = "MC1";
+   }
 </string>
           </argument>
         </arguments>
