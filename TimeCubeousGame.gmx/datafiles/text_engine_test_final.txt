@@ -5,4 +5,4 @@
 
 [SE:Riley1][N:Riley][V:M]Test2, find me![E:0]
 
-[SE:MC1][N:[X:name]][V:L]found you, [X:name][E:0]
+[SE:MC1][N:[X:name][V:L][X:name] is my name. It's simply said [X:name]![E:0]

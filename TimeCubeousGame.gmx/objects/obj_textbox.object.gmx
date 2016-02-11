@@ -557,7 +557,7 @@ if (!textbox_text_paused &amp;&amp; !textbox_closing &amp;&amp; fade_waiting==0 
     {
       if (waiting_time mod text_draw_speed==0) //this is to check if, according to the speed, it's time to print again
       {
-        if (current_chr==next_cmd_pos &amp;&amp; ds_queue_size(cmd_pos_queue)&gt;0) //checks if it reaches the end
+        if (current_chr==next_cmd_pos &amp;&amp; ds_queue_size(cmd_pos_queue)&gt;0) //checks if it reaches a command
         {
           ds_queue_dequeue(cmd_pos_queue);
           textbox_cmd_execute(ds_queue_dequeue(cmd_data_queue));

@@ -57,7 +57,7 @@ file=file_text_open_read(temp_fname); //the file name
 //now new code
 //adding searchtag in full to not be confused with any text that might contain the
 //variable
-temp_searchtag = "[SE:" + temp_searchtag + "]";
+temp_searchtag = "[SE:" + temp_searchtag;
 //checks for the searchtext
 while(!checkfinished)
 {

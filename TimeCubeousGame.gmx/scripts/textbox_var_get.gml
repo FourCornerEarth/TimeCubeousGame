@@ -8,5 +8,6 @@ pointer = argument0;
 switch(pointer)
 {
   case "name": return (string(global.name)); break;
+  case "hp": return (string(global.HP)); break;
   default: return ("!ERROR!");
 }
