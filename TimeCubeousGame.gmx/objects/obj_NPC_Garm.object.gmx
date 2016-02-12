@@ -29,7 +29,7 @@
 image_speed = .1;
 justSpoke = 0;
 timesspokento=0;
-iscorrupt=1;
+iscorrupt=0;
 scr_addSelfToRegistry(3);
 </string>
           </argument>
@@ -167,7 +167,8 @@ if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_neku, false, true) &
                     }
                     justSpoke = 6;
                     timesspokento++;
-                    //he gives item here, get code
+                    //he gives item here
+                    scr_add_item("healItem");
                     break;
                 case 4: //line 4
                     with (inst)

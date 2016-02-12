@@ -25,9 +25,9 @@
 [SE:Garm4][N:Garm][V:L]Oh right. I have something for you.
 [N:[X:name][V:M]Huh? What is it?
 [N:Garm][V:L]Here, take it.
-[N:0][V:0]You got an item![E:0]
+[N:0][V:0]You got a Potion![E:0]
 
 [SE:Garm5][N:Garm][V:L]... zzz
 [N:0][V:T]Looks like he fell asleep...[E:0]
 
-[SE:GarmC1][N:Garm][V:L]Hel.. [P:10]p... [V:H]m [P:15] .... e....[E:0]
+[SE:GarmC1][N:Garm][V:L]Hel.. [P:10]p... [V:H]m [P:15] .... e...?[E:0]
