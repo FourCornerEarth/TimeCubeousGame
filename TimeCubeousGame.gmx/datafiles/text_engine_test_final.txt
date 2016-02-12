@@ -16,18 +16,18 @@
 
 [SE:GarmDispleased][N:Garm][V:L]Hey!#Watch it![E:0] 
 
-[SE:Garm1][N:Garm][V:L]Oh, it's you, [X:name]...[E:0]
+[SE:Garm0][N:Garm][V:L]Oh, it's you, [X:name]...[E:0]
 
-[SE:Garm2][N:Garm][V:L]Have you heard of the Asynchrony issue around here?[E:0]
+[SE:Garm1][N:Garm][V:L]Have you heard of the Asynchrony issue around here?[E:0]
 
-[SE:Garm3][N:Garm][V:L]Man... sounds crazy, doesn't it?[E:0]
+[SE:Garm2][N:Garm][V:L]Man... sounds crazy, doesn't it?[E:0]
 
-[SE:Garm4][N:Garm][V:L]Oh right. I have something for you.
+[SE:Garm3][N:Garm][V:L]Oh right. I have something for you.
 [N:[X:name][V:M]Huh? What is it?
 [N:Garm][V:L]Here, take it.
 [N:0][V:0]You got a Potion![E:0]
 
-[SE:Garm5][N:Garm][V:L]... zzz
+[SE:Garm4][N:Garm][V:L]... zzz
 [N:0][V:T]Looks like he fell asleep...[E:0]
 
-[SE:GarmC1][N:Garm][V:L]Hel.. [P:10]p... [V:H]m [P:15] .... e...?[E:0]
+[SE:GarmC0][N:Garm][V:L]Hel.. [P:10]p... [V:H]m [P:15] .... e...?[E:0]

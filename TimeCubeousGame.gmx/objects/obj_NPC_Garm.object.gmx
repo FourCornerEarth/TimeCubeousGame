@@ -30,6 +30,8 @@ image_speed = .1;
 justSpoke = 0;
 timesspokento=0;
 iscorrupt=0;
+enddialogue=0;
+NPC_name="Garm";
 scr_addSelfToRegistry(3);
 </string>
           </argument>
@@ -127,67 +129,24 @@ if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_neku, false, true) &
         //or anyone else for that matter
         if (global.state[objStateID] &amp;&amp; !instance_exists(obj_textbox) &amp;&amp; (justSpoke == 0))
         {
-            //makes tbox instance
-            var inst;
-            inst = instance_create(0, 0, obj_textbox);
-            //with how many times you spoke to him will change the dialogue
-            //if he's not corrupt
-            if (!iscorrupt)
+            //sends data to npc script
+            scr_NPC_speak(NPC_name,timesspokento,iscorrupt);
+            justSpoke = 20; 
+            switch (timesspokento)
             {
-                switch (timesspokento)
-                {
-                case 0: //line 1
-                    with (inst)
-                       {
-                            obj_textbox.start_pointer = "Garm1";
-                       }
-                    timesspokento++;
-                    justSpoke = 6;  
-                    break;
-                case 1: //line 2
-                    with (inst)
-                    {
-                        obj_textbox.start_pointer = "Garm2";
-                    }
-                    timesspokento++;
-                    justSpoke = 6;
-                    break;
-                case 2: //line 3
-                    with (inst)
-                    {
-                        obj_textbox.start_pointer = "Garm3";
-                    }
-                    timesspokento++;
-                    justSpoke = 6;
-                    break;
-                case 3: //line 4
-                    with (inst)
-                    {
-                        obj_textbox.start_pointer = "Garm4";
-                    }
-                    justSpoke = 6;
-                    timesspokento++;
-                    //he gives item here
+                //he gives you an item here
+                case 3: 
                     scr_add_item("healItem");
                     break;
-                case 4: //line 4
-                    with (inst)
-                    {
-                        obj_textbox.start_pointer = "Garm5";
-                    }
-                    justSpoke = 6;
-                    //no additional lines
+                case 4:
+                    enddialogue=1;
                     break;
-                }
-            } else //he is corrupt
+                   
+            }
+            if (!enddialogue)
             {
-                with (inst)
-                   {
-                        obj_textbox.start_pointer = "GarmC1";
-                        obj_textbox.corrupt = 1;
-                        justSpoke = 20;  
-                   }
-            }//end corruption check           
+                timesspokento++;
+            }  
         }//end check to see if you can talk to him
     }//end spacebar check
 }//end circle check

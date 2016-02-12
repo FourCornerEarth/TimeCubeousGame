@@ -131,6 +131,9 @@
     </scripts>
     <script>scripts\scr_text.gml</script>
     <script>scripts\scr_resetTextSettings.gml</script>
+    <scripts name="NPC Scripts">
+      <script>scripts\scr_NPC_speak.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_codersCrux</font>
