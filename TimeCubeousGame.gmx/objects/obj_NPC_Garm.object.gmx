@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//setting mr Garm's global vars
-
+            <string>///setting mr Garm's global vars
+timesspokento=0;
+iscorrupt=0;
 image_speed = .1;
 </string>
           </argument>
@@ -51,23 +52,56 @@ image_speed = .1;
           <argument>
             <kind>1</kind>
             <string>///he talks to you now
+
 //checks if neku is around garm
 if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 70, obj_neku, false, true) &gt; 0)
 { //if we wanna talk to him
-    if(keyboard_check_released(vk_space)) {
-    
-        //if we wanna talk to him we want to make sure he's not talking already
-        //or anyone else for that matter
-        if (!instance_exists(obj_textbox))
+ //we want to make sure he's not talking already
+ //or anyone else for that matter
+    if(keyboard_check_released(vk_space) &amp;&amp; !instance_exists(obj_textbox)) {
+        //makes instance variable
+        var inst;
+       
+        //checks how many times you talked to him
+        //verifying first that he's not corrupt
+        if (!iscorrupt)
         {
-            var inst;
-            inst = instance_create(0, 0, obj_textbox);
+            switch (timesspokento)
+            {
+            case 0:
+                inst = instance_create(0, 0, obj_textbox);
+                with (inst)
+                   {
+                        obj_textbox.start_pointer = "Garm1";
+                   }
+                timesspokento++;
+                break;
+            case 1:
+                inst = instance_create(0,0, obj_textbox);
+                with (inst)
+                {
+                    obj_textbox.start_pointer = "Garm2";
+                }
+                timesspokento++;
+                break;
+            case 2:
+                inst = instance_create(0,0, obj_textbox);
+                with (inst)
+                {
+                    obj_textbox.start_pointer = "Garm3";
+                }
+                //no additional lines
+                break;
+            }
+        } else //he is corrupt
+        {
+            inst = instance_create(0,0, obj_textbox);
             with (inst)
-               {
-                    obj_textbox.start_pointer = "Garm1";
-               }
-           }
-}
+            {
+                obj_textbox.start_pointer= "GarmC1";
+            }
+        }
+    }
 }
 </string>
           </argument>
@@ -94,7 +128,7 @@ if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 70, obj_neku, false, true) &
             <string>///old dog yells at kid
 
 //and then yells at you :v
-if (!global.textbox_ON)
+if (!instance_exists(obj_textbox))
 {
     var inst;
     inst = instance_create(0, 0, obj_textbox);
@@ -103,6 +137,9 @@ if (!global.textbox_ON)
             obj_textbox.start_pointer = "GarmDispleased";
        }
 }
+iscorrupt = 1;
+
+
 </string>
           </argument>
         </arguments>
