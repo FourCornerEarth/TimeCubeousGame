@@ -28,6 +28,8 @@
             <string>/// Garm's global variables.
 image_speed = .1;
 justSpoke = 0;
+timesspokento=0;
+iscorrupt=0;
 scr_addSelfToRegistry(3);
 </string>
           </argument>
@@ -125,18 +127,54 @@ if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_neku, false, true) &
         //or anyone else for that matter
         if (global.state[objStateID] &amp;&amp; !instance_exists(obj_textbox) &amp;&amp; (justSpoke == 0))
         {
+            //makes tbox instance
             var inst;
             inst = instance_create(0, 0, obj_textbox);
-            with (inst)
-               {
-                    obj_textbox.start_pointer = "Garm1";
-               }
-            justSpoke = 6;  
-        }
-    }
-
-}
-
+            //with how many times you spoke to him will change the dialogue
+            //if he's not corrupt
+            if (!iscorrupt)
+            {
+                switch (timesspokento)
+                {
+                case 0: //line 1
+                    inst = instance_create(0, 0, obj_textbox);
+                    with (inst)
+                       {
+                            obj_textbox.start_pointer = "Garm1";
+                       }
+                    timesspokento++;
+                    justSpoke = 6;  
+                    break;
+                case 1: //line 2
+                    inst = instance_create(0,0, obj_textbox);
+                    with (inst)
+                    {
+                        obj_textbox.start_pointer = "Garm2";
+                    }
+                    timesspokento++;
+                    justSpoke = 6;
+                    break;
+                case 2: //line 3
+                    inst = instance_create(0,0, obj_textbox);
+                    with (inst)
+                    {
+                        obj_textbox.start_pointer = "Garm3";
+                    }
+                    justSpoke = 6;
+                    //no additional lines
+                    break;
+                }
+            } else //he is corrupt
+            {
+                with (inst)
+                   {
+                        obj_textbox.start_pointer = "GarmC1";
+                        justSpoke = 6;  
+                   }
+            }//end corruption check           
+        }//end check to see if you can talk to him
+    }//end spacebar check
+}//end circle check
 
 </string>
           </argument>

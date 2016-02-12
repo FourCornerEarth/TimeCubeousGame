@@ -1,21 +1,25 @@
 [SE:Start][N:Riley][V:M]Hello!
 [N:Conan][V:M] That's... [P:10]All.[E:0]
 
+
+
 [SE:Conan1][N:Conan][V:M]Test1[E:0]
+
+
 
 [SE:Riley1][N:Riley][V:M]Test2, find me![E:0]
 
+
+
 [SE:MC1][N:[X:name][V:L][X:name] is my name. It's simply said [X:name]![E:0]
 
-[SE:GarmDispleased][N:Garm][V:L]Hey!#Watch it![E:0]
 
-[SE:Garm1][N:Garm][V:L]Oh, it's you, [X:name]...
-Care for a story?#It's not very long
-[N:[X:name][V:M]I, uh, actually have things to do--
-[N:Garm][V:L]No worries, no worries, it's not that bad
-It all started several years ago
-When the asynchrony barely started...
-And then blahblahblah blah blah blah#blah blah blah blah...
-...
-zzz
-[N:[X:name][V:T]Thank god.[E:0]
+[SE:GarmDispleased][N:Garm][V:L]Hey!#Watch it![E:0] 
+
+[SE:Garm1][N:Garm][V:L]Oh, it's you, [X:name]...[E:0]
+
+[SE:Garm2][N:Garm][V:L]Have you heard of the Asynchrony issue around here?[E:0]
+
+[SE:Garm3][N:Garm][V:L]Man... sounds crazy, doesn't it?[E:0]
+
+[SE:GarmC1][N:Garm][V:L]Hel.. [P:20]p... [V:H]m [P:50] .... e....[E:0]
