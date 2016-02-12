@@ -137,7 +137,6 @@ if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_neku, false, true) &
                 switch (timesspokento)
                 {
                 case 0: //line 1
-                    inst = instance_create(0, 0, obj_textbox);
                     with (inst)
                        {
                             obj_textbox.start_pointer = "Garm1";
@@ -146,7 +145,6 @@ if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_neku, false, true) &
                     justSpoke = 6;  
                     break;
                 case 1: //line 2
-                    inst = instance_create(0,0, obj_textbox);
                     with (inst)
                     {
                         obj_textbox.start_pointer = "Garm2";
@@ -155,10 +153,26 @@ if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_neku, false, true) &
                     justSpoke = 6;
                     break;
                 case 2: //line 3
-                    inst = instance_create(0,0, obj_textbox);
                     with (inst)
                     {
                         obj_textbox.start_pointer = "Garm3";
+                    }
+                    timesspokento++;
+                    justSpoke = 6;
+                    break;
+                case 3: //line 4
+                    with (inst)
+                    {
+                        obj_textbox.start_pointer = "Garm4";
+                    }
+                    justSpoke = 6;
+                    timesspokento++;
+                    //he gives item here, get code
+                    break;
+                case 4: //line 4
+                    with (inst)
+                    {
+                        obj_textbox.start_pointer = "Garm5";
                     }
                     justSpoke = 6;
                     //no additional lines
@@ -169,13 +183,18 @@ if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_neku, false, true) &
                 with (inst)
                    {
                         obj_textbox.start_pointer = "GarmC1";
-                        justSpoke = 6;  
+                        justSpoke = 20;  
                    }
             }//end corruption check           
         }//end check to see if you can talk to him
     }//end spacebar check
 }//end circle check
 
+//checking if he is corrupt to change his sprite
+if (iscorrupt)
+{
+    image_blend = c_red;
+}
 </string>
           </argument>
         </arguments>
