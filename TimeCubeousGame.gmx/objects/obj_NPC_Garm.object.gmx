@@ -29,7 +29,7 @@
 image_speed = .1;
 justSpoke = 0;
 timesspokento=0;
-iscorrupt=0;
+iscorrupt=1;
 scr_addSelfToRegistry(3);
 </string>
           </argument>
@@ -183,6 +183,7 @@ if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_neku, false, true) &
                 with (inst)
                    {
                         obj_textbox.start_pointer = "GarmC1";
+                        obj_textbox.corrupt = 1;
                         justSpoke = 20;  
                    }
             }//end corruption check           
