@@ -44,8 +44,8 @@ global.MP = 5;
 global.atk = 10;
 global.def = 5;
 global.syncBonus = 2;
-global.equippedWeapon = "Nothing";
-global.equippedArmor = "Nothing";
+global.equippedWeapon = "None";
+global.equippedArmor = "None";
 
 /* Our own colors. */
 globalvar c_resynchGreen;

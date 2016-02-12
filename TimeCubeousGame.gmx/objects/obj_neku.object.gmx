@@ -40,6 +40,37 @@ img_spd = .3;
 
 // Set image speed to 0 to start. Used for animation speed.
 image_speed = 0;
+
+// Last index of the sprite before it stopped moving.
+currIndex = spr_neku_stand_down;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stop if the character is still trying to move.
+
+if (!scr_stepFuncOK()) {
+   sprite_index = currIndex;
+   image_speed = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -81,6 +112,7 @@ if (scr_stepFuncOK())
         phy_position_x += spd;
         sprite_index = spr_neku_right;
         image_speed = img_spd;
+        currIndex = spr_neku_stand_right;
     }
     
     // Move left
@@ -88,6 +120,7 @@ if (scr_stepFuncOK())
         phy_position_x -= spd;
         sprite_index = spr_neku_left;
         image_speed = img_spd;
+        currIndex = spr_neku_stand_left;
     }
     
     // Move up
@@ -96,6 +129,7 @@ if (scr_stepFuncOK())
         sprite_index = spr_neku_up;
         image_speed = img_spd;
         //image_speed = .2;
+        currIndex = spr_neku_stand_up;
     }
     
     // Move down
@@ -104,8 +138,11 @@ if (scr_stepFuncOK())
         sprite_index = spr_neku_down;
         image_speed = img_spd;
         //image_speed = .2;
+        currIndex = spr_neku_stand_down;
     }
 }
+
+var noKey = !right_key and !left_key and !up_key and !down_key;
 
 // Stop animation depending on the current frame
 if (!right_key and !left_key and !up_key and !down_key and sprite_index == spr_neku_right) {

@@ -59,7 +59,7 @@
     <instance objName="obj_collisioner" x="126" y="-16" name="inst_C31E173D" locked="0" code="" scaleX="6.34000015258789" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="0" y="0" name="inst_37F11667" locked="0" code="" scaleX="1.91919195652008" scaleY="4.48999977111816" colour="4294967295" rotation="0"/>
     <instance objName="menu_baseMenu" x="0" y="0" name="inst_EB9B370B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_NPC_Garm" x="625" y="425" name="inst_F40DC341" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_NPC_Garm" x="625" y="400" name="inst_F40DC341" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>-1</PhysicsWorld>
