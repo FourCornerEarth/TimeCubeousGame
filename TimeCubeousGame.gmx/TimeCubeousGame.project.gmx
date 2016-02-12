@@ -68,6 +68,13 @@
       <sprite>sprites\spr_TEST_cutin2_mouth</sprite>
       <sprite>sprites\spr_TEST_cutin2_eyes</sprite>
     </sprites>
+    <sprites name="NPCs">
+      <sprites name="Garm">
+        <sprite>sprites\spr_garm_idle</sprite>
+        <sprite>sprites\spr_garm_right</sprite>
+        <sprite>sprites\spr_garm_left</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bck_TEST_back</background>
@@ -164,6 +171,9 @@
     <object>objects\obj_spawner</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_warp</object>
+    <objects name="NPCs">
+      <object>objects\obj_NPC_Garm</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>

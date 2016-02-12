@@ -99,7 +99,6 @@ ds_queue_destroy(cmd_data_queue);
 ds_queue_destroy(cmd_pos_queue);
 
 //text box variable off
-//global.textbox_ON = false;
 global.state[objStateID] = 0;
 </string>
           </argument>
