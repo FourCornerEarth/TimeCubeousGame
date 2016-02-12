@@ -9,13 +9,10 @@
 
 [SE:GarmDispleased][N:Garm][V:L]Hey!#Watch it![E:0]
 
-[SE:Garm1][N:Garm][V:L]Oh, it's you, [X:name]...
-Care for a story?#It's not very long
-[N:[X:name][V:M]I, uh, actually have things to do--
-[N:Garm][V:L]No worries, no worries, it's not that bad
-It all started several years ago
-When the asynchrony barely started...
-And then blahblahblah blah blah blah#blah blah blah blah...
-...
-zzz
-[N:[X:name][V:T]Thank god.[E:0]
+[SE:Garm1][N:Garm][V:L]Oh, it's you, [X:name]...[E:0]
+
+[SE:Garm2][N:Garm][V:L]Have you heard of the Asynchrony issue around here?[E:0]
+
+[SE:Garm3][N:Garm][V:L]Man... sounds crazy, doesn't it?[E:0]
+
+[SE:GarmC1][N:Garm][V:L]Hel.. [P:20]p... [V:H]m [P:50] .... e....[E:0]
