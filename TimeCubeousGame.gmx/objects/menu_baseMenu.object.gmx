@@ -162,7 +162,7 @@ if (keyboard_check_released(MENU_EXIT)){
 if (global.state[objStateID])
 //if (global.baseMenu_ON &amp;&amp; !global.textbox_ON) 
 {
-   draw_set_color(c_black);
+    draw_set_color(c_black);
 
     draw_sprite(spr_gameMenu, 0, 0, 0);
     draw_sprite(spr_pointer, 0, x + 16, y + 232 + (cursorPos * space));

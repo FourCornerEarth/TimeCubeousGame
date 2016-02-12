@@ -841,13 +841,13 @@ surface_reset_target();
 // Replaced old code with proper state code.
 
 // Turn this state on.
-global.state[objStateID] = 1;
+   global.state[objStateID] = 1;
 
 // Turn all other states off. Used since the textbox is created and destroyed repeatedly.
 // And it may pop up at any time, as well.
 // Since the textbox may show up during an event, we'll want to specify this more
 // when we know exactly what the textbox will be used for.
-scr_notifyPersistent();
+   scr_notifyPersistent();
 
 //here we check if the alarm "create event" has been completed
 //it's why we initialized current_text as -1 beforehand, as if Alarm1 hasn't been run
@@ -880,6 +880,7 @@ if (current_text&gt;-1)
     }
   }
 }
+
 </string>
           </argument>
         </arguments>

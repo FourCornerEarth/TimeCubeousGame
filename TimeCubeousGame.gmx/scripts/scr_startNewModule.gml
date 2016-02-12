@@ -42,7 +42,7 @@ VBORDER = 30;
 PSIZE = sprite_get_width(spr_pointer);
 
 // The vertical offset so the pointer appears to point in the correct area.
-VPOINTEROFFSET = 15;
+VPOINTEROFFSET = 19;
    
 // The horizontal offset so the pointer appears to point in the correct area.
 HPOINTEROFFSET = 0;
