@@ -35,6 +35,7 @@
 
 // Give an objStateID
 objStateID = 0;
+corrupt=0;
 
 //as a check for the alarm creation being called, the current text is set to
 //negative one temporarily
@@ -100,6 +101,7 @@ ds_queue_destroy(cmd_pos_queue);
 
 //text box variable off
 global.state[objStateID] = 0;
+scr_resetTextSettings();
 </string>
           </argument>
         </arguments>
@@ -447,7 +449,7 @@ fade_waiting=0; //so that the typing and closing system will wait while the cut-
 //Cut-in Animation
 
 //checks if there are more than zero cutins
-if (current_cutins&gt;0)
+if (current_cutins&gt;0) 
 {
   for (i=0; i&lt;current_cutins; i+=1) //repeats for every cut-in
   {
@@ -736,7 +738,13 @@ surface_set_target(textbox_surface);
   //x and y locations, color, alpha, etc
   draw_sprite_ext(textbox_sprite,textbox_anim_index,textbox_x,textbox_y,1,1,0,$ffffff,textbox_alpha);
   //fetches font for the textbox
-  draw_set_font(global.fnt_textbox);
+  //if its corrupt then it uses zalgo
+  if (!corrupt)
+  {
+    draw_set_font(global.fnt_textbox);
+  } else {
+    draw_set_font(fnt_corrupt);
+  }
   //checks if there's a textbox name box to draw as well
   if (textbox_name_enabled)
   {

@@ -28,6 +28,10 @@
             <string>/// Garm's global variables.
 image_speed = .1;
 justSpoke = 0;
+timesspokento=0;
+iscorrupt=0;
+enddialogue=0;
+NPC_name="Garm";
 scr_addSelfToRegistry(3);
 </string>
           </argument>
@@ -125,19 +129,33 @@ if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_neku, false, true) &
         //or anyone else for that matter
         if (global.state[objStateID] &amp;&amp; !instance_exists(obj_textbox) &amp;&amp; (justSpoke == 0))
         {
-            var inst;
-            inst = instance_create(0, 0, obj_textbox);
-            with (inst)
-               {
-                    obj_textbox.start_pointer = "Garm1";
-               }
-            justSpoke = 6;  
-        }
-    }
+            //sends data to npc script
+            scr_NPC_speak(NPC_name,timesspokento,iscorrupt);
+            justSpoke = 20; 
+            switch (timesspokento)
+            {
+                //he gives you an item here
+                case 3: 
+                    scr_add_item("healItem");
+                    break;
+                case 4:
+                    enddialogue=1;
+                    break;
+                   
+            }
+            if (!enddialogue)
+            {
+                timesspokento++;
+            }  
+        }//end check to see if you can talk to him
+    }//end spacebar check
+}//end circle check
 
+//checking if he is corrupt to change his sprite
+if (iscorrupt)
+{
+    image_blend = c_red;
 }
-
-
 </string>
           </argument>
         </arguments>

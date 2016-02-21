@@ -36,23 +36,14 @@
   </sounds>
   <sprites name="sprites">
     <sprites name="MainSprites">
-      <sprites name="Neku">
-        <sprite>sprites\spr_neku_stand_right</sprite>
-        <sprite>sprites\spr_neku_left</sprite>
-        <sprite>sprites\spr_neku_right</sprite>
-        <sprite>sprites\spr_neku_stand_down</sprite>
-        <sprite>sprites\spr_neku_stand_left</sprite>
-        <sprite>sprites\spr_neku_up</sprite>
-        <sprite>sprites\spr_neku_down</sprite>
-        <sprite>sprites\spr_neku_stand_up</sprite>
-      </sprites>
-      <sprites name="MC">
-        <sprite>sprites\spr_MC_down</sprite>
-        <sprite>sprites\spr_MC_stand_down</sprite>
-        <sprite>sprites\spr_MC_left</sprite>
-        <sprite>sprites\spr_MC_right</sprite>
-        <sprite>sprites\spr_MC_up</sprite>
-      </sprites>
+      <sprite>sprites\spr_neku_left</sprite>
+      <sprite>sprites\spr_neku_right</sprite>
+      <sprite>sprites\spr_neku_stand_down</sprite>
+      <sprite>sprites\spr_neku_stand_right</sprite>
+      <sprite>sprites\spr_neku_stand_left</sprite>
+      <sprite>sprites\spr_neku_up</sprite>
+      <sprite>sprites\spr_neku_stand_up</sprite>
+      <sprite>sprites\spr_neku_down</sprite>
     </sprites>
     <sprites name="MenuSprites">
       <sprite>sprites\spr_pointer</sprite>
@@ -89,7 +80,6 @@
     <background>background\bck_TEST_back</background>
     <background>background\bg_shop</background>
     <background>background\bg_street_day</background>
-    <background>background\Dumpsite</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -141,12 +131,17 @@
     </scripts>
     <script>scripts\scr_text.gml</script>
     <script>scripts\scr_resetTextSettings.gml</script>
+    <scripts name="NPC Scripts">
+      <script>scripts\scr_NPC_speak.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_codersCrux</font>
     <font>fonts\fnt_wizardsManse40</font>
     <font>fonts\fnt_magicForest24</font>
     <font>fonts\fnt_codersCrux32</font>
+    <font>fonts\fnt_corrupt</font>
+    <font>fonts\fnt_PkmDPPT</font>
   </fonts>
   <objects name="objects">
     <objects name="Game Startup">
@@ -175,7 +170,6 @@
       <object>objects\obj_exampleModule</object>
     </objects>
     <object>objects\obj_textbox</object>
-    <object>objects\obj_player</object>
     <object>objects\obj_collisioner</object>
     <object>objects\obj_neku</object>
     <object>objects\obj_riku</object>
@@ -193,7 +187,6 @@
     <room>rooms\rm_nameSelection</room>
     <room>rooms\rm_TEST</room>
     <room>rooms\rm_shop</room>
-    <room>rooms\rm_dumpsite</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
