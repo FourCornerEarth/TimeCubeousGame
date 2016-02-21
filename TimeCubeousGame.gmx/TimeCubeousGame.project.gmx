@@ -141,12 +141,17 @@
     </scripts>
     <script>scripts\scr_text.gml</script>
     <script>scripts\scr_resetTextSettings.gml</script>
+    <scripts name="NPCs">
+      <script>scripts\scr_NPC_speak.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_codersCrux</font>
     <font>fonts\fnt_wizardsManse40</font>
     <font>fonts\fnt_magicForest24</font>
     <font>fonts\fnt_codersCrux32</font>
+    <font>fonts\fnt_corrupt</font>
+    <font>fonts\fnt_PkmDPPT</font>
   </fonts>
   <objects name="objects">
     <objects name="Game Startup">

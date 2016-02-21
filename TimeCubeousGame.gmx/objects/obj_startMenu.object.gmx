@@ -27,8 +27,10 @@
             <kind>1</kind>
             <string>/// Set initial variables.
 
-// For use with the textbox engine, don't remove until we know more.
-global.fnt_textbox=font_add_sprite(spr_fontmain,ord(" "),1,1);
+//originally this added a specific font from a spriteset
+//we will make it gt the value of the textbox font we want to use as default instead
+//global.fnt_textbox=font_add_sprite(spr_fontmain,ord(" "),1,1);
+global.fnt_textbox=fnt_PkmDPPT;
 
 // The following stores the icons for the start menu!
 // move is an array of menu options, move[i] is the ith location in the array.

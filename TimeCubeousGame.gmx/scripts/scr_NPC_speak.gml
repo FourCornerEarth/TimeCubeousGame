@@ -1,4 +1,4 @@
-//NPC_speak(npclabel, timesspoken, corruption)
+//scr_NPC_speak(npclabel, timesspoken, corruption)
 
 var name=argument0;
 var times=argument1; 

@@ -36,6 +36,9 @@
 // Give an objStateID
 objStateID = 0;
 
+//sets corrupt to 0 unless stated otherwise
+corrupt = 0;
+
 //as a check for the alarm creation being called, the current text is set to
 //negative one temporarily
 current_text=-1; 
@@ -736,7 +739,13 @@ surface_set_target(textbox_surface);
   //x and y locations, color, alpha, etc
   draw_sprite_ext(textbox_sprite,textbox_anim_index,textbox_x,textbox_y,1,1,0,$ffffff,textbox_alpha);
   //fetches font for the textbox
-  draw_set_font(global.fnt_textbox);
+  //if its corrupt then it uses zalgo
+  if (!corrupt)
+  {
+    draw_set_font(global.fnt_textbox);
+  } else {
+    draw_set_font(fnt_corrupt);
+  }
   //checks if there's a textbox name box to draw as well
   if (textbox_name_enabled)
   {

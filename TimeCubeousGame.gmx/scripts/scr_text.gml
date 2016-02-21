@@ -14,7 +14,7 @@ with (txt) { //with the text object we just made, let's do stuff
      maxlength = view_wview[0]; // max length text can be before scrolling
      text = argument0; //here it takes the txt argument
      spd = argument1; //and the speed
-     font = fnt_codercrux; //grabs the font
+     font = fnt_PkmDPPT; //grabs the font
      
      text_length = string_length(text); //gets the lenght of the text
      font_size = font_get_size(font); //and the font size
