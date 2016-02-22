@@ -51,7 +51,6 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_neku" x="450" y="375" name="inst_0F368CBD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warp" x="0" y="425" name="inst_9B443823" locked="0" code="target_x = 735;&#xA;target_y = 440;&#xA;target_r = rm_shop;&#xA;" scaleX="0.119999997317791" scaleY="1.74747478961945" colour="4294967295" rotation="0"/>
     <instance objName="obj_warp" x="785" y="424" name="inst_6D989FD5" locked="0" code="target_x = 40;&#xA;target_y = 440;&#xA;target_r = rm_shop;&#xA;" scaleX="0.150000005960464" scaleY="1.76999998092651" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="718" y="12" name="inst_F3C7AA3B" locked="0" code="" scaleX="0.810000002384186" scaleY="4.59000015258789" colour="4294967295" rotation="0"/>
@@ -60,6 +59,7 @@
     <instance objName="obj_collisioner" x="0" y="0" name="inst_37F11667" locked="0" code="" scaleX="1.91919195652008" scaleY="4.48999977111816" colour="4294967295" rotation="0"/>
     <instance objName="menu_baseMenu" x="0" y="0" name="inst_EB9B370B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_NPC_Test" x="625" y="400" name="inst_F40DC341" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="325" y="450" name="inst_5F3022D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>-1</PhysicsWorld>

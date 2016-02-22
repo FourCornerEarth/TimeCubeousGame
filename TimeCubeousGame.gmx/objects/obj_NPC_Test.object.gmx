@@ -30,7 +30,7 @@ image_speed = .1;
 justSpoke = 0;
 timesspokento=0;
 ctimesspokento=0;
-iscorrupt=0;
+iscorrupt=1;
 enddialogue=0;
 NPC_name="vxxv";
 scr_addSelfToRegistry(3);
