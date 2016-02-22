@@ -8,18 +8,18 @@
 
 
 
-[SE:Garm0][N:Garm][V:L]Oh, it's you, [X:name]...[E:0]
+[SE:vxxv0][N:???][V:L]So you are [X:name]?#Don't YOU look fantastic![E:0]
 
-[SE:Garm1][N:Garm][V:L]Have you heard of the Asynchrony issue around here?[E:0]
+[SE:vxxv1][N:???][V:L]I wonder if you'll make it to the end...[E:0]
 
-[SE:Garm2][N:Garm][V:L]Man... sounds crazy, doesn't it?[E:0]
+[SE:vxxv2][N:???][V:L]You're still here?[E:0]
 
-[SE:Garm3][N:Garm][V:L]Oh right. I have something for you.
-[N:[X:name][V:M]Huh? What is it?
-[N:Garm][V:L]Here, take it.
-[N:0][V:0]You got a Potion![E:0]
+[SE:vxxv3][N:???][V:L]Right. Kind of need you to live and all.#Here, take it.
+[N:[X:name][V:M]Oh, thanks-!
+[N:???][V:L]But are you sure you want to recieve these #kinds of things from strangers?
+[N:0][V:0]You got a Potion...?[E:0]
 
-[SE:Garm4][N:Garm][V:L]... zzz
-[N:0][V:T]Looks like he fell asleep...[E:0]
+[SE:vxxv4][N:???][V:L]...
+[N:0][V:T]It seems it's all he has to say...[E:0]
 
-[SE:GarmC0][N:Garm][V:L]Hel.. [P:10]p... [V:H]m [P:15] .... e...?[E:0]
+[SE:vxxvC0][N:Garm][V:L]Finally... [P:10]my... [V:H]r [P:15] .... eal power...![E:0]
