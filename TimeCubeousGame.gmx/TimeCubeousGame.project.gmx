@@ -48,10 +48,13 @@
       </sprites>
       <sprites name="MC">
         <sprite>sprites\spr_MC_down</sprite>
-        <sprite>sprites\spr_MC_stand_down</sprite>
-        <sprite>sprites\spr_MC_left</sprite>
         <sprite>sprites\spr_MC_right</sprite>
+        <sprite>sprites\spr_MC_left</sprite>
         <sprite>sprites\spr_MC_up</sprite>
+        <sprite>sprites\spr_MC_stand_down</sprite>
+        <sprite>sprites\spr_MC_stand_right</sprite>
+        <sprite>sprites\spr_MC_stand_left</sprite>
+        <sprite>sprites\spr_MC_stand_up</sprite>
       </sprites>
     </sprites>
     <sprites name="MenuSprites">
@@ -190,6 +193,7 @@
     <objects name="NPCs">
       <object>objects\obj_NPC_Garm</object>
     </objects>
+    <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>

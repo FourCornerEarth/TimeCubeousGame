@@ -11,7 +11,7 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code></code>
-  <enableViews>0</enableViews>
+  <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
@@ -41,7 +41,7 @@
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="obj_camera" xview="0" yview="0" wview="600" hview="480" xport="0" yport="0" wport="1024" hport="768" hborder="300" vborder="300" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -80,6 +80,10 @@
     <instance objName="obj_collisioner" x="256" y="1408" name="inst_415B4A96" locked="0" code="" scaleX="2.41000008583069" scaleY="2.57999992370605" colour="4294967295" rotation="-21"/>
     <instance objName="obj_collisioner" x="448" y="1536" name="inst_168E005A" locked="0" code="" scaleX="2.55999994277954" scaleY="1.91999995708466" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="177" y="2087" name="inst_60CD594C" locked="0" code="" scaleX="0.639999985694885" scaleY="2.55999994277954" colour="4294967295" rotation="22"/>
+    <instance objName="obj_camera" x="576" y="2176" name="inst_7CE6393B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_NPC_Garm" x="1280" y="832" name="inst_15EA38E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="menu_baseMenu" x="0" y="0" name="inst_81B39161" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="576" y="2176" name="inst_58683346" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="Dumpsite" x="256" y="1664" w="64" h="64" xo="128" yo="448" id="10000286" name="inst_73C55902" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1498,12 +1502,12 @@
     <tile bgName="Dumpsite" x="448" y="384" w="64" h="64" xo="320" yo="128" id="10002005" name="inst_26800D63" depth="9997" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="Dumpsite" x="1728" y="128" w="64" h="64" xo="128" yo="256" id="10002015" name="inst_DD53689B" depth="9997" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
-  <PhysicsWorld>0</PhysicsWorld>
+  <PhysicsWorld>-1</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
   <PhysicsWorldLeft>0</PhysicsWorldLeft>
   <PhysicsWorldRight>1024</PhysicsWorldRight>
   <PhysicsWorldBottom>768</PhysicsWorldBottom>
   <PhysicsWorldGravityX>0</PhysicsWorldGravityX>
-  <PhysicsWorldGravityY>10</PhysicsWorldGravityY>
+  <PhysicsWorldGravityY>0</PhysicsWorldGravityY>
   <PhysicsWorldPixToMeters>0.100000001490116</PhysicsWorldPixToMeters>
 </room>

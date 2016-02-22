@@ -213,8 +213,8 @@ textbox_fade_perstep=.1; //how much the textbox fades per step
 textbox_overall_alpha_max=.9; //maximum alpha of the textbox 
 textbox_overall_alpha=0; //textbox overall current transparency
 
-textbox_x=0; //location of textbox in x axis
-textbox_y=room_height-160; //location of textbox in y axis
+textbox_x= x; //location of textbox in x axis
+textbox_y= y+441; //location of textbox in y axis
 textbox_sprite=spr_textbox; //sprite for textbox
 textbox_alpha=1; //alpha for textbox
 
@@ -241,8 +241,8 @@ textbox_arrow_anim_subimgs=4;
 //name box
 textbox_name_enabled=0; //disables the name box by default
 textbox_name_text=""; //empties text of the namebox
-textbox_name_x=0; //location of namebox on x axis
-textbox_name_y=room_height-209; //location of namebox on y axis
+textbox_name_x= x; //location of namebox on x axis
+textbox_name_y= y+386; //location of namebox on y axis
 textbox_name_sprite=spr_textbox_namebox; //sprite for namebox
 textbox_name_alpha=1; //transparency for namebox
 

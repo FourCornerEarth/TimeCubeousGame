@@ -29,5 +29,5 @@ else {
      }
      // If name is good, destroy this object and move to next room.
      instance_destroy();
-     room_goto(rm_day_street);
+     room_goto(rm_dumpsite);
 }

@@ -120,7 +120,7 @@ global.state[objStateID] = 0;
             <string>/// Controls Garm's talking.
 
 //checks if neku is around garm
-if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_neku, false, true) &gt; 0)
+if(collision_circle(obj_NPC_Garm.x, obj_NPC_Garm.y, 90, obj_player, false, true) &gt; 0)
 { //if we wanna talk to him
     if(keyboard_check_released(vk_space)) {
     
@@ -162,7 +162,7 @@ if (iscorrupt)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_neku">
+    <event eventtype="4" ename="obj_player">
       <action>
         <libid>1</libid>
         <id>603</id>
