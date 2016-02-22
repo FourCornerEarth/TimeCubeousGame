@@ -229,7 +229,7 @@ textbox_arrow_draw=0;
 textbox_arrow_x = (textbox_x+800)-40; //location of arrow (x)
 textbox_arrow_y=textbox_y+125; //location of arrow (y)
 textbox_arrow_sprite=spr_textbox_arrow; //arrow's sprite
-textbox_arrow_color=$000000; //color of arrow, currently it's black in hexadecimal
+textbox_arrow_color=$ffffff; //color of arrow, currently it's white in hexadecimal
 textbox_arrow_alpha=1; //arrow transparency
 
 //for animated arrows
@@ -242,7 +242,7 @@ textbox_arrow_anim_subimgs=4;
 textbox_name_enabled=0; //disables the name box by default
 textbox_name_text=""; //empties text of the namebox
 textbox_name_x=0; //location of namebox on x axis
-textbox_name_y=room_height-199; //location of namebox on y axis
+textbox_name_y=room_height-209; //location of namebox on y axis
 textbox_name_sprite=spr_textbox_namebox; //sprite for namebox
 textbox_name_alpha=1; //transparency for namebox
 
@@ -255,7 +255,7 @@ textbox_name_anim_subimgs=0;
 //textbox text
 textbox_text_x=textbox_x+40; //textbox's text initial location on x
 textbox_text_y=textbox_y+75; //textbox's text initial location on y
-textbox_text_color=$000000; //textbox's text color, set to black
+textbox_text_color=$ffffff; //textbox's text color, set to white
 textbox_text_alpha=1; //textbox text transparency/alpha
 textbox_text_paused=0; //pause variable for the text. If this is set to 1, the textbox will wait until the variable is reset
 
@@ -265,9 +265,9 @@ textbox_font_height= string_height("#"); //so we don't have to run string_height
 //it sets the height of the string
 
 //textbox name, text
-textbox_name_text_x=textbox_name_x+20; //name text x location
+textbox_name_text_x=textbox_name_x+40; //name text x location
 textbox_name_text_y=textbox_name_y+24; // name text y location
-textbox_name_text_color=$000000; //name text color, set to black
+textbox_name_text_color=$ffffff; //name text color, set to white
 textbox_name_text_alpha=1; //name text alpha/transparency
 
 
@@ -303,7 +303,7 @@ for (i=0; i&lt;2; i+=1)
 textbox_question_cursor_y=0; //cursor location on y axis
 textbox_question_cursor_sprite=spr_textbox_questionbox_cursor; //sprite for question cursor
 textbox_question_cursor_sprite_xsize=8; //size of cursor
-textbox_question_cursor_color=$000000; //color of cursor in hex, black
+textbox_question_cursor_color=$ffffff; //color of cursor in hex, white
 textbox_question_cursor_alpha=1; //transparency for question cursor
 textbox_question_cursor_anim=1; //for animated cursors
 textbox_question_cursor_anim_index=0; //for animated cursor
@@ -322,7 +322,7 @@ textbox_vnquestion_alpha=1;  //box transparency
 //vn style question box text
 textbox_vnquestion_text_x=textbox_vnquestion_x; //text location x
 textbox_vnquestion_text_y=textbox_vnquestion_y+5; //text location y
-textbox_vnquestion_text_color=$000000; //text color, black on hexadecimal
+textbox_vnquestion_text_color=$ffffff; //text color, white on hexadecimal
 textbox_vnquestion_text_alpha=1; //text transparency
 
 //vn style question cursor

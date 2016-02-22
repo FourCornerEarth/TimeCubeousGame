@@ -108,7 +108,7 @@ event_inherited();
 
 if (global.state[objStateID] &amp;&amp; menu_ON){
 //if (global.baseMenu_ON &amp;&amp; menu_ON &amp;&amp; !global.textbox_ON) {
-    draw_set_color(c_black);
+    draw_set_color(c_white);
 
     draw_sprite(spr_menuItem, 0, WID + GAP,VGAP);
     //draw_sprite(spr_menuItem, 0, 256, 64);
