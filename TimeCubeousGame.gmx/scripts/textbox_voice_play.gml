@@ -31,6 +31,8 @@ switch(temp_voice)
   case 3: audio_play_sound(snd_voicehigh,1,0); break;
   //thought voice
   case 4: audio_play_sound(snd_voicelow,1,0); break;
+  //corrupt voice...
+  case 5: audio_play_sound(snd_textbox_sfx_shock,1,0); break;
   //if none is selected, returns false for selection to play default
   default: return (0);
 }

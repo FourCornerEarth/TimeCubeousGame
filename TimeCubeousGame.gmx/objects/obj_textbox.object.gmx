@@ -101,6 +101,7 @@ textbox_surface=surface_create(room_width,room_width);
 ds_queue_destroy(cmd_data_queue);
 ds_queue_destroy(cmd_pos_queue);
 
+scr_resetTextSettings();
 //text box variable off
 global.state[objStateID] = 0;
 </string>
@@ -176,6 +177,7 @@ CMD_TEXTVOICE_LOW="L"; //low voice
 CMD_TEXTVOICE_MED="M"; //medium voice
 CMD_TEXTVOICE_HIGH="H"; //high voice
 CMD_TEXTVOICE_THOUGHT="T"; //thought voice
+CMD_TEXTVOICE_CORRUPT="C"; //corrupt voice
 
 CMD_TEXTCOLOR_CLEAR="C"; //clear current color
 

@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Garm's global variables.
+            <string>/// NPC's global variables.
 image_speed = .1;
 justSpoke = 0;
 timesspokento=0;
+ctimesspokento=0;
 iscorrupt=0;
 enddialogue=0;
 NPC_name="vxxv";
@@ -130,19 +131,38 @@ if(collision_circle(obj_NPC_Test.x, obj_NPC_Test.y, 90, obj_player, false, true)
         if (global.state[objStateID] &amp;&amp; !instance_exists(obj_textbox) &amp;&amp; (justSpoke == 0))
         {
             //sends data to npc script
-            scr_NPC_speak(NPC_name,timesspokento,iscorrupt);
-            justSpoke = 20; 
-            switch (timesspokento)
-            {
-                //he gives you an item here
-                case 3: 
-                    scr_add_item("healItem");
-                    break;
-                case 4:
-                    enddialogue=1;
-                    break;
-                   
+            if (iscorrupt) {
+                //corrupt npc
+                scr_NPC_speak(NPC_name,ctimesspokento,iscorrupt);
+                //corrupt times spoken to
+                switch (timesspokento)
+                {
+                    //there's only one corrupt dialogue so far for this guy
+                    case 0:
+                        enddialogue=1;
+                        break;
+                }
+            } else {
+                //not corrupt npc
+                scr_NPC_speak(NPC_name,timesspokento,iscorrupt);
+                //noncorrupt times spoken to
+                switch (timesspokento)
+                {
+                    //he gives you an item here
+                    case 3: 
+                        scr_add_item("healItem");
+                        break;
+                    case 4:
+                        enddialogue=1;
+                        break;
+                       
+                }
             }
+            //halts dialogue autostart by pressing space and destroying the tbox
+            //without this it will bring up the tbox again
+            justSpoke = 20; 
+            
+            //corrupt times spoken to
             if (!enddialogue)
             {
                 timesspokento++;

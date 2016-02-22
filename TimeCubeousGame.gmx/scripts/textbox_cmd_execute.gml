@@ -64,15 +64,16 @@ switch(temp_type)
     }
     break;
   }
-  case CMD_TEXTVOICE:
-  {
+  case CMD_TEXTVOICE: //command is the voice
+  { 
     switch(temp_data[0])
     {
-      case CMD_TEXTVOICE_NULL: text_voice=0; break;
-      case CMD_TEXTVOICE_LOW: text_voice=1; break;
-      case CMD_TEXTVOICE_MED: text_voice=2; break;
-      case CMD_TEXTVOICE_HIGH: text_voice=3; break;
-      case CMD_TEXTVOICE_THOUGHT: text_voice=4; break;
+      case CMD_TEXTVOICE_NULL: text_voice=0; break; //none
+      case CMD_TEXTVOICE_LOW: text_voice=1; break; //low
+      case CMD_TEXTVOICE_MED: text_voice=2; break; //med
+      case CMD_TEXTVOICE_HIGH: text_voice=3; break; //high
+      case CMD_TEXTVOICE_THOUGHT: text_voice=4; break; //thought
+      case CMD_TEXTVOICE_CORRUPT: text_voice=5; break; //corrupt
       default: return (0);
     }
     break;

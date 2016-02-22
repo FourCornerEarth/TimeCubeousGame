@@ -22,4 +22,4 @@
 [SE:vxxv4][N:???][V:L]...
 [N:0][V:T]It seems it's all he has to say...[E:0]
 
-[SE:vxxvC0][N:Garm][V:L]Finally... [P:10]my... [V:H]r [P:15] .... eal power...![E:0]
+[SE:vxxvC0][N:???][V:L]Finally... [P:10]my... [V:C]r [P:15] .... eal power...![E:0]
