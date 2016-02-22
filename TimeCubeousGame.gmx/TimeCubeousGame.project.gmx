@@ -196,7 +196,6 @@
     <objects name="NPCs">
       <object>objects\obj_NPC_Test</object>
     </objects>
-    <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
