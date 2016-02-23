@@ -90,6 +90,12 @@
         <sprite>sprites\spr_testNPC</sprite>
       </sprites>
     </sprites>
+    <sprites name="animatedTiles">
+      <sprites name="dumpsite">
+        <sprite>sprites\spr_glowing_bin</sprite>
+        <sprite>sprites\spr_bin_noglow</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bck_TEST_back</background>
@@ -195,6 +201,9 @@
     <object>objects\obj_warp</object>
     <objects name="NPCs">
       <object>objects\obj_NPC_Test</object>
+    </objects>
+    <objects name="AnimatedTiles">
+      <object>objects\glowing_binary</object>
     </objects>
   </objects>
   <rooms name="rooms">

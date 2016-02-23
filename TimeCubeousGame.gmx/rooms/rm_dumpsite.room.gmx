@@ -83,6 +83,23 @@
     <instance objName="obj_NPC_Test" x="1280" y="832" name="inst_15EA38E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="menu_baseMenu" x="0" y="0" name="inst_81B39161" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="576" y="2176" name="inst_58683346" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="192" y="1664" name="inst_FA62D52D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="896" y="1792" name="inst_BAFC7C04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="1088" y="1664" name="inst_B9720508" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="1280" y="1408" name="inst_A38E3091" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="1088" y="2240" name="inst_5124091A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="1920" y="2176" name="inst_C27272C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="1856" y="1856" name="inst_DD08933F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="1728" y="960" name="inst_F6365301" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="1408" y="640" name="inst_47E18F53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="1664" y="448" name="inst_F64E0C9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="1792" y="128" name="inst_016B7D76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="256" y="0" name="inst_C0D2B32D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="0" y="128" name="inst_E7BFEB5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="448" y="320" name="inst_7E36AAC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="128" y="384" name="inst_011A898E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="0" y="1088" name="inst_60106DAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="glowing_binary" x="704" y="1280" name="inst_B5455AB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="Dumpsite" x="256" y="1664" w="64" h="64" xo="128" yo="448" id="10000286" name="inst_73C55902" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
