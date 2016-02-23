@@ -81,11 +81,6 @@
       <sprite>sprites\spr_TEST_cutin2_eyes</sprite>
     </sprites>
     <sprites name="NPCs">
-      <sprites name="Garm">
-        <sprite>sprites\spr_garm_idle</sprite>
-        <sprite>sprites\spr_garm_right</sprite>
-        <sprite>sprites\spr_garm_left</sprite>
-      </sprites>
       <sprites name="TestNPC">
         <sprite>sprites\spr_testNPC</sprite>
       </sprites>
