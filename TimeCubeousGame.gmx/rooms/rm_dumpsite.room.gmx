@@ -57,7 +57,7 @@
     <instance objName="obj_collisioner" x="1116" y="464" name="inst_86F1CBCD" locked="0" code="" scaleX="0.360000014305115" scaleY="2.40000009536743" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="1593" y="254" name="inst_6615F0DF" locked="0" code="" scaleX="3.20000004768372" scaleY="1.27999997138977" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="1549" y="262" name="inst_F71D45E9" locked="0" code="" scaleX="0.46000000834465" scaleY="1.24000000953674" colour="4294967295" rotation="0"/>
-    <instance objName="obj_collisioner" x="1088" y="64" name="inst_0000E749" locked="0" code="" scaleX="0.77999997138977" scaleY="1.89898991584778" colour="4294967295" rotation="0"/>
+    <instance objName="obj_collisioner" x="1088" y="64" name="inst_0000E749" locked="0" code="" scaleX="0.779999971389771" scaleY="1.89898991584778" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="256" y="0" name="inst_ACF94A03" locked="0" code="" scaleX="8.31999969482422" scaleY="0.639999985694885" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="0" y="64" name="inst_CEAF9B95" locked="0" code="" scaleX="5.11999988555908" scaleY="7.67999982833862" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="506" y="113" name="inst_6AA7B566" locked="0" code="" scaleX="0.589999973773956" scaleY="4.36999988555908" colour="4294967295" rotation="0"/>
