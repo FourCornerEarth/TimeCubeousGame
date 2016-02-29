@@ -33,6 +33,10 @@
     <sound>sound\snd_textbox_move</sound>
     <sound>sound\snd_textbox_select</sound>
     <sound>sound\snd_textbox_close</sound>
+    <sounds name="Music">
+      <sound>sound\snd_gentlePath</sound>
+      <sound>sound\snd_dump</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="MainSprites">
@@ -55,6 +59,16 @@
         <sprite>sprites\spr_MC_stand_right</sprite>
         <sprite>sprites\spr_MC_stand_left</sprite>
         <sprite>sprites\spr_MC_stand_up</sprite>
+      </sprites>
+      <sprites name="Razimom">
+        <sprite>sprites\spr_razimom_down</sprite>
+        <sprite>sprites\spr_razimom_stand_down</sprite>
+        <sprite>sprites\spr_razimom_up</sprite>
+        <sprite>sprites\spr_razimom_stand_up</sprite>
+        <sprite>sprites\spr_razimom_left</sprite>
+        <sprite>sprites\spr_razimom_right</sprite>
+        <sprite>sprites\spr_razimom_stand_left</sprite>
+        <sprite>sprites\spr_razimom_stand_right</sprite>
       </sprites>
     </sprites>
     <sprites name="MenuSprites">
@@ -90,6 +104,27 @@
         <sprite>sprites\spr_glowing_bin</sprite>
         <sprite>sprites\spr_bin_noglow</sprite>
       </sprites>
+    </sprites>
+    <sprites name="Env Sprites">
+      <sprites name="Dumpsite">
+        <sprite>sprites\spr_env1</sprite>
+        <sprite>sprites\spr_env2</sprite>
+        <sprite>sprites\spr_env3</sprite>
+        <sprite>sprites\spr_env4</sprite>
+        <sprite>sprites\spr_env_ds5</sprite>
+        <sprite>sprites\spr_env_ds6</sprite>
+        <sprite>sprites\spr_env_ds7</sprite>
+        <sprite>sprites\spr_env_ds8</sprite>
+        <sprite>sprites\spr_env_ds9</sprite>
+        <sprite>sprites\spr_env_ds10</sprite>
+        <sprite>sprites\spr_env_ds11</sprite>
+        <sprite>sprites\spr_env_ds12</sprite>
+      </sprites>
+      <sprite>sprites\spr_fire</sprite>
+      <sprite>sprites\spr_0statue_0</sprite>
+      <sprite>sprites\spr_0statue_1</sprite>
+      <sprite>sprites\spr_0statue_2</sprite>
+      <sprite>sprites\spr_0statue_3</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -157,7 +192,6 @@
     <font>fonts\fnt_wizardsManse40</font>
     <font>fonts\fnt_magicForest24</font>
     <font>fonts\fnt_codersCrux32</font>
-    <font>fonts\fnt_corrupt</font>
     <font>fonts\fnt_PkmDPPT</font>
   </fonts>
   <objects name="objects">
@@ -188,7 +222,6 @@
     </objects>
     <object>objects\obj_textbox</object>
     <object>objects\obj_player</object>
-    <object>objects\obj_collisioner</object>
     <object>objects\obj_neku</object>
     <object>objects\obj_riku</object>
     <object>objects\obj_spawner</object>
@@ -196,9 +229,30 @@
     <object>objects\obj_warp</object>
     <objects name="NPCs">
       <object>objects\obj_NPC_Test</object>
+      <object>objects\obj_NPC_razimom</object>
     </objects>
     <objects name="AnimatedTiles">
       <object>objects\glowing_binary</object>
+      <object>objects\obj_fire</object>
+    </objects>
+    <objects name="Collision Objects">
+      <object>objects\obj_collisioner</object>
+      <object>objects\obj_env1</object>
+      <object>objects\obj_env_ds2</object>
+      <object>objects\obj_env_ds3</object>
+      <object>objects\obj_env_ds4</object>
+      <object>objects\obj_env_ds5</object>
+      <object>objects\obj_env_ds6</object>
+      <object>objects\obj_env_ds7</object>
+      <object>objects\obj_env_ds8</object>
+      <object>objects\obj_env_ds9</object>
+      <object>objects\obj_env_ds10</object>
+      <object>objects\obj_env_ds11</object>
+      <object>objects\obj_env_ds12</object>
+      <object>objects\obj_env_0stat0</object>
+      <object>objects\obj_env_0stat1</object>
+      <object>objects\obj_env_0stat2</object>
+      <object>objects\obj_env_0stat3</object>
     </objects>
   </objects>
   <rooms name="rooms">
