@@ -50,6 +50,6 @@ I am afraid I do not have any more potions.
 
 
 
-[SE:fire0][N:0][V:0]The fire is really warm...#From the look of the wood, it's been lit recently.
+[SE:fire0][N:0][V:0]The fire is really warm...#From the look of the wood, it has been lit fairly recently.
 Who could have...?[E:0]
 
