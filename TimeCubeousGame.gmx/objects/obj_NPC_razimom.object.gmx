@@ -149,13 +149,15 @@ if(collision_circle(obj_NPC_razimom.x, obj_NPC_razimom.y, 90, obj_player, false,
                 switch (timesspokento)
                 {
                     //she gives you items
-                    case 3: 
+                    case 2: 
                         scr_add_item("healItem");
                         scr_add_item("healItem");
                         scr_add_item("healItem");
                         break;
-                    case 4:
+                    case 3:
                         scr_add_item("healItem");
+                        break;
+                    case 4:
                         enddialogue=1;
                         break;
                        

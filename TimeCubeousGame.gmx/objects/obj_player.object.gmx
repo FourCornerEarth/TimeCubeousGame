@@ -169,7 +169,7 @@ if (!right_key and !left_key and !up_key and !down_key and sprite_index == spr_M
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_env_0stat2">
+    <event eventtype="4" ename="obj_env_0stat3">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -194,7 +194,7 @@ phy_fixed_rotation = true;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_env_0stat3">
+    <event eventtype="4" ename="obj_env_0stat2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -245,31 +245,6 @@ phy_fixed_rotation = true;
       </action>
     </event>
     <event eventtype="4" ename="obj_env_0stat0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Collide!
-
-phy_fixed_rotation = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_fire">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -615,6 +590,31 @@ phy_fixed_rotation = true;
 
 phy_fixed_rotation = true;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_fire">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Collide!
+
+phy_fixed_rotation = true;
 </string>
           </argument>
         </arguments>
