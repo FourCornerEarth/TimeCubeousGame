@@ -33,7 +33,7 @@ ctimesspokento=0;
 iscorrupt=0;
 enddialogue=0;
 NPC_name="vxxv";
-scr_addSelfToRegistry(3);
+scr_addSelfToRegistry(4);
 </string>
           </argument>
         </arguments>

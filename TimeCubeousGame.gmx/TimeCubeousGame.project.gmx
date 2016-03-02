@@ -126,12 +126,20 @@
       <sprite>sprites\spr_0statue_2</sprite>
       <sprite>sprites\spr_0statue_3</sprite>
     </sprites>
+    <sprites name="BattleSprites">
+      <sprite>sprites\spr_birdBlobIdle</sprite>
+      <sprite>sprites\spr_birdBlobAtk0</sprite>
+      <sprite>sprites\spr_harp</sprite>
+      <sprite>sprites\spr_battleToken</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bck_TEST_back</background>
     <background>background\bg_shop</background>
     <background>background\bg_street_day</background>
     <background>background\Dumpsite</background>
+    <background>background\bg_harp</background>
+    <background>background\bg_battleMockup</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -186,6 +194,12 @@
     <scripts name="NPCs">
       <script>scripts\scr_NPC_speak.gml</script>
     </scripts>
+    <scripts name="Battle Scripts">
+      <script>scripts\scr_setAsEnemy.gml</script>
+      <script>scripts\scr_createBattleObject.gml</script>
+      <script>scripts\scr_selectEnemies.gml</script>
+      <script>scripts\scr_createBattleTokens.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_codersCrux</font>
@@ -196,7 +210,7 @@
   </fonts>
   <objects name="objects">
     <objects name="Game Startup">
-      <object>objects\obj_gameStart</object>
+      <object>objects\obj_gameSystem</object>
       <object>objects\obj_nameSelectScreen</object>
       <object>objects\obj_startMenu</object>
     </objects>
@@ -254,11 +268,23 @@
       <object>objects\obj_env_0stat2</object>
       <object>objects\obj_env_0stat3</object>
     </objects>
+    <objects name="Battle Objects">
+      <object>objects\obj_battle</object>
+      <object>objects\obj_harp</object>
+      <object>objects\obj_battleToken</object>
+      <object>objects\obj_battleSelect</object>
+      <object>objects\obj_syncGUI</object>
+      <object>objects\obj_hpGUI</object>
+      <objects name="Enemies">
+        <object>objects\obj_birdBlob</object>
+      </objects>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
     <room>rooms\rm_day_street</room>
     <room>rooms\rm_base</room>
+    <room>rooms\rm_battle</room>
     <room>rooms\rm_nameSelection</room>
     <room>rooms\rm_TEST</room>
     <room>rooms\rm_shop</room>
