@@ -279,6 +279,7 @@
         <object>objects\obj_birdBlob</object>
       </objects>
     </objects>
+    <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>

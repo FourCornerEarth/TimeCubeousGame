@@ -33,7 +33,7 @@ phy_fixed_rotation = true;
 
 // Set a speed that can be changed throughout the game.
 // Used for character movement speed.
-spd = 10;
+spd = 7;
 
 // Used for the speed at which the animation will run.
 img_spd = .3;
