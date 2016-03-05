@@ -36,6 +36,8 @@
     <sounds name="Music">
       <sound>sound\snd_gentlePath</sound>
       <sound>sound\snd_dump</sound>
+      <sound>sound\snd_battleSong</sound>
+      <sound>sound\snd_battle60BPM</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -199,6 +201,18 @@
       <script>scripts\scr_createBattleObject.gml</script>
       <script>scripts\scr_selectEnemies.gml</script>
       <script>scripts\scr_createBattleTokens.gml</script>
+      <script>scripts\scr_runEnemyTurn.gml</script>
+      <script>scripts\scr_runSyncTurn.gml</script>
+      <script>scripts\scr_tryToRun.gml</script>
+      <script>scripts\scr_runFightTurn.gml</script>
+      <script>scripts\scr_checkBattleOver.gml</script>
+      <script>scripts\scr_endBattle.gml</script>
+      <script>scripts\scr_getEnemyBattleOps.gml</script>
+      <script>scripts\scr_battleMenu.gml</script>
+      <script>scripts\scr_battleMenuDestroy.gml</script>
+      <script>scripts\scr_actMenu.gml</script>
+      <script>scripts\scr_setTurn.gml</script>
+      <script>scripts\scr_attackPlayer.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -207,6 +221,7 @@
     <font>fonts\fnt_magicForest24</font>
     <font>fonts\fnt_codersCrux32</font>
     <font>fonts\fnt_PkmDPPT</font>
+    <font>fonts\fnt_bubbleButts</font>
   </fonts>
   <objects name="objects">
     <objects name="Game Startup">
@@ -272,9 +287,11 @@
       <object>objects\obj_battle</object>
       <object>objects\obj_harp</object>
       <object>objects\obj_battleToken</object>
-      <object>objects\obj_battleSelect</object>
-      <object>objects\obj_syncGUI</object>
       <object>objects\obj_hpGUI</object>
+      <object>objects\obj_syncGUI</object>
+      <object>objects\obj_actMenu</object>
+      <object>objects\menu_battleMenu</object>
+      <object>objects\menu_battleMenuModule</object>
       <objects name="Enemies">
         <object>objects\obj_birdBlob</object>
       </objects>

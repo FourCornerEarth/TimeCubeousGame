@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,59 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialize a menu module.
+            <string>/// Initialize the base menu
 
-/** ONLY CHANGE THESE VARS IF YOU KNOW WHAT YOU ARE DOING! **/
-
-// Change this to store the number of children in this object.
-numChildren = 0;
-
-// Store all the instances of children for this object.
-childMenus[0] = "NONE";
-
-// Menu will start as off. Turn on when you create child.
-menu_ON = 0;
-
-// Change keys here if you want to.
-// Leave keys here
-
-// Declare the index within the move array where the cursor should be.
-cursorPos = 0;
-
-// Declare parent to be NONE to start with.
-parent = "NONE";
-
-lastCursorPos = 0;
-
-// Menu is array by default. If 0, menu is assumed to be ds_list.
-menu_IsArray = 1;
-
-// Now start the new module to declare the keys used here.
 scr_startNewModule();
+orientation = 1;
+scr_setKeysByOrientation(orientation);
 
-// Set to off.
+/** DO NOT CHANGE THESE VARIABLES UNLESS YOU REALLY KNOW WHAT YOU'RE DOING! **/
+
+// To toggle the base menu on and off. 
+// Shutting this var off shuts off all menus.
+//globalvar baseMenu_ON;
+global.battleMenu_ON = 0;
+
+// Stores the menu modules attached to this base menu. An array.
+numModules = 0;
+is_menuModule_ON[numModules] = 0;
+
+// Child Menus on or not? Checked later on.
 childMenus_ON = 0;
 
+// What script should we run when we've chosen something?
+scriptToRun = scr_battleMenu;
 
-/**********************************************************/
+// Decides where the cursor is right now.
+cursorPos = 0;
+lastCursorPos = 0;
 
-// The script should be overwritten by the child create event.
-scriptToRun = "";
+/** Customization variables **/
+/* Feel free to change these to suit your game. */
 
-// Declare names of args to pass to script. Default = 0 means none.
-argsToPass = 0;
+// Main menu items. User should fill these out.
+baseMenu[0] = "Sync";
+baseMenu[1] = "Fight";
+baseMenu[2] = "Act";
+baseMenu[3] = "Run";
 
-// The menu for this module. Overwrite by child create event.
-menu[0] = "";
-
-// Declare the amount of vertical space between menu items.
-space = 50;
-
-//Declare this objStateID to be main menu's.
-objStateID = menu_baseMenu.objStateID;
-
-/**********************************************************/
-
+// Stores the amt of space between items on the menu
+space = 150;
 
 </string>
           </argument>
@@ -103,13 +88,13 @@ objStateID = menu_baseMenu.objStateID;
             <kind>1</kind>
             <string>/// Control the movement of the pointer icon up and down the menu
 
-childMenus_ON = scr_isChildMenu_ON();
+// Check if the child menus are on, first.
+childMenus_ON = scr_isBaseChild_ON();
 
-if (global.state[objStateID] &amp;&amp; menu_ON &amp;&amp; !childMenus_ON)
-//if (global.baseMenu_ON &amp;&amp; menu_ON &amp;&amp; !childMenus_ON &amp;&amp; !global.textbox_ON)
+if (!obj_battle.turnIsRunning &amp;&amp; !childMenus_ON &amp;&amp; obj_battle.currentBattleState == 0)
 {
     var move = 0;
-
+    
 // Move down
    move -= max(keyboard_check_pressed(MENU_KEY_UP_1), keyboard_check_pressed(MENU_KEY_UP_2), 0);
 
@@ -121,7 +106,12 @@ if (global.state[objStateID] &amp;&amp; menu_ON &amp;&amp; !childMenus_ON)
 // Otherwise, change the cursor position, in a circular direction.
    if (move != 0) {
       cursorPos += move;
-      scr_menuMovement();
+      if (cursorPos &lt; 0) {
+         cursorPos = array_length_1d(baseMenu) - 1;
+      }
+      if (cursorPos &gt;= array_length_1d(baseMenu)) {
+            cursorPos = 0;
+      }
    }
 
 // Check for the selection key push.
@@ -130,17 +120,13 @@ if (global.state[objStateID] &amp;&amp; menu_ON &amp;&amp; !childMenus_ON)
     select = max(keyboard_check_released(MENU_CONFIRM_1), keyboard_check_released(MENU_CONFIRM_2), 0);
 
     if (select == 1) { 
-       lastCursorPos = cursorPos;   
-       script_execute(scriptToRun, argsToPass); 
+       lastCursorPos = cursorPos;
+       script_execute(scriptToRun, 0); 
     }
 
 }
 
 else { cursorPos = lastCursorPos; }
-
-if (keyboard_check_released(MENU_BACK) || keyboard_check_released(MENU_EXIT)) {
-   scr_menuDestroy();
-}
 </string>
           </argument>
         </arguments>
@@ -163,14 +149,30 @@ if (keyboard_check_released(MENU_BACK) || keyboard_check_released(MENU_EXIT)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw the GUI
+            <string>/// Draw the base menu GUI
 
-// Eventually figure out how to do this by grabbing the menu sizes and shit
-// rather than like this.
+if (!obj_battle.turnIsRunning &amp;&amp; !childMenus_ON &amp;&amp; obj_battle.currentBattleState == 0)
 
-//if (global.baseMenu_ON &amp;&amp; menu_ON &amp;&amp; !global.textbox_ON) {
-//   event_perform(ev_gui, 0);
-//}
+{
+
+    word_size = 0;
+    draw_set_color(c_white);
+    
+    if (cursorPos &gt;= 2) { 
+       draw_sprite(spr_pointer, 0, x + 10 + 75 + (cursorPos*space), y + 510);
+    }
+    else { draw_sprite(spr_pointer, 0, x + 10 + (cursorPos*space), y + 510); }
+
+    var i;
+    var xP = 0;
+    for (i = 0; i &lt; array_length_1d(baseMenu); i += 1) {
+        if (i == 2) {xP = 75;}
+        draw_text(x + 10 + 20 + xP + (i*space), y + 515, string(baseMenu[i]));
+    }
+
+
+        
+}
 </string>
           </argument>
         </arguments>

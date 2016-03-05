@@ -10,6 +10,7 @@
 
 if (isBossBattle) {
    maxEnemies = 1;
+   ableToRun = 0;
    //some script here to select the next available boss
    return 0;
 }
@@ -17,6 +18,17 @@ if (isBossBattle) {
 maxEnemies = 1; // set for now
 for (var i = 0; i < maxEnemies; i++) {
     enemies[i] = obj_birdBlob;
-    // what will go here instead of an obj is some way to build a list of enemies
+    instance_create(300, 25, enemies[i]);
+    // what will go here instead of an obj is a script to build a list of enemies
     // based on location.
 }
+
+// To find the max speeded char to avoid the MC from running.
+maxSpd = 0;
+for (var i = 0; i < array_length_1d(enemies); i++) {
+    if (enemies[i].spd > maxSpd) {maxSpd = enemies[i].spd;}
+}
+ableToRun = 1;
+
+//This will make an array storing the names of the options for enemy battles.
+scr_getEnemyBattleOps();

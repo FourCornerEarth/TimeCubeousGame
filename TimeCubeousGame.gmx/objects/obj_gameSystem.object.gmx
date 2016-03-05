@@ -33,6 +33,11 @@ globalvar registry;
 globalvar state;
 globalvar location;
 
+global.warp1IsUsed = 0;
+global.battleNumber = 0;
+global.currentLocation = rm_dumpsite;
+global.currentWarpPoint = "";
+
 registry = ds_list_create();
 global.state[0] = 0; // Stored var for textbox.
 global.state[1] = 0; // Stored var for menu.

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>menu_battleMenuModule</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,65 +25,75 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Start the battle!
+            <string>/// Initialize an act menu
 
-scr_addSelfToRegistry(3);
-scr_notifyPersistent();
-
-global.battleNumber++; //Increment the number of battles total
-isBossBattle = 0;
-currentTurn = 1; //How many turns of battle has there been.
-
-/* Battle States */
-/* -1 = enemy's turn
-0 = waiting for Player choice
-1 = player chose sync option
-2 = player chose fight option
-4 = player chose run option */
-
-// Can you run from this battle?
-ableToRun = 0;
-startingBattleState = 0;
-currentBattleState = 0;
-turnIsRunning = 0; // is there a turn going on right now?
+/* Inherit from original battleMenuModule */
+event_inherited();
 
 
-// battleEndVal = 1 if you healed all the enemies, -1 if you killed them,
-// 0 if it was a mix, and "RAN" if you ran.
-battleOver = 0;
-battleEndVal = 0;
-
-scr_selectEnemies(0);
-scr_createBattleTokens(); // makes all objects necessary for battle
+/* If the menu pointer will move up and down, leave this. 
+   If it will move left and right, make orientation = 1. */
+orientation = 1;
 
 
+/* Set the keys based on the orientation you chose.
+   PROBABLY SHOULD LEAVE THIS BE! */
+scr_setKeysByOrientation(orientation);
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Turn the battle off now.
 
-global.state[objStateID] = 0;
-//ds_list_delete(global.registry, id);
+/* If you want to change any of the set keys, now is the time to do it. */
+//   MENU_KEY_UP_1 = newKey;
+//   MENU_KEY_UP_2 = newKey;
+//   MENU_KEY_DOWN_1 = newKey;
+//   MENU_KEY_DOWN_2 = newKey;
+//   MENU_CONFIRM_1 = newKey;
+//   MENU_CONFIRM_2 = newKey;
+//   MENU_BACK = newKey;
+//   MENU_EXIT = newKey;
+
+
+/* 
+   Set scriptToRun to the script that should run when you select an item on menu
+*/
+scriptToRun = scr_actMenu;
+
+
+/*
+  If your script takes an argument, set it here.
+  Currently only takes 1 argument.
+*/
+argsToPass = 0;
+
+
+/*
+  Declare the amount of vertical space between menu items.
+*/
+space = 30;
+
+
+
+/* Set some necessary initial variables for the object. */
+returnBattleState = 0;
+
+
+/* 
+   Set the menu item names for this menuModule
+*/
+//If menu is an array
+
+menu[0] = "Info";
+for(var i = 0; i &lt; array_length_1d(obj_battle.enemyBattleOps); i++) {
+        menu[i+1] = obj_battle.enemyBattleOps[i];
+}
+
+/* DON'T CHANGE BELOW THIS LINE! */
+/**************************************************************************/
+
+/* 
+   Set menu to on.
+*/
+menu_ON = 1;
+
 </string>
           </argument>
         </arguments>
@@ -106,18 +116,39 @@ global.state[objStateID] = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Check for major battle events.
+            <string>/// Control menu
 
-if (scr_checkBattleOver()) {
-   // Ending battle state to shut down everyone else.
-   currentBattleState = 5;
-   //draw_text(250, 450, "
-   scr_endBattle();
-}
+event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the GUI
 
-if (currentBattleState == -1) {
-   scr_runEnemyTurn();
-}
+
+    draw_sprite(spr_pointer, 0, x + 16 +  256 + (cursorPos * 81), y + 350);
+
+    // Draw info and remove options.
+    //draw_text(x + 16 + 256 + 30, y + 365, string("Info"));
+    //draw_text(x + 16 + 256 + 115, y + 365, string("Remove"));
 </string>
           </argument>
         </arguments>

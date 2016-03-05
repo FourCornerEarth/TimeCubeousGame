@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -58,6 +58,9 @@ scr_startNewModule();
 // Set to off.
 childMenus_ON = 0;
 
+// If, upon destruction of this object, it should set currentBattleState = 0 or not
+returnBattleState = 1;
+
 
 /**********************************************************/
 
@@ -72,9 +75,6 @@ menu[0] = "";
 
 // Declare the amount of vertical space between menu items.
 space = 50;
-
-//Declare this objStateID to be main menu's.
-objStateID = menu_baseMenu.objStateID;
 
 /**********************************************************/
 
@@ -105,7 +105,7 @@ objStateID = menu_baseMenu.objStateID;
 
 childMenus_ON = scr_isChildMenu_ON();
 
-if (global.state[objStateID] &amp;&amp; menu_ON &amp;&amp; !childMenus_ON)
+if (menu_ON &amp;&amp; !childMenus_ON &amp;&amp; obj_battle.currentBattleState == 3)
 //if (global.baseMenu_ON &amp;&amp; menu_ON &amp;&amp; !childMenus_ON &amp;&amp; !global.textbox_ON)
 {
     var move = 0;
@@ -130,7 +130,8 @@ if (global.state[objStateID] &amp;&amp; menu_ON &amp;&amp; !childMenus_ON)
     select = max(keyboard_check_released(MENU_CONFIRM_1), keyboard_check_released(MENU_CONFIRM_2), 0);
 
     if (select == 1) { 
-       lastCursorPos = cursorPos;   
+       obj_battle.turnIsRunning = 1;
+       lastCursorPos = cursorPos;
        script_execute(scriptToRun, argsToPass); 
     }
 
@@ -139,7 +140,7 @@ if (global.state[objStateID] &amp;&amp; menu_ON &amp;&amp; !childMenus_ON)
 else { cursorPos = lastCursorPos; }
 
 if (keyboard_check_released(MENU_BACK) || keyboard_check_released(MENU_EXIT)) {
-   scr_menuDestroy();
+   scr_battleMenuDestroy(returnBattleState);
 }
 </string>
           </argument>

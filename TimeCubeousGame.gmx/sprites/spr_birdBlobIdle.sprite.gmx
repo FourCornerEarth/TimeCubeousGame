@@ -8,7 +8,7 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>10</bbox_left>
-  <bbox_right>296</bbox_right>
+  <bbox_right>271</bbox_right>
   <bbox_top>34</bbox_top>
   <bbox_bottom>282</bbox_bottom>
   <HTile>0</HTile>
@@ -28,7 +28,5 @@
     <frame index="5">images\spr_birdBlobIdle_5.png</frame>
     <frame index="6">images\spr_birdBlobIdle_6.png</frame>
     <frame index="7">images\spr_birdBlobIdle_7.png</frame>
-    <frame index="8">images\spr_birdBlobIdle_8.png</frame>
-    <frame index="9">images\spr_birdBlobIdle_9.png</frame>
   </frames>
 </sprite>

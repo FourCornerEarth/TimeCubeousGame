@@ -3,5 +3,5 @@
 
 objStateID = argument0;
 global.state[objStateID] = 0;
-ds_list_add(registry, id);
+ds_list_add(global.registry, id);
 

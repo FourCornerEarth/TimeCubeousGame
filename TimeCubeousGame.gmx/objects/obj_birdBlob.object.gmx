@@ -28,6 +28,81 @@
             <string>/// Set this as an enemy!
 
 scr_setAsEnemy();
+
+// Set the various types of sprite this enemy will use.
+attackSpr[0] = spr_birdBlobAtk0;
+idleSpr = spr_birdBlobIdle;
+hurtSpr = "";
+deadSpr = "";
+
+// Set the various types of attacks this enemy will use.
+attacks[0] = "";
+spd = 10;
+imgSpd = .045;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check if the animation is done.
+// If the animation is done, then let the player go.
+if(sprite_index == spr_birdBlobAtk0 &amp;&amp; floor(image_index) == 13) { scr_setTurn(0, 0); }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Control enemy stuffs.
+
+image_speed = imgSpd;
+switch(obj_battle.currentBattleState) {
+
+    case -1: {
+         sprite_index = spr_birdBlobAtk0;
+         scr_attackPlayer(attacks[0]);
+         break;
+    }
+    default: 
+    sprite_index = spr_birdBlobIdle;
+    break;
+
+}
+
+// Add code to handle hurting and dying animation changes.
 </string>
           </argument>
         </arguments>

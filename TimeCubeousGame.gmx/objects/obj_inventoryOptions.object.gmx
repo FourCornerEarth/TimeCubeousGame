@@ -104,7 +104,6 @@ event_inherited();
             <string>/// Draw Item Options GUI
 
 if (global.state[objStateID] &amp;&amp; menu_ON){
-//if (global.baseMenu_ON &amp;&amp; menu_ON &amp;&amp; !global.textbox_ON) {
    // Draw pointer
    draw_sprite(spr_pointer, 0, x + 16 +  256 + (cursorPos * 81), y + 350);
     
