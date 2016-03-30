@@ -33,6 +33,7 @@ description = "Increases DEF by 2.";
 bonus = 2;
 cost = 25;
 sellP = (2*cost)/3;
+isBtlUsable = 0;
 </string>
           </argument>
         </arguments>

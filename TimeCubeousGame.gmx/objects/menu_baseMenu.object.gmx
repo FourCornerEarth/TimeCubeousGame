@@ -26,45 +26,28 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialize the base menu
-
-scr_startNewModule();
+show_debug_message("CREATING BASE MENU.");
+// Set orientation for menu.
 orientation = 0;
-scr_setKeysByOrientation(orientation);
 
-/** DO NOT CHANGE THESE VARIABLES UNLESS YOU REALLY KNOW WHAT YOU'RE DOING! **/
-
-// To toggle the base menu on and off. 
-// Shutting this var off shuts off all menus.
-//globalvar baseMenu_ON;
-global.baseMenu_ON = 0;
-
-// Stores the menu modules attached to this base menu. An array.
-numModules = 0;
-is_menuModule_ON[numModules] = 0;
-
-// Child Menus on or not? Checked later on.
-childMenus_ON = 0;
+// Set base menu vars.
+menu_makeBaseMenu(orientation);
 
 // What script should we run when we've chosen something?
-scriptToRun = scr_gameMenu;
+scriptToRun = menu_gameMenu;
 
-// Decides where the cursor is right now.
-cursorPos = 0;
-lastCursorPos = 0;
+// Add self to state tracking registry.
+state_addSelfToRegistry(global.state, global.registry, 1);
 
 /** Customization variables **/
 /* Feel free to change these to suit your game. */
 
 // Main menu items. User should fill these out.
-baseMenu[0] = "Status";
-baseMenu[1] = "Inventory";
-baseMenu[2] = "Quit";
+menu_setGameBaseMenu();
 
-// Stores the amt of space between items on the menu
-space = 50;
+parent = "NONE";
+menu_ON = 1;
 
-// Add self to state tracking registry.
-scr_addSelfToRegistry(1);
 </string>
           </argument>
         </arguments>
@@ -90,10 +73,9 @@ scr_addSelfToRegistry(1);
             <string>/// Control the movement of the pointer icon up and down the menu
 
 // Check if the child menus are on, first.
-childMenus_ON = scr_isBaseChild_ON();
+childMenus_ON = scr_isChildMenu_ON();
 
-if (global.state[objStateID] &amp;&amp; scr_stepFuncOK() &amp;&amp; !childMenus_ON)
-//if (global.baseMenu_ON &amp;&amp; !childMenus_ON &amp;&amp; !global.textbox_ON)
+if (global.state[objStateID] &amp;&amp; state_stepFuncOK(global.state) &amp;&amp; !childMenus_ON)
 {
     var move = 0;
     
@@ -109,9 +91,9 @@ if (global.state[objStateID] &amp;&amp; scr_stepFuncOK() &amp;&amp; !childMenus_
    if (move != 0) {
       cursorPos += move;
       if (cursorPos &lt; 0) {
-         cursorPos = array_length_1d(baseMenu) - 1;
+         cursorPos = array_length_1d(menu) - 1;
       }
-      if (cursorPos &gt;= array_length_1d(baseMenu)) {
+      if (cursorPos &gt;= array_length_1d(menu)) {
             cursorPos = 0;
       }
    }
@@ -131,8 +113,7 @@ if (global.state[objStateID] &amp;&amp; scr_stepFuncOK() &amp;&amp; !childMenus_
 else { cursorPos = lastCursorPos; }
 
 if (keyboard_check_released(MENU_EXIT)){
-   //scr_baseMenuOff();
-   scr_toggleStepFunc();
+   state_toggleStepFunc();
    cursorPos = 0;
 }
 </string>
@@ -160,7 +141,6 @@ if (keyboard_check_released(MENU_EXIT)){
             <string>/// Draw the base menu GUI
 
 if (global.state[objStateID])
-//if (global.baseMenu_ON &amp;&amp; !global.textbox_ON) 
 {
     draw_set_color(c_white);
 
@@ -172,8 +152,8 @@ if (global.state[objStateID])
     
     
     var i;
-    for (i = 0; i &lt; array_length_1d(baseMenu); i += 1) {
-        draw_text(x + 16 + space, y + 250 + (i * space), string(baseMenu[i]));
+    for (i = 0; i &lt; array_length_1d(menu); i += 1) {
+        draw_text(x + 16 + space, y + 250 + (i * space), string(menu[i]));
         }
 }
 </string>

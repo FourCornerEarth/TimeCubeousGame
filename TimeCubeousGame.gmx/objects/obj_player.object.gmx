@@ -26,14 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>/// Set Near's global variables
-
-scr_addSelfToRegistry(2);
+show_debug_message("CREATING PLAYER OBJECT.");
+state_addSelfToRegistry(global.state, global.registry, 2);
 // Fix char so it doesn't rotate when it hits corners.
 phy_fixed_rotation = true;
 
 // Set a speed that can be changed throughout the game.
 // Used for character movement speed.
-spd = 7;
+spd = 8;
 
 // Used for the speed at which the animation will run.
 img_spd = .3;
@@ -67,7 +67,7 @@ currIndex = spr_MC_stand_down;
             <kind>1</kind>
             <string>/// Stop if the character is still trying to move.
 
-if (!scr_stepFuncOK()) {
+if (!state_stepFuncOK(global.state)) {
    sprite_index = currIndex;
    image_speed = 0;
 }
@@ -104,7 +104,7 @@ var down_key = keyboard_check(vk_down);
 //verify if textbox is on or off
 //if it's on you don't  move
 
-if (scr_stepFuncOK())
+if (state_stepFuncOK(global.state))
 //if (!global.textbox_ON &amp;&amp; !global.baseMenu_ON)
     {
     // Move right

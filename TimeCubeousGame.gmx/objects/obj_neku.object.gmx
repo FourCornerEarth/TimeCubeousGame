@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Set Neku global variables
 
-scr_addSelfToRegistry(2);
+state_addSelfToRegistry(global.state, global.registry, 2);
 // Fix char so it doesn't rotate when it hits corners.
 phy_fixed_rotation = true;
 
@@ -67,7 +67,7 @@ currIndex = spr_neku_stand_down;
             <kind>1</kind>
             <string>/// Stop if the character is still trying to move.
 
-if (!scr_stepFuncOK()) {
+if (!state_stepFuncOK(global.state)) {
    sprite_index = currIndex;
    image_speed = 0;
 }
@@ -104,7 +104,7 @@ var down_key = keyboard_check(vk_down);
 //verify if textbox is on or off
 //if it's on you don't  move
 
-if (scr_stepFuncOK())
+if (state_stepFuncOK(global.state))
 //if (!global.textbox_ON &amp;&amp; !global.baseMenu_ON)
     {
     // Move right

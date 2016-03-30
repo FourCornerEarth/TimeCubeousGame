@@ -18,7 +18,7 @@ switch(cursorPos) {
     case 2: {
 
         scr_setTurn(3, 0);
-        scr_createNewMenuModule(obj_actMenu, true);
+        menu_makeNewModule(obj_actMenu, true);
         break;
     }
     

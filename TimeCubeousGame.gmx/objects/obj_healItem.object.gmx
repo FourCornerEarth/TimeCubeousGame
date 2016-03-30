@@ -31,8 +31,11 @@
 name = "Potion";
 description = "Heals 50 HP.";
 bonus = 50;
+to = "HP";
 cost = 25;
 sellP = (2*cost)/3;
+isBtlUsable = 1;
+btlUseText = "You used a potion.";
 </string>
           </argument>
         </arguments>

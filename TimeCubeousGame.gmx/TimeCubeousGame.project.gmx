@@ -150,27 +150,32 @@
       <script>scripts\scr_remove_item.gml</script>
     </scripts>
     <scripts name="State Management">
-      <script>scripts\scr_notifyPersistent.gml</script>
-      <script>scripts\scr_addSelfToRegistry.gml</script>
-      <script>scripts\scr_stepFuncOK.gml</script>
-      <script>scripts\scr_toggleStepFunc.gml</script>
+      <script>scripts\state_notifyPersistent.gml</script>
+      <script>scripts\state_addSelfToRegistry.gml</script>
+      <script>scripts\state_stepFuncOK.gml</script>
+      <script>scripts\state_toggleStepFunc.gml</script>
+      <script>scripts\state_notifyBattlePersistents.gml</script>
     </scripts>
     <scripts name="Menu Loading Scripts">
       <script>scripts\scr_startMenu.gml</script>
-      <script>scripts\scr_gameMenu.gml</script>
-      <script>scripts\scr_inventoryOptions.gml</script>
-      <script>scripts\scr_itemSelected.gml</script>
     </scripts>
     <scripts name="Menu Engine Scripts">
-      <script>scripts\scr_baseMenuOff.gml</script>
-      <script>scripts\scr_createNewMenuModule.gml</script>
-      <script>scripts\scr_getParent.gml</script>
-      <script>scripts\scr_isBaseChild_ON.gml</script>
-      <script>scripts\scr_isChildMenu_ON.gml</script>
-      <script>scripts\scr_menuDestroy.gml</script>
-      <script>scripts\scr_menuMovement.gml</script>
-      <script>scripts\scr_setKeysByOrientation.gml</script>
-      <script>scripts\scr_startNewModule.gml</script>
+      <scripts name="New Menu Engine Scripts">
+        <script>scripts\menu_setMenuOptions.gml</script>
+        <script>scripts\menu_makeNewModule.gml</script>
+        <script>scripts\menu_startNewModule.gml</script>
+        <script>scripts\menu_menuStepFunction.gml</script>
+        <script>scripts\menu_menuDestroy.gml</script>
+        <script>scripts\menu_makeBaseMenu.gml</script>
+        <script>scripts\menu_setKeysByOrientation.gml</script>
+        <script>scripts\menu_setGameBaseMenu.gml</script>
+        <script>scripts\menu_gameMenu.gml</script>
+        <script>scripts\scr_isChildMenu_ON.gml</script>
+        <script>scripts\menu_scr_inventoryOptions.gml</script>
+        <script>scripts\scr_menuMovement.gml</script>
+        <script>scripts\menu_itemSelected.gml</script>
+        <script>scripts\scr_menuMoveWBack.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Name Selection">
       <script>scripts\scr_nameSelect.gml</script>
@@ -198,21 +203,31 @@
     </scripts>
     <scripts name="Battle Scripts">
       <script>scripts\scr_setAsEnemy.gml</script>
-      <script>scripts\scr_createBattleObject.gml</script>
-      <script>scripts\scr_selectEnemies.gml</script>
-      <script>scripts\scr_createBattleTokens.gml</script>
       <script>scripts\scr_runEnemyTurn.gml</script>
       <script>scripts\scr_runSyncTurn.gml</script>
       <script>scripts\scr_tryToRun.gml</script>
       <script>scripts\scr_runFightTurn.gml</script>
       <script>scripts\scr_checkBattleOver.gml</script>
       <script>scripts\scr_endBattle.gml</script>
-      <script>scripts\scr_getEnemyBattleOps.gml</script>
-      <script>scripts\scr_battleMenu.gml</script>
-      <script>scripts\scr_battleMenuDestroy.gml</script>
-      <script>scripts\scr_actMenu.gml</script>
       <script>scripts\scr_setTurn.gml</script>
       <script>scripts\scr_attackPlayer.gml</script>
+      <scripts name="Init Battle">
+        <script>scripts\battle_initBattling.gml</script>
+        <script>scripts\battle_selectEnemies.gml</script>
+        <script>scripts\battle_getEnemyBattleOps.gml</script>
+        <script>scripts\battle_createBattleTokens.gml</script>
+        <script>scripts\battle_createBattleObject.gml</script>
+      </scripts>
+      <scripts name="Battle Menu Scripts">
+        <script>scripts\battle_battleMenuStepFunc.gml</script>
+        <script>scripts\menu_battleMenuScript.gml</script>
+        <script>scripts\battle_useItemSelected.gml</script>
+        <script>scripts\battle_interactMenuScript.gml</script>
+        <script>scripts\battle_itemOpsScript.gml</script>
+        <script>scripts\battle_menuDestroy.gml</script>
+      </scripts>
+      <script>scripts\battle_setNextState.gml</script>
+      <script>scripts\battle_runText.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -239,15 +254,17 @@
     </objects>
     <objects name="Main Menu Objects">
       <objects name="Inventory Menu Objects">
-        <object>objects\obj_inventoryMenu</object>
-        <object>objects\obj_inventoryOptions</object>
+        <object>objects\menu_inventoryMenu</object>
+        <object>objects\menu_inventoryOptions</object>
       </objects>
-      <object>objects\obj_status</object>
+      <object>objects\menu_status</object>
     </objects>
     <objects name="Menu Engine Objects">
-      <object>objects\menu_baseMenu</object>
-      <object>objects\menu_menuModule</object>
-      <object>objects\obj_exampleModule</object>
+      <objects name="New Menu Engine Objects">
+        <object>objects\menu_baseMenu</object>
+        <object>objects\menu_manager</object>
+        <object>objects\menu_menuMod</object>
+      </objects>
     </objects>
     <object>objects\obj_textbox</object>
     <object>objects\obj_player</object>
@@ -285,15 +302,24 @@
     </objects>
     <objects name="Battle Objects">
       <object>objects\obj_battle</object>
-      <object>objects\obj_harp</object>
-      <object>objects\obj_battleToken</object>
-      <object>objects\obj_hpGUI</object>
-      <object>objects\obj_syncGUI</object>
-      <object>objects\obj_actMenu</object>
-      <object>objects\menu_battleMenu</object>
-      <object>objects\menu_battleMenuModule</object>
       <objects name="Enemies">
         <object>objects\obj_birdBlob</object>
+      </objects>
+      <objects name="Battle Tokens">
+        <object>objects\obj_hpGUI</object>
+        <object>objects\obj_battleToken</object>
+        <object>objects\obj_harp</object>
+        <object>objects\obj_syncGUI</object>
+        <object>objects\battle_drawBattleText</object>
+      </objects>
+      <object>objects\battle_playerTurn</object>
+      <object>objects\battle_enemyTurn</object>
+      <objects name="Battle Menus">
+        <object>objects\menu_battleMenu</object>
+        <object>objects\menu_battleMenuModule</object>
+        <object>objects\battle_itemMenu</object>
+        <object>objects\battle_interactMenu</object>
+        <object>objects\battle_itemOps</object>
       </objects>
     </objects>
     <object>objects\obj_camera</object>

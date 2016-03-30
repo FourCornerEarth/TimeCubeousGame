@@ -26,26 +26,26 @@
 
 
 
-[SE:razimom0][N:Razira][V:H]Welcome, my dear.#I have been waiting quite a long time for you.
+[SE:razimom0][N:Dewila][V:H]Welcome, my dear.#I have been waiting quite a long time for you.
 Such a pity for you to be here...thrown away from your world...[E:0]
 
-[SE:razimom1][N:Razira][V:H]I would offer what little I have to you, but#alas, that amounts to essentially nothing at all.[E:0]
+[SE:razimom1][N:Dewila][V:H]I would offer what little I have to you, but#alas, that amounts to essentially nothing at all.[E:0]
 
-[SE:razimom2][N:Razira][V:H]Hm?[P:15]#You would STILL like me to take care of you?
+[SE:razimom2][N:Dewila][V:H]Hm?[P:15]#You would STILL like me to take care of you?
 Ah...well, if that is your wish...
 I would be glad to look after you, little darling.#Here, take these. They should help.
 [N:0][V:0]You got a potion x3![E:0]
 
-[SE:razimom3][N:Razira][V:H]What is it, dearest?[P:15]#You would like more potions?
+[SE:razimom3][N:Dewila][V:H]What is it, dearest?[P:15]#You would like more potions?
 Of course, you may have as many as I can provide!
 [N:0][V:0]You got another potion![P:13]#Greedy.[E:0]
 
 
-[SE:razimom4][N:Razira][V:L]........
+[SE:razimom4][N:Dewila][V:L]........
 I am afraid I do not have any more potions.
 [V:H][P:20]Oh my! Forgot a moment and used my other voice, teehee.[E:0]
 
-[SE:razimomC0][N:Razira][V:C]YOU SILLY LITTLE CHILD!#MUAHAHAHAHAHAHA![E:0]
+[SE:razimomC0][N:Dewila][V:C]YOU SILLY LITTLE CHILD!#MUAHAHAHAHAHAHA![E:0]
 
 
 

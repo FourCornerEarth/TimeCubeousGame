@@ -38,7 +38,7 @@ orientation = 1;
 
 /* Set the keys based on the orientation you chose.
    PROBABLY SHOULD LEAVE THIS BE! */
-scr_setKeysByOrientation(orientation);
+menu_setKeysByOrientation(orientation);
 
 
 /* If you want to change any of the set keys, now is the time to do it. */

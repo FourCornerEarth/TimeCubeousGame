@@ -26,19 +26,52 @@
           <argument>
             <kind>1</kind>
             <string>/// Set this as an enemy!
-
+show_debug_message("CREATING BIRD BLOB.");
 scr_setAsEnemy();
-
+global.timedelta = delta_time;
 // Set the various types of sprite this enemy will use.
 attackSpr[0] = spr_birdBlobAtk0;
 idleSpr = spr_birdBlobIdle;
 hurtSpr = "";
 deadSpr = "";
 
+// 2, since this activates something different when in the enemy attack state.
+objStateID = 2;
+
 // Set the various types of attacks this enemy will use.
 attacks[0] = "";
 spd = 10;
-imgSpd = .045;
+bpm = 160; // will be a script to set BPM later.
+bpus = bpm/60000000;
+//imgSpd = global.timedelta*bpus;
+//imgSpd = .045;
+
+atkTxt[0] = "RAWRRRRRRRRRGH!";
+atkTxt[1] = "I'M GONNA GET YOU!";
+nextTxt = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>show_debug_message("BIRD BLOB DESTROY EVENT.");
 </string>
           </argument>
         </arguments>
@@ -63,7 +96,12 @@ imgSpd = .045;
             <kind>1</kind>
             <string>/// Check if the animation is done.
 // If the animation is done, then let the player go.
-if(sprite_index == spr_birdBlobAtk0 &amp;&amp; floor(image_index) == 13) { scr_setTurn(0, 0); }
+
+if(sprite_index == spr_birdBlobAtk0 &amp;&amp; floor(image_index) == 13) {
+    show_debug_message("ATTACKING OVER AND ENEMY TURN OVER!");
+    battle_setNextState(battle_enemyTurn, 3);
+    battle_enemyTurn.turnRunning = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -88,21 +126,26 @@ if(sprite_index == spr_birdBlobAtk0 &amp;&amp; floor(image_index) == 13) { scr_s
             <kind>1</kind>
             <string>/// Control enemy stuffs.
 
+global.timedelta = delta_time;
+imgSpd = (global.timedelta*bpus);
 image_speed = imgSpd;
-switch(obj_battle.currentBattleState) {
 
-    case -1: {
-         sprite_index = spr_birdBlobAtk0;
-         scr_attackPlayer(attacks[0]);
-         break;
-    }
-    default: 
-    sprite_index = spr_birdBlobIdle;
-    break;
-
+if (global.enmyTurnState[objStateID]) {
+   //show_debug_message("SWITCHED TO ATTACK STATE IN THE BIRDBLOB STEP!");
+   battle_enemyTurn.turnRunning = 1;
+   sprite_index = attackSpr[0];
 }
+else {sprite_index = spr_birdBlobIdle;}
 
-// Add code to handle hurting and dying animation changes.
+if (global.enmyTurnState[0] &amp;&amp; !battle_enemyTurn.turnRunning &amp;&amp; battle_enemyTurn.enemyTurnOK) {
+   show_debug_message("ENEMY TURN JUST STARTED SO RUNNING TEXT!");
+   battle_enemyTurn.turnRunning = 1;
+   o = instance_create(0, 0, battle_drawBattleText);
+   o.txt = atkTxt[nextTxt];
+   nextTxt = (nextTxt+1)%array_length_1d(atkTxt);
+   //show_debug_message("Stuck on while loop trying to run text from bird blob.");
+   //battle_setNextState(battle_enemyTurn, objStateID);
+}
 </string>
           </argument>
         </arguments>

@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -26,38 +26,31 @@
           <argument>
             <kind>1</kind>
             <string>/// Start the battle!
+show_debug_message("OBJ BATTLE CREATED.");
+// When battle opens, add self to main registry and end every other state.
+state_addSelfToRegistry(global.state, global.registry, 3);
+state_notifyPersistent();
 
-scr_addSelfToRegistry(3);
-scr_notifyPersistent();
+show_debug_message("Whole game states at battle init: " + string(global.state));
 
 global.battleNumber++; //Increment the number of battles total
 isBossBattle = 0;
 currentTurn = 1; //How many turns of battle has there been.
 
-/* Battle States */
-/* -1 = enemy's turn
-0 = waiting for Player choice
-1 = player chose sync option
-2 = player chose fight option
-4 = player chose run option */
+// Next state stores the next state.
+nextState = 0;
 
-// Can you run from this battle?
-ableToRun = 0;
-startingBattleState = 0;
-currentBattleState = 0;
-turnIsRunning = 0; // is there a turn going on right now?
+// Has the state changed?
+stateHasChanged = 0;
 
-
-// battleEndVal = 1 if you healed all the enemies, -1 if you killed them,
-// 0 if it was a mix, and "RAN" if you ran.
-battleOver = 0;
-battleEndVal = 0;
-
-scr_selectEnemies(0);
-scr_createBattleTokens(); // makes all objects necessary for battle
-
-
-
+battle_initBattling();
+//show_debug_message("Returned from init to objbattle, battle machine now: " + string(global.btlState));
+battle_selectEnemies(0);
+//show_debug_message("Returned from selectE, battle machine now: " + string(global.btlState));
+battle_getEnemyBattleOps();
+//show_debug_message("Returned from getEbtlops, battle machine now: " + string(global.btlState));
+battle_createBattleTokens(); // makes all objects necessary for battle
+//show_debug_message("Returned from btlTokens, battle machine now: " + string(global.btlState));
 </string>
           </argument>
         </arguments>
@@ -81,7 +74,7 @@ scr_createBattleTokens(); // makes all objects necessary for battle
           <argument>
             <kind>1</kind>
             <string>/// Turn the battle off now.
-
+show_debug_message("BATTLE OBJECT DESTROY EVENT.");
 global.state[objStateID] = 0;
 //ds_list_delete(global.registry, id);
 </string>
@@ -108,16 +101,18 @@ global.state[objStateID] = 0;
             <kind>1</kind>
             <string>/// Check for major battle events.
 
-if (scr_checkBattleOver()) {
-   // Ending battle state to shut down everyone else.
-   currentBattleState = 5;
-   //draw_text(250, 450, "
-   scr_endBattle();
+if (stateHasChanged) {
+   //global.btlState[nextState] = 1;
+   global.btlState = state_notifyBattlePersistents(global.btlState, nextState);
+   stateHasChanged = 0;
+   show_debug_message("STATE CHANGED IN BTL MENU, IS NOW: " + string(global.btlState));
 }
-
-if (currentBattleState == -1) {
-   scr_runEnemyTurn();
-}
+   
+   if (global.btlState[3]) {
+      battleOver = 1;
+   }
+   
+   if (battleOver) {scr_endBattle();}
 </string>
           </argument>
         </arguments>

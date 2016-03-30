@@ -6,19 +6,13 @@
   <vsnap>64</vsnap>
   <hsnap>64</hsnap>
   <isometric>0</isometric>
-  <speed>30</speed>
+  <speed>25</speed>
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>audio_stop_all();
 audio_play_sound(snd_dump, 100, true);
-draw_set_font(fnt_PkmDPPT);
-
-if(global.warp1IsUsed) {
-    with(global.currentWarp) {
-       instance_destroy();
-    }
-}</code>
+draw_set_font(fnt_PkmDPPT);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -77,7 +71,6 @@ if(global.warp1IsUsed) {
     <instance objName="obj_collisioner" x="1920" y="1344" name="inst_AED10669" locked="0" code="" scaleX="0.646464645862579" scaleY="1.29292929172516" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="1408" y="2304" name="inst_5811714A" locked="0" code="" scaleX="3.24000000953674" scaleY="0.73737370967865" colour="4294967295" rotation="0"/>
     <instance objName="obj_collisioner" x="512" y="1600" name="inst_168E005A" locked="0" code="" scaleX="1.91999995708466" scaleY="1.29292929172516" colour="4294967295" rotation="0"/>
-    <instance objName="menu_baseMenu" x="0" y="0" name="inst_81B39161" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="413" y="1994" name="inst_58683346" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="glowing_binary" x="192" y="1664" name="inst_FA62D52D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="glowing_binary" x="896" y="1792" name="inst_BAFC7C04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -183,7 +176,8 @@ if(global.warp1IsUsed) {
     <instance objName="obj_env_0stat3" x="454" y="2267" name="inst_147A0E31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_env_0stat2" x="1704" y="2004" name="inst_58234544" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_camera" x="407" y="1991" name="inst_2F21D8CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warp" x="960" y="1984" name="inst_45B821D7" locked="0" code="/// Used to set this warp point as a battle warp, but only 1x.&#xA;global.currentWarp = id;&#xA;&#xA;&#xA;target_r = rm_battle;&#xA;" scaleX="0.639999985694885" scaleY="1.91999995708466" colour="4294967295" rotation="0"/>
+    <instance objName="menu_baseMenu" x="0" y="0" name="inst_B81D9AB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warp" x="896" y="1984" name="inst_D7FE4422" locked="0" code="target_r = rm_battle;&#xA;if(global.warp1IsUsed) {&#xA;       instance_destroy();&#xA;}&#xA;&#xA;&#xA;" scaleX="0.649999976158142" scaleY="1.89999997615814" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="Dumpsite" x="256" y="1664" w="64" h="64" xo="128" yo="448" id="10000286" name="inst_73C55902" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

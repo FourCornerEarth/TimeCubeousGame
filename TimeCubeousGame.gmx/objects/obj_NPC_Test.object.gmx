@@ -33,7 +33,7 @@ ctimesspokento=0;
 iscorrupt=0;
 enddialogue=0;
 NPC_name="vxxv";
-scr_addSelfToRegistry(4);
+state_addSelfToRegistry(global.state, global.registry, 4);
 </string>
           </argument>
         </arguments>
@@ -125,7 +125,7 @@ if(collision_circle(obj_NPC_Test.x, obj_NPC_Test.y, 90, obj_player, false, true)
 { //if we wanna talk to him
     if(keyboard_check_released(vk_space)) {
     
-        if (scr_stepFuncOK()) {scr_toggleStepFunc();}
+        if (state_stepFuncOK(global.state)) {state_toggleStepFunc();}
         //if we wanna talk to him we want to make sure he's not talking already
         //or anyone else for that matter
         if (global.state[objStateID] &amp;&amp; !instance_exists(obj_textbox) &amp;&amp; (justSpoke == 0))

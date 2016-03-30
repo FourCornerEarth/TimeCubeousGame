@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-100000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,60 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialize a menu module.
-
-/** ONLY CHANGE THESE VARS IF YOU KNOW WHAT YOU ARE DOING! **/
-
-// Change this to store the number of children in this object.
-numChildren = 0;
-
-// Store all the instances of children for this object.
-childMenus[0] = "NONE";
-
-// Menu will start as off. Turn on when you create child.
-menu_ON = 0;
+            <string>/// To set variables and change any if necessary.
+//orientation = 0;
+menu_startNewModule();
+//objStateID = 0;
 
 // Change keys here if you want to.
 // Leave keys here
-
-// Declare the index within the move array where the cursor should be.
-cursorPos = 0;
-
-// Declare parent to be NONE to start with.
-parent = "NONE";
-
-lastCursorPos = 0;
-
-// Menu is array by default. If 0, menu is assumed to be ds_list.
-menu_IsArray = 1;
-
-// Now start the new module to declare the keys used here.
-scr_startNewModule();
-
-// Set to off.
-childMenus_ON = 0;
-
-// If, upon destruction of this object, it should set currentBattleState = 0 or not
-returnBattleState = 1;
-
-
-/**********************************************************/
-
-// The script should be overwritten by the child create event.
-scriptToRun = "";
-
-// Declare names of args to pass to script. Default = 0 means none.
-argsToPass = 0;
-
-// The menu for this module. Overwrite by child create event.
-menu[0] = "";
-
-// Declare the amount of vertical space between menu items.
-space = 50;
-
-/**********************************************************/
-
-
+VGAP = 20;
+space = 100;
 </string>
           </argument>
         </arguments>
@@ -103,45 +58,8 @@ space = 50;
             <kind>1</kind>
             <string>/// Control the movement of the pointer icon up and down the menu
 
-childMenus_ON = scr_isChildMenu_ON();
-
-if (menu_ON &amp;&amp; !childMenus_ON &amp;&amp; obj_battle.currentBattleState == 3)
-//if (global.baseMenu_ON &amp;&amp; menu_ON &amp;&amp; !childMenus_ON &amp;&amp; !global.textbox_ON)
-{
-    var move = 0;
-
-// Move down
-   move -= max(keyboard_check_pressed(MENU_KEY_UP_1), keyboard_check_pressed(MENU_KEY_UP_2), 0);
-
-// Move up
-   move += max(keyboard_check_pressed(MENU_KEY_DOWN_1), keyboard_check_pressed(MENU_KEY_DOWN_2), 0);
-
-// move = 0 means that right now, we don't want to move.
-
-// Otherwise, change the cursor position, in a circular direction.
-   if (move != 0) {
-      cursorPos += move;
-      scr_menuMovement();
-   }
-
-// Check for the selection key push.
-
-    var select;
-    select = max(keyboard_check_released(MENU_CONFIRM_1), keyboard_check_released(MENU_CONFIRM_2), 0);
-
-    if (select == 1) { 
-       obj_battle.turnIsRunning = 1;
-       lastCursorPos = cursorPos;
-       script_execute(scriptToRun, argsToPass); 
-    }
-
-}
-
-else { cursorPos = lastCursorPos; }
-
-if (keyboard_check_released(MENU_BACK) || keyboard_check_released(MENU_EXIT)) {
-   scr_battleMenuDestroy(returnBattleState);
-}
+// Runs a menu step function script
+battle_battleMenuStepFunc(global.playerTurnState);
 </string>
           </argument>
         </arguments>
