@@ -75,6 +75,14 @@ battle_createBattleTokens(); // makes all objects necessary for battle
             <kind>1</kind>
             <string>/// Turn the battle off now.
 show_debug_message("BATTLE OBJECT DESTROY EVENT.");
+show_debug_message("DESTROYING BATTLE REGISTRY.");
+ds_list_destroy(global.btlReg);
+
+show_debug_message("DESTROYING PLAYER TURN REGISTRY.");
+ds_list_destroy(global.playerTurnReg);
+
+//show_debug_message("DESTROYING PLAYER TURN REGISTRY.");
+//ds_list_destroy(global.enemyTurnReg);
 global.state[objStateID] = 0;
 //ds_list_delete(global.registry, id);
 </string>

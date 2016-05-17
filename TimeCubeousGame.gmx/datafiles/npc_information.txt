@@ -1,0 +1,125 @@
+###########################
+# NPC related stuff
+###########################
+
+# Start all NPCs off with their name, written as thus.
+[SE:dewila]
+
+# Is this character dead?
+0
+
+# Are you able to fight this character right now?
+0
+
+# Sync level now
+-5
+
+# Sync level needed to become corrupt
+-50
+
+# Sync level needed to be EXTREMELY corrupt
+-125
+
+# Max Battles Possible with this character
+1
+
+# # of Times we fought this char
+0
+
+# # of Times we lost to this char
+0
+
+# Like threshold -- This takes 2 numbers.
+# Choose a random one between them to determine
+# this game's like threshold. Should be closer together.
+50
+#100
+
+# Hate threshold -- This takes 2 numbers.
+# Same as Like threshold.
+-50
+#-100
+
+# Attribute weights in order:
+# egalitarian, empathic, courageous, clever, just
+-10
+5
+10
+2
+3
+
+# How many animations does this char have outside of battle?
+1
+[E:0]
+
+# The NPC's formula to determine liking will go next.
+# The numbers are indexes in an array, starting from 0.
+# In between them go LEFT ASSOCIATIVE operators.
+1+2+3
+
+# Give a one line description of the NPC.
+Dewila's a total fox!
+
+####################
+# Normal Animations
+####################
+
+# Regular Sprite
+spr_razimom_stand_down
+
+# Foot tapping sprite
+
+
+###############################
+# Battle stuff 
+###############################
+
+# If multiple battles w/this char, which is this?
+[BTL:0]
+
+# NPC Battle Name (if different from regular name)
+
+# Speed in battle
+10
+
+# Able to Run from this battle?
+0
+
+# How many attacks in battle?
+
+# Idle Sprite (BTL)
+# Dead Sprite (BTL)
+# Hurt Sprite (BTL)
+# Attack Sprites (BTL)
+
+# HP
+5000
+
+# Synch level at start of battle
+-500
+
+# The synch level this char needs to be cured.
+8000
+
+# The synch level this char needs to be mercied.
+-3000
+
+# Attack strength
+5
+[E:0]
+
+# Enemy Battle Options and Flavor Text
+Beg
+She doesn't seem to be listening.
+Plead
+Your anguish appears to amuse her.
+
+# What happens on those options? 
+# Will get codes if affects battle.
+
+# Effectual items and Flavor Text
+Knife
+She laughs in your face. Why did you think that would work?
+
+# What do they do?
+# Also codes.
