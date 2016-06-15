@@ -18,7 +18,7 @@ var tQ = ds_queue_create();
 
 show_debug_message("Trying to find the thing in question.");
 while (!checkDone) {
-      tCheck = file_text_readln(file);
+      tCheck = file_text_read_string(file);
       show_debug_message("tCheck: " + string(tCheck));
       if (string_count(st, tCheck) > 0) checkDone = 1;
       if (file_text_eof(file)) {show_error("CAN'T FIND UR SHIT!", 1); exit;}
@@ -38,26 +38,28 @@ while (!loopEnd) {
          show_debug_message("tCheck: " + string(tCheck));  
          checkDone = 0;
       }
-      tmpTxt = file_text_readln(file);
+      tmpTxt = file_text_read_string(file);
       show_debug_message("tmpTxt readln is: " + string(tmpTxt));  
-      if (string_char_at(tmpTxt, 1) == "#") continue;    
-      if (string_count("[E:0]", tmpTxt) > 0) { doneWInt = 1; continue; }
+      if (string_char_at(tmpTxt, 0) == "#") { file_text_readln(file); continue; }   
+      if (string_count("[E:0]", tmpTxt) > 0) { doneWInt = 1; file_text_readln(file); continue; }
       if (string_count("[E:X]", tmpTxt) > 0 || file_text_eof(file)) loopEnd = 1;
-      if (string_count("[BTL:", tmpTxt) > 0) { doneWInt = 0; continue; }
+      if (string_count("[BTL:", tmpTxt) > 0) { doneWInt = 0; file_text_readln(file); continue; }
       
       
       if (!doneWInt) {
          //show_debug_message("tmpTxt readln is: " + string(tmpTxt));         
-         tmpTxt = file_text_read_real(file);
-         show_debug_message("tmpTxt read_real is: " + string(tmpTxt));
+         //tmpTxt = file_text_read_real(file);
+         //show_debug_message("tmpTxt read_real is: " + string(tmpTxt));
       }
       else {
          //tmpTxt = file_text_readln(file);
          //show_debug_message("tmpTxt readln is: " + string(tmpTxt));         
-         tmpTxt = file_text_read_string(file);
-         show_debug_message("tmpTxt read_real is: " + string(tmpTxt));
+         //tmpTxt = file_text_read_real(file);
+         //show_debug_message("tmpTxt read_real is: " + string(tmpTxt));
       }
+      show_debug_message("Inputting: " + string(tmpTxt));
       ds_queue_enqueue(tQ, tmpTxt);
+      file_text_readln(file);
 
 }
 
@@ -92,7 +94,6 @@ for (var i = 0; i < 2; i++) {
     enemyBattleOps[i] = ds_queue_dequeue(tQ);
     enemyBTLOpsText[i] = ds_queue_dequeue(tQ);
 }
-
 effectItems[0] = ds_queue_dequeue(tQ);
 effectItmTxt[0] = ds_queue_dequeue(tQ);
 ds_queue_destroy(tQ);
