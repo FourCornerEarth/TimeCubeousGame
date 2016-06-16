@@ -38,7 +38,6 @@ NPC_name="dewila";
 // NOTE THAT THIS IS PART OF THE NEW STATE MACHINE ENGINE!
 state_addSelfToRegistry(global.state, global.registry, 4);
 
-scr_makeNPC("dewila");
 </string>
           </argument>
         </arguments>
@@ -140,7 +139,7 @@ global.state[objStateID] = 0;
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>other</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>

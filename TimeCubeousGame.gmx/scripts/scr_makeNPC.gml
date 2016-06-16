@@ -50,14 +50,17 @@ while (!loopEnd) {
          //show_debug_message("tmpTxt readln is: " + string(tmpTxt));         
          //tmpTxt = file_text_read_real(file);
          //show_debug_message("tmpTxt read_real is: " + string(tmpTxt));
+         
+         //what do you want to do here?
       }
       else {
          //tmpTxt = file_text_readln(file);
          //show_debug_message("tmpTxt readln is: " + string(tmpTxt));         
          //tmpTxt = file_text_read_real(file);
          //show_debug_message("tmpTxt read_real is: " + string(tmpTxt));
+         
+         //reading again will come up with an empty string actually
       }
-      show_debug_message("Inputting: " + string(tmpTxt));
       ds_queue_enqueue(tQ, tmpTxt);
       file_text_readln(file);
 
