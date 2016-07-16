@@ -69,10 +69,9 @@ while(!checkfinished)
     {
     //we have found our text
       checkfinished = 1;
-    }if (file_text_eof(file)) {
+    } else if (file_text_eof(file)) {
         show_error("Name not found", 1); exit;
-    }
-    else{
+    } else{
     //reads next line of file
     file_text_readln(file);
     }

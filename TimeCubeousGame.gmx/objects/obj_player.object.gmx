@@ -633,9 +633,9 @@ phy_fixed_rotation = true;
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>22,72</point>
-    <point>77,72</point>
-    <point>77,117</point>
-    <point>22,117</point>
+    <point>-2,-3</point>
+    <point>98,-3</point>
+    <point>98,117</point>
+    <point>-2,117</point>
   </PhysicsShapePoints>
 </object>
