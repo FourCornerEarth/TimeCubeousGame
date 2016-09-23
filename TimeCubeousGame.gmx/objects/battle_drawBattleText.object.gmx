@@ -53,15 +53,16 @@ txt = "";
             <string>/// Destroy when enter key is hit.
 
 show_debug_message("DRAW BATTLE TEXT DESTROY EVENT.");
-if (global.btlState[0]) {
+if (global.btlState[BATTLE_STATE.PLAYER_TURN]) {
     battle_playerTurn.turnRunning = 0;
     show_debug_message("RAN TEXT IN PLAYER TURN STATE. ENDING PLAYER TURN.");
-    battle_setNextState(battle_playerTurn, 7);
+    battle_setNextState(battle_playerTurn, PLAYER_TURN_STATE.IMPORT);
 }
-else {
+else if global.btlState[BATTLE_STATE.ENEMY_TURN]{
    battle_enemyTurn.turnRunning = 0;
+   beatHandler.justSwitched = 1;
    show_debug_message("RAN TEXT IN ENEMY TURN STATE. STARTING ATTACK.");
-   battle_setNextState(battle_enemyTurn, 2);
+   battle_setNextState(battle_enemyTurn, ENEMY_TURN_STATE.ATK);
 }
 </string>
           </argument>
@@ -87,7 +88,9 @@ else {
             <kind>1</kind>
             <string>/// Check to see if the player has hit q.
 
-if (keyboard_check_released(ord("Q"))) {
+key = ord("C");
+//key = vk_enter
+if (keyboard_check_released(key)) {
    instance_destroy();
 }
 </string>
@@ -114,11 +117,11 @@ if (keyboard_check_released(ord("Q"))) {
             <kind>1</kind>
             <string>/// Draw the text passed.
 
-if (battle_playerTurn.turnRunning &amp;&amp; global.playerTurnState[6]) {
+if (battle_playerTurn.turnRunning &amp;&amp; global.playerTurnState[PLAYER_TURN_STATE.EVENT]) {
    draw_text(50, 400, txt);
 }
 
-else if (battle_enemyTurn.turnRunning &amp;&amp; global.enmyTurnState[0]) {
+else if (battle_enemyTurn.turnRunning &amp;&amp; global.enmyTurnState[ENEMY_TURN_STATE.EVENT]) {
      draw_text(50, 400, txt);
 }
 </string>

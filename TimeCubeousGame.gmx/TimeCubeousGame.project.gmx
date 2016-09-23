@@ -7,7 +7,7 @@
     <datafile>
       <name>text_engine_test_final.txt</name>
       <exists>-1</exists>
-      <size>1870</size>
+      <size>1843</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -24,7 +24,7 @@
     <datafile>
       <name>npc_information.txt</name>
       <exists>-1</exists>
-      <size>2217</size>
+      <size>4316</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -39,7 +39,12 @@
       <filename>npc_information.txt</filename>
     </datafile>
   </datafiles>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\PlayerRoomBaseWTextbox</extension>
+    <extension index="1">extensions\StateMachine</extension>
+    <extension index="2">extensions\FullBattleImplementation</extension>
+    <extension index="3">extensions\Rhythm Timer</extension>
+  </NewExtensions>
   <sounds name="sound">
     <sound>sound\snd_voicelow</sound>
     <sound>sound\snd_voicemed</sound>
@@ -51,24 +56,29 @@
     <sound>sound\snd_textbox_select</sound>
     <sound>sound\snd_textbox_close</sound>
     <sounds name="Music">
-      <sound>sound\snd_gentlePath</sound>
-      <sound>sound\snd_dump</sound>
-      <sound>sound\snd_battleSong</sound>
-      <sound>sound\snd_battle60BPM</sound>
+      <sound>sound\mus_town</sound>
+      <sound>sound\mus_dump</sound>
+      <sound>sound\mus_battleSong</sound>
+      <sound>sound\mus_dewilaHouse</sound>
+      <sound>sound\mus_path</sound>
+      <sound>sound\mus_OP</sound>
+      <sound>sound\battleSong172BPM</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
-    <sprites name="MainSprites">
-      <sprites name="Neku">
-        <sprite>sprites\spr_neku_stand_right</sprite>
-        <sprite>sprites\spr_neku_left</sprite>
-        <sprite>sprites\spr_neku_right</sprite>
-        <sprite>sprites\spr_neku_stand_down</sprite>
-        <sprite>sprites\spr_neku_stand_left</sprite>
-        <sprite>sprites\spr_neku_up</sprite>
-        <sprite>sprites\spr_neku_down</sprite>
-        <sprite>sprites\spr_neku_stand_up</sprite>
-      </sprites>
+    <sprite>sprites\spr_pointer</sprite>
+    <sprite>sprites\spr_warp</sprite>
+    <sprite>sprites\spr_collision</sprite>
+    <sprites name="Textbox Sprites">
+      <sprite>sprites\spr_fontmain</sprite>
+      <sprite>sprites\spr_textbox_arrow</sprite>
+      <sprite>sprites\spr_textbox_cursor</sprite>
+      <sprite>sprites\spr_textbox_namebox</sprite>
+      <sprite>sprites\spr_textbox</sprite>
+      <sprite>sprites\spr_textbox_questionbox_cursor</sprite>
+      <sprite>sprites\spr_textbox_questionbox</sprite>
+    </sprites>
+    <sprites name="Character Sprites">
       <sprites name="MC">
         <sprite>sprites\spr_MC_down</sprite>
         <sprite>sprites\spr_MC_right</sprite>
@@ -78,8 +88,9 @@
         <sprite>sprites\spr_MC_stand_right</sprite>
         <sprite>sprites\spr_MC_stand_left</sprite>
         <sprite>sprites\spr_MC_stand_up</sprite>
+        <sprite>sprites\spr_MC_wakeup</sprite>
       </sprites>
-      <sprites name="Razimom">
+      <sprites name="Dewila">
         <sprite>sprites\spr_razimom_down</sprite>
         <sprite>sprites\spr_razimom_stand_down</sprite>
         <sprite>sprites\spr_razimom_up</sprite>
@@ -88,43 +99,24 @@
         <sprite>sprites\spr_razimom_right</sprite>
         <sprite>sprites\spr_razimom_stand_left</sprite>
         <sprite>sprites\spr_razimom_stand_right</sprite>
+        <sprite>sprites\spr_dewila_cooking</sprite>
+      </sprites>
+      <sprite>sprites\spr_apastra</sprite>
+      <sprites name="Bindocks NPCs">
+        <sprite>sprites\GasMouseB</sprite>
+        <sprite>sprites\LadyL</sprite>
       </sprites>
     </sprites>
-    <sprites name="MenuSprites">
-      <sprite>sprites\spr_pointer</sprite>
-      <sprite>sprites\spr_gameMenu</sprite>
-      <sprite>sprites\spr_menuItem</sprite>
-    </sprites>
-    <sprite>sprites\spr_textbox</sprite>
-    <sprite>sprites\spr_textbox_arrow</sprite>
-    <sprite>sprites\spr_textbox_cursor</sprite>
-    <sprite>sprites\spr_textbox_namebox</sprite>
-    <sprite>sprites\spr_textbox_questionbox</sprite>
-    <sprite>sprites\spr_textbox_questionbox_cursor</sprite>
-    <sprite>sprites\spr_fontmain</sprite>
-    <sprite>sprites\spr_wall</sprite>
-    <sprite>sprites\spr_collision</sprite>
-    <sprite>sprites\spr_warp</sprite>
-    <sprites name="TEST">
-      <sprite>sprites\spr_TEST_cutin1</sprite>
-      <sprite>sprites\spr_TEST_cutin1_mouth</sprite>
-      <sprite>sprites\spr_TEST_cutin1_eyes</sprite>
-      <sprite>sprites\spr_TEST_cutin2</sprite>
-      <sprite>sprites\spr_TEST_cutin2_mouth</sprite>
-      <sprite>sprites\spr_TEST_cutin2_eyes</sprite>
-    </sprites>
-    <sprites name="NPCs">
-      <sprites name="TestNPC">
-        <sprite>sprites\spr_testNPC</sprite>
-      </sprites>
-    </sprites>
-    <sprites name="animatedTiles">
-      <sprites name="dumpsite">
+    <sprites name="Animated Tiles">
+      <sprites name="Dumpsite Tiles">
         <sprite>sprites\spr_glowing_bin</sprite>
         <sprite>sprites\spr_bin_noglow</sprite>
       </sprites>
+      <sprite>sprites\spr_spider_rt</sprite>
+      <sprite>sprites\spr_spider_lt</sprite>
+      <sprite>sprites\spr_egg</sprite>
     </sprites>
-    <sprites name="Env Sprites">
+    <sprites name="Environment Sprites">
       <sprites name="Dumpsite">
         <sprite>sprites\spr_env1</sprite>
         <sprite>sprites\spr_env2</sprite>
@@ -138,64 +130,168 @@
         <sprite>sprites\spr_env_ds10</sprite>
         <sprite>sprites\spr_env_ds11</sprite>
         <sprite>sprites\spr_env_ds12</sprite>
+        <sprite>sprites\spr_pond</sprite>
+        <sprite>sprites\spr_0statue_1</sprite>
+        <sprite>sprites\spr_0statue_3</sprite>
+        <sprite>sprites\spr_fire</sprite>
+        <sprite>sprites\spr_0statue_2</sprite>
+        <sprite>sprites\spr_0statue_0</sprite>
       </sprites>
-      <sprite>sprites\spr_fire</sprite>
-      <sprite>sprites\spr_0statue_0</sprite>
-      <sprite>sprites\spr_0statue_1</sprite>
-      <sprite>sprites\spr_0statue_2</sprite>
-      <sprite>sprites\spr_0statue_3</sprite>
+      <sprites name="Plants">
+        <sprite>sprites\spr_baby_plant3</sprite>
+        <sprite>sprites\spr_baby_plant2</sprite>
+        <sprite>sprites\spr_plain_plant</sprite>
+        <sprite>sprites\spr_wall_plant</sprite>
+        <sprite>sprites\spr_baby_plant1</sprite>
+        <sprite>sprites\spr_cplant5</sprite>
+        <sprite>sprites\spr_ctree2</sprite>
+        <sprite>sprites\spr_ctree1</sprite>
+        <sprite>sprites\spr_cplant4</sprite>
+        <sprite>sprites\spr_cplant3</sprite>
+        <sprite>sprites\spr_cplant2</sprite>
+        <sprite>sprites\spr_cplant1</sprite>
+      </sprites>
+      <sprites name="Dewila House">
+        <sprite>sprites\spr_save_statue</sprite>
+        <sprite>sprites\spr_bronze_statue</sprite>
+        <sprite>sprites\spr_silver_statue</sprite>
+        <sprite>sprites\spr_gold_statue</sprite>
+        <sprite>sprites\spr_glove_case</sprite>
+        <sprite>sprites\spr_floor_panel</sprite>
+        <sprite>sprites\spr_house_gate</sprite>
+        <sprite>sprites\spr_chair</sprite>
+        <sprite>sprites\spr_wall_panel</sprite>
+        <sprite>sprites\spr_table</sprite>
+        <sprite>sprites\spr_yellow_lamp</sprite>
+        <sprite>sprites\spr_green_lamp</sprite>
+        <sprite>sprites\spr_blue_lamp</sprite>
+      </sprites>
     </sprites>
-    <sprites name="BattleSprites">
-      <sprite>sprites\spr_birdBlobIdle</sprite>
-      <sprite>sprites\spr_birdBlobAtk0</sprite>
-      <sprite>sprites\spr_harp</sprite>
-      <sprite>sprites\spr_battleToken</sprite>
+    <sprites name="Items">
+      <sprite>sprites\spr_carrot</sprite>
+      <sprite>sprites\spr_gpepper</sprite>
+      <sprite>sprites\spr_mushroom</sprite>
+      <sprite>sprites\spr_meat</sprite>
+      <sprite>sprites\spr_fish</sprite>
+      <sprite>sprites\spr_radish</sprite>
+      <sprite>sprites\spr_bread</sprite>
+      <sprite>sprites\spr_rpepper</sprite>
+      <sprite>sprites\spr_cheese</sprite>
+      <sprite>sprites\spr_lemon</sprite>
+      <sprite>sprites\spr_glove</sprite>
+      <sprite>sprites\spr_pie</sprite>
+      <sprite>sprites\spr_memory0</sprite>
+      <sprite>sprites\spr_memory1</sprite>
+      <sprite>sprites\spr_memory2</sprite>
+    </sprites>
+    <sprites name="Tutorial Sprites">
+      <sprite>sprites\tut_pewpew</sprite>
+      <sprite>sprites\tut_dodge</sprite>
+    </sprites>
+    <sprites name="Battle Sprites">
+      <sprites name="Defense Sprites">
+        <sprite>sprites\spr_shield_new</sprite>
+        <sprites name="mc">
+          <sprite>sprites\mc_jump_up</sprite>
+          <sprite>sprites\mc_jump_down</sprite>
+          <sprite>sprites\mc_up</sprite>
+          <sprite>sprites\mc_down</sprite>
+          <sprite>sprites\mc_skill</sprite>
+          <sprite>sprites\mc_jump_left</sprite>
+          <sprite>sprites\mc_left</sprite>
+          <sprite>sprites\mc_right</sprite>
+          <sprite>sprites\mc_jump_right</sprite>
+          <sprite>sprites\mc_hurt_left</sprite>
+          <sprite>sprites\mc_hurt_right</sprite>
+        </sprites>
+        <sprite>sprites\spr_brain</sprite>
+        <sprite>sprites\spr_bullet</sprite>
+      </sprites>
+      <sprites name="Glitches">
+        <sprite>sprites\spr_glitch</sprite>
+      </sprites>
+      <sprites name="GUI">
+        <sprite>sprites\spr_synchbar</sprite>
+        <sprite>sprites\spr_synch</sprite>
+        <sprite>sprites\spr_hpbar</sprite>
+        <sprite>sprites\spr_hp</sprite>
+      </sprites>
+      <sprites name="icons">
+        <sprite>sprites\spr_icon_unknown</sprite>
+        <sprite>sprites\spr_icon_event</sprite>
+        <sprite>sprites\spr_icon_audio</sprite>
+        <sprite>sprites\spr_icon_camera</sprite>
+        <sprite>sprites\spr_icon_effect</sprite>
+        <sprite>sprites\spr_icon_controller</sprite>
+        <sprite>sprites\spr_icon_configuration</sprite>
+        <sprite>sprites\spr_icon_preloader</sprite>
+        <sprite>sprites\spr_icon_debug</sprite>
+        <sprite>sprites\spr_icon_timer</sprite>
+        <sprite>sprites\spr_icon_connect</sprite>
+        <sprite>sprites\spr_icon_animation</sprite>
+        <sprite>sprites\spr_icon_path</sprite>
+        <sprite>sprites\spr_icon_hud</sprite>
+        <sprite>sprites\spr_icon_list</sprite>
+        <sprite>sprites\spr_icon_menu</sprite>
+        <sprite>sprites\spr_icon_cursor</sprite>
+        <sprite>sprites\spr_icon_message</sprite>
+        <sprite>sprites\spr_icon_light</sprite>
+        <sprite>sprites\spr_icon_savedata</sprite>
+        <sprite>sprites\spr_icon_terrain</sprite>
+        <sprite>sprites\spr_icon_text</sprite>
+        <sprite>sprites\spr_icon_exit</sprite>
+        <sprite>sprites\spr_icon_script</sprite>
+        <sprite>sprites\spr_icon_3dobject</sprite>
+      </sprites>
+      <sprites name="Battle Tokens">
+        <sprite>sprites\spr_pointer_new</sprite>
+        <sprite>sprites\battle_battleToken</sprite>
+        <sprite>sprites\spr_gameMenu</sprite>
+        <sprite>sprites\NPC_birdBlobAtk0</sprite>
+        <sprite>sprites\NPC_birdBlobIdle</sprite>
+        <sprite>sprites\spr_crosshair</sprite>
+        <sprite>sprites\spr_core</sprite>
+        <sprite>sprites\blackDotC</sprite>
+        <sprite>sprites\blackDotM</sprite>
+      </sprites>
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\bck_TEST_back</background>
-    <background>background\bg_shop</background>
-    <background>background\bg_street_day</background>
     <background>background\Dumpsite</background>
-    <background>background\bg_harp</background>
-    <background>background\bg_battleMockup</background>
+    <background>background\inside_tiles1</background>
+    <background>background\inside_tiles2</background>
+    <background>background\inside_tiles3</background>
+    <background>background\dumpsite_fixed</background>
+    <background>background\inside_tiles4</background>
+    <background>background\interior_wall1</background>
+    <background>background\bg_DATAVI</background>
+    <background>background\DATAVI_btm</background>
+    <background>background\DATAVI_mid</background>
+    <background>background\DATAVI_top</background>
+    <background>background\bindocks_gate</background>
+    <background>background\garbage_piles</background>
+    <background>background\bg_titlePage</background>
+    <background>background\endGamePage</background>
+    <backgrounds name="Battle BGs">
+      <background>background\diedbg</background>
+      <background>background\offenseTest1</background>
+      <background>background\defensev2</background>
+    </backgrounds>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\pth_spider</path>
+  </paths>
   <scripts name="scripts">
     <scripts name="Inventory Management">
-      <script>scripts\scr_add_item.gml</script>
-      <script>scripts\scr_remove_item.gml</script>
-    </scripts>
-    <scripts name="State Management">
-      <script>scripts\state_notifyPersistent.gml</script>
-      <script>scripts\state_addSelfToRegistry.gml</script>
-      <script>scripts\state_stepFuncOK.gml</script>
-      <script>scripts\state_toggleStepFunc.gml</script>
-      <script>scripts\state_notifyBattlePersistents.gml</script>
+      <script>scripts\inv_copy_item.gml</script>
+      <script>scripts\inv_add_item.gml</script>
+      <script>scripts\inv_remove_item.gml</script>
+      <script>scripts\inv_use_memory.gml</script>
+      <script>scripts\scr_food_step.gml</script>
     </scripts>
     <scripts name="Menu Loading Scripts">
-      <script>scripts\scr_startMenu.gml</script>
-    </scripts>
-    <scripts name="Menu Engine Scripts">
-      <scripts name="New Menu Engine Scripts">
-        <script>scripts\menu_setMenuOptions.gml</script>
-        <script>scripts\menu_makeNewModule.gml</script>
-        <script>scripts\menu_startNewModule.gml</script>
-        <script>scripts\menu_menuStepFunction.gml</script>
-        <script>scripts\menu_menuDestroy.gml</script>
-        <script>scripts\menu_makeBaseMenu.gml</script>
-        <script>scripts\menu_setKeysByOrientation.gml</script>
-        <script>scripts\menu_setGameBaseMenu.gml</script>
-        <script>scripts\menu_gameMenu.gml</script>
-        <script>scripts\scr_isChildMenu_ON.gml</script>
-        <script>scripts\menu_scr_inventoryOptions.gml</script>
-        <script>scripts\scr_menuMovement.gml</script>
-        <script>scripts\menu_itemSelected.gml</script>
-        <script>scripts\scr_menuMoveWBack.gml</script>
-      </scripts>
-    </scripts>
-    <scripts name="Name Selection">
-      <script>scripts\scr_nameSelect.gml</script>
+      <script>scripts\menus_scr_startMenu.gml</script>
+      <script>scripts\menus_scr_nameSelect.gml</script>
     </scripts>
     <scripts name="Textbox Scripts">
       <script>scripts\textbox_cutin_swap.gml</script>
@@ -205,6 +301,7 @@
       <script>scripts\textbox_cmd_execute.gml</script>
       <script>scripts\textbox_sfx_play.gml</script>
       <script>scripts\textbox_voice_play.gml</script>
+      <script>scripts\scr_resetTextSettings.gml</script>
       <script>scripts\textbox_var_get.gml</script>
       <script>scripts\textbox_var_set.gml</script>
       <script>scripts\textbox_color_get.gml</script>
@@ -213,39 +310,59 @@
       <script>scripts\textbox_loadbysearch.gml</script>
       <script>scripts\textbox_question_pointer.gml</script>
     </scripts>
-    <script>scripts\scr_text.gml</script>
-    <script>scripts\scr_resetTextSettings.gml</script>
     <scripts name="NPCs">
       <script>scripts\scr_NPC_speak.gml</script>
       <script>scripts\scr_makeNPC.gml</script>
     </scripts>
+    <scripts name="State Machine">
+      <script>scripts\state_stepFuncOK.gml</script>
+      <script>scripts\state_toggleStepFunc.gml</script>
+      <script>scripts\state_notifyPersistent.gml</script>
+      <script>scripts\state_addSelfToRegistry.gml</script>
+      <script>scripts\state_turnStateOn.gml</script>
+      <script>scripts\state_turnStateOff.gml</script>
+      <script>scripts\state_isStateOn.gml</script>
+      <script>scripts\state_setNextState.gml</script>
+    </scripts>
     <scripts name="Battle Scripts">
-      <script>scripts\scr_setAsEnemy.gml</script>
-      <script>scripts\scr_runEnemyTurn.gml</script>
-      <script>scripts\scr_runSyncTurn.gml</script>
-      <script>scripts\scr_tryToRun.gml</script>
-      <script>scripts\scr_runFightTurn.gml</script>
-      <script>scripts\scr_checkBattleOver.gml</script>
-      <script>scripts\scr_endBattle.gml</script>
-      <script>scripts\scr_setTurn.gml</script>
-      <script>scripts\scr_attackPlayer.gml</script>
-      <scripts name="Init Battle">
+      <scripts name="Battle Scripts To Keep">
         <script>scripts\battle_initBattling.gml</script>
-        <script>scripts\battle_selectEnemies.gml</script>
-        <script>scripts\battle_getEnemyBattleOps.gml</script>
-        <script>scripts\battle_createBattleTokens.gml</script>
-        <script>scripts\battle_createBattleObject.gml</script>
-      </scripts>
-      <scripts name="Battle Menu Scripts">
-        <script>scripts\battle_battleMenuStepFunc.gml</script>
-        <script>scripts\menu_battleMenuScript.gml</script>
-        <script>scripts\battle_useItemSelected.gml</script>
-        <script>scripts\battle_interactMenuScript.gml</script>
-        <script>scripts\battle_itemOpsScript.gml</script>
+        <script>scripts\battle_endBattle.gml</script>
         <script>scripts\battle_menuDestroy.gml</script>
+        <script>scripts\battle_setNextState.gml</script>
+        <script>scripts\battle_selectEnemies.gml</script>
+        <script>scripts\battle_resetVariables.gml</script>
+        <script>scripts\battle_setAsEnemy.gml</script>
       </scripts>
-      <script>scripts\battle_setNextState.gml</script>
-      <script>scripts\battle_runText.gml</script>
+      <scripts name="Battle Menu">
+        <script>scripts\menub_battleMenuOps.gml</script>
+        <script>scripts\menub_makeBattleMenuArray.gml</script>
+        <script>scripts\menu_addNewSubMenu.gml</script>
+        <script>scripts\menu_makeMenuFromObj.gml</script>
+        <script>scripts\menu_makeObjMenuIterable.gml</script>
+        <script>scripts\menu_initMenuVariables.gml</script>
+        <script>scripts\menu_setMenuKeys.gml</script>
+        <script>scripts\menu_makeCountingMenuFromObj.gml</script>
+        <script>scripts\menu_setMenuOptions.gml</script>
+      </scripts>
+      <scripts name="Other Scripts">
+        <script>scripts\scr_tryToRun.gml</script>
+        <script>scripts\scr_startMenu.gml</script>
+      </scripts>
+      <scripts name="Rhythm Scripts">
+        <script>scripts\checkInBeatTime.gml</script>
+        <script>scripts\checkTriggerHit.gml</script>
+        <script>scripts\checkForBeatOn.gml</script>
+      </scripts>
+      <scripts name="State Machine">
+        <script>scripts\state_stepFuncOK_new.gml</script>
+        <script>scripts\state_toggleStepFunc_new.gml</script>
+        <script>scripts\state_notifyPersistent_new.gml</script>
+        <script>scripts\state_addSelfToRegistry_new.gml</script>
+        <script>scripts\state_turnStateOn_new.gml</script>
+        <script>scripts\state_turnStateOff_new.gml</script>
+        <script>scripts\state_isStateOn_new.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -255,52 +372,61 @@
     <font>fonts\fnt_codersCrux32</font>
     <font>fonts\fnt_PkmDPPT</font>
     <font>fonts\fnt_bubbleButts</font>
+    <font>fonts\fnt_casualEncounter12</font>
+    <font>fonts\fnt_corrupt</font>
   </fonts>
   <objects name="objects">
+    <object>objects\game_textbox</object>
+    <object>objects\game_player</object>
+    <object>objects\game_camera</object>
+    <object>objects\obj_collisioner</object>
+    <object>objects\game_warp</object>
+    <object>objects\obj_endDemo</object>
+    <objects name="Flavor Obj">
+      <object>objects\table</object>
+      <object>objects\yellow_lamp</object>
+      <object>objects\blue_lamp</object>
+      <object>objects\wall_panel</object>
+      <object>objects\obj_house_gate</object>
+      <object>objects\plain_plant</object>
+      <object>objects\baby_plant1</object>
+      <object>objects\cplant5</object>
+      <object>objects\cplant3</object>
+      <object>objects\cplant1</object>
+      <object>objects\ctree1</object>
+      <object>objects\glove_case</object>
+      <object>objects\wall_plant</object>
+      <object>objects\green_lamp</object>
+      <object>objects\bronze_statue</object>
+      <object>objects\silver_statue</object>
+      <object>objects\gold_statue</object>
+    </objects>
     <objects name="Game Startup">
-      <object>objects\obj_gameSystem</object>
-      <object>objects\obj_nameSelectScreen</object>
-      <object>objects\obj_startMenu</object>
+      <object>objects\startup_gameSystem</object>
+      <object>objects\startup_nameSelectScreen</object>
+      <object>objects\startup_startMenu</object>
+      <object>objects\game_inputHandler</object>
     </objects>
-    <objects name="Inventory and Items">
-      <object>objects\obj_atkItem</object>
-      <object>objects\obj_defItem</object>
-      <object>objects\obj_healItem</object>
-      <object>objects\obj_item</object>
-      <object>objects\obj_eventItem</object>
-      <object>objects\obj_inventory</object>
-    </objects>
-    <objects name="Main Menu Objects">
-      <objects name="Inventory Menu Objects">
-        <object>objects\menu_inventoryMenu</object>
-        <object>objects\menu_inventoryOptions</object>
-      </objects>
-      <object>objects\menu_status</object>
-    </objects>
-    <objects name="Menu Engine Objects">
-      <objects name="New Menu Engine Objects">
-        <object>objects\menu_baseMenu</object>
-        <object>objects\menu_manager</object>
-        <object>objects\menu_menuMod</object>
-      </objects>
-    </objects>
-    <object>objects\obj_textbox</object>
-    <object>objects\obj_player</object>
-    <object>objects\obj_neku</object>
-    <object>objects\obj_riku</object>
-    <object>objects\obj_spawner</object>
-    <object>objects\obj_wall</object>
-    <object>objects\obj_warp</object>
     <objects name="NPCs">
-      <object>objects\obj_NPC_Test</object>
-      <object>objects\obj_NPC_razimom</object>
+      <object>objects\NPC_dewila</object>
+      <object>objects\NPC_generic</object>
+      <object>objects\NPC_apastra_licking</object>
+      <object>objects\NPC_dewila_cooking</object>
+      <objects name="NPC Controllers">
+        <object>objects\NPC_dewila_controller</object>
+      </objects>
+      <object>objects\obj_spider</object>
+      <object>objects\NPC_GasMouseB</object>
+      <object>objects\NPC_LadyL</object>
+      <object>objects\obj_checker</object>
     </objects>
     <objects name="AnimatedTiles">
       <object>objects\glowing_binary</object>
-      <object>objects\obj_fire</object>
+      <object>objects\item_fire</object>
+      <object>objects\item_pond</object>
+      <object>objects\save_statue</object>
     </objects>
     <objects name="Collision Objects">
-      <object>objects\obj_collisioner</object>
       <object>objects\obj_env1</object>
       <object>objects\obj_env_ds2</object>
       <object>objects\obj_env_ds3</object>
@@ -318,39 +444,88 @@
       <object>objects\obj_env_0stat2</object>
       <object>objects\obj_env_0stat3</object>
     </objects>
+    <objects name="State Machine">
+      <object>objects\state_gameStateHandler</object>
+      <object>objects\state_worldStateHandler</object>
+    </objects>
+    <objects name="Environment Objects">
+      <object>objects\obj_glove</object>
+      <object>objects\obj_egg</object>
+      <object>objects\obj_carrot</object>
+      <object>objects\obj_gpepper</object>
+      <object>objects\obj_mushroom</object>
+      <object>objects\obj_radish</object>
+      <object>objects\obj_fish</object>
+      <object>objects\obj_bread</object>
+      <object>objects\obj_lemon</object>
+      <object>objects\obj_rpepper</object>
+      <object>objects\obj_cheese</object>
+      <object>objects\obj_meat</object>
+      <object>objects\obj_memory0</object>
+      <object>objects\obj_memory1</object>
+      <object>objects\obj_memory2</object>
+      <object>objects\obj_food</object>
+    </objects>
+    <objects name="TutorialOBJ">
+      <object>objects\tut_shoot</object>
+    </objects>
+    <object>objects\__rt_ohidden_controller</object>
     <objects name="Battle Objects">
-      <object>objects\obj_battle</object>
-      <objects name="Enemies">
-        <object>objects\obj_birdBlob</object>
+      <objects name="Defense Prototype">
+        <object>objects\obj_shield</object>
+        <object>objects\obj_brain</object>
+        <object>objects\dedctrl</object>
+        <object>objects\obj_bullet</object>
+        <object>objects\obj_Core</object>
       </objects>
-      <objects name="Battle Tokens">
-        <object>objects\obj_hpGUI</object>
-        <object>objects\obj_battleToken</object>
-        <object>objects\obj_harp</object>
-        <object>objects\obj_syncGUI</object>
+      <objects name="Rhythm Objs and Battle Tokens">
+        <object>objects\UNDO</object>
+        <object>objects\UNDO_hard</object>
+        <object>objects\beatHandler</object>
+        <object>objects\obj_glitch</object>
+        <object>objects\rikuToken</object>
+        <object>objects\spawnHandler</object>
+      </objects>
+      <objects name="GUI">
+        <object>objects\cont_hpnsynch</object>
+        <object>objects\cont_glitches</object>
+      </objects>
+      <objects name="Main Menu">
+        <object>objects\menub_battleMenu</object>
+      </objects>
+      <objects name="Battle">
         <object>objects\battle_drawBattleText</object>
+        <object>objects\game_battle</object>
+        <object>objects\battle_playerTurn</object>
+        <object>objects\battle_enemyTurn</object>
+        <object>objects\NPC_birdBlob</object>
+        <object>objects\btlTxt</object>
       </objects>
-      <object>objects\battle_playerTurn</object>
-      <object>objects\battle_enemyTurn</object>
-      <objects name="Battle Menus">
-        <object>objects\menu_battleMenu</object>
-        <object>objects\menu_battleMenuModule</object>
-        <object>objects\battle_itemMenu</object>
-        <object>objects\battle_interactMenu</object>
-        <object>objects\battle_itemOps</object>
+      <objects name="Inventory">
+        <object>objects\inv_inventory</object>
+        <object>objects\inv_atkItem</object>
+        <object>objects\inv_defItem</object>
+        <object>objects\inv_eventItem</object>
+        <object>objects\inv_healItem</object>
       </objects>
     </objects>
-    <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_menu</room>
-    <room>rooms\rm_day_street</room>
-    <room>rooms\rm_base</room>
-    <room>rooms\rm_battle</room>
+    <room>rooms\rm_start</room>
     <room>rooms\rm_nameSelection</room>
-    <room>rooms\rm_TEST</room>
-    <room>rooms\rm_shop</room>
     <room>rooms\rm_dumpsite</room>
+    <room>rooms\rm_dewila_floor1</room>
+    <room>rooms\rm_dewila_kitchen</room>
+    <room>rooms\rm_binPath_top</room>
+    <room>rooms\rm_binPath_mid</room>
+    <room>rooms\rm_binPath_btm</room>
+    <room>rooms\rm_bindocks_gate</room>
+    <room>rooms\rm_endDemo</room>
+    <room>rooms\rm_tut</room>
+    <rooms name="Battle Rooms">
+      <room>rooms\rm_battle</room>
+      <room>rooms\rm_dead</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -1,55 +1,204 @@
 [SE:Start][N:Narrator] What.[E:0]
 
+[SE:saveStatue0][N:0][V:0]The glow of this curious statue draws you closer.[P:20]#It seems to depict a girl and her pet[P:15]...wolf?[P:15] Dog?#[P:20]They look hungry.[P:10] Maybe you should feed them.[E:0]
 
+[SE:egg0][N:0][V:0]You found an Egg![E:0]
 
+[SE:cheese0][N:0][V:0]You found some Cheese![E:0]
+
+[SE:gpepper0][N:0][V:0]You found a Green Pepper![E:0]
+
+[SE:rpepper0][N:0][V:0]You found a Red Pepper![E:0]
+
+[SE:carrot0][N:0][V:0]You found a Carrot![E:0]
+
+[SE:mushroom0][N:0][V:0]You found a Mushroom![E:0]
+
+[SE:radish0][N:0][V:0]You found a Radish![E:0]
+
+[SE:rawfish0][N:0][V:0]You found a Raw Fish![E:0]
+
+[SE:bread0][N:0][V:0]You found a load of Bread![E:0]
+
+[SE:lemon0][N:0][V:0]You found a Lemon![E:0]
+
+[SE:memory0][N:0][V:0]You found a Memory! What's inside?
+...Why is it here?[E:0]
+
+[SE:memory1][N:0][V:0]Another memory? What gives?[E:0]
+
+[SE:memory2][N:0][V:0]A third memory! Will it be the#end of the trilogy?![E:0]
+
+[SE:glove0][N:0][V:0]You received the Diver Glove![E:0]
+
+[SE:meat0][N:0][V:0]You received the Browned Meat! Beefy![E:0]
+
+[SE:pond0][N:0][V:0]Looks like a standing pool of stinky water.#Pee-Yuu![E:0]
+
+[SE:ylamp0][N:0][V:0]It’s a yellow lamp. The dancing blobs entice you.[E:0]
+
+[SE:blamp0][N:0][V:0]It’s a blue lamp. Would make a good night-light.[E:0]
+
+[SE:glamp0][N:0][V:0]It’s a green lamp. Reminds you of jello.[P:20]#Doesn’t that thing inside it look familiar…?[E:0]
+  
+[SE:wallpanel0][N:0][V:0]What’s this wall panel for?#Seems like a broken machine tried to turn on somewhere.[E:0]
+
+[SE:plainplant0][N:0][V:0]This plant has been well maintained.[E:0]
+
+[SE:bplantA0][N:0][V:0]You immediately decide that this baby plant is precious to you.#It is now your son.[E:0]
+
+[SE:cplantA0][N:0][V:0]It’s like a cross between a flower and a venus fly trap.[P:10]#It’s probably very dangerous.[P:10]#Ergo, you love it.[E:0]
+
+[SE:cplantC0][N:0][V:0]This flower looks bummed out.[E:0]
+
+[SE:cplantE0][N:0][V:0]This flower looks like it could fight somebody.[E:0]
+
+[SE:ctreeA0][N:0][V:0]The pink leaves make you want to stop and meditate for a while.[E:0]
+
+[SE:gloveCase0][N:0][V:0]There’s a glove inside this case.[P:15]#When have gloves ever needed their own cases?
+You take a minute to ponder your life choices #up to this point.[E:0]
+
+[SE:wallPlant0][N:0][V:0]You ask the plant how it’s hangin’.[P:12]It doesn’t respond. How rude.[E:0]
+ 
+[SE:bronzeStatue0][N:0][V:0]The rust on this statue does not diminish #its intimidating nature.[E:0]
+
+[SE:silverStatue0][N:0][V:0]This statue is so shiny, you can see your reflection within it.[E:0]
+
+[SE:goldStatue0][N:0][V:0]All that glitters is in fact gold when it comes to this statue.[E:0]
+
+[SE:wallArtFetus0][N:0][V:0]This is definitely art of a human fetus.[P:15]...perhaps you should move along quickly.[E:0]
+
+[SE:houseGate0][N:0][V:0]Fancy![E:0]
 
 
 [SE:MC1][N:[X:name][V:L][X:name] is my name. It's simply said [X:name]![E:0]
 
 
-
-[SE:vxxv0][N:???][V:L]So you are [X:name]?#Don't YOU look fantastic![E:0]
-
-[SE:vxxv1][N:???][V:L]I wonder if you'll make it to the end...[E:0]
-
-[SE:vxxv2][N:???][V:L]You're still here?[E:0]
-
-[SE:vxxv3][N:???][V:L]Right. Kind of need you to live and all.#Here, take it.
-[N:[X:name][V:M]Oh, thanks-!
-[N:???][V:L]But are you sure you want to recieve these #kinds of things from strangers?
-[N:0][V:0]You got a Potion...?[E:0]
-
-[SE:vxxv4][N:???][V:L]...
-[N:0][V:T]It seems it's all he has to say...[E:0]
-
-[SE:vxxvC0][N:???][V:L]Finally... [P:10]my... [V:C]r [P:15] .... eal power...![E:0]
+[SE:apastra0][N:0][V:H]Tch tch tch. [P:20]Tut tut tut.[P:30]#You try to call Apastra down.
+She does not seem interested in what you have to say.[E:0]
 
 
+[SE:dewila0][N:Dewila][V:M]Whoa. A kid, huh? Interesting.
+You gotta be new, right? I'll watch over ya.[E:0]
 
-[SE:dewila0][N:Dewila][V:H]Welcome, my dear.#I have been waiting quite a long time for you.
-Such a pity for you to be here...thrown away from your world...[E:0]
+[SE:dewila1][N:Dewila][V:M]This here is my house. Go on in.[E:0]
 
-[SE:dewila1][N:Dewila][V:H]I would offer what little I have to you, but#alas, that amounts to essentially nothing at all.[E:0]
+[SE:dewila2][N:Dewila][V:M]Haa?[P:15]#Go on in, I said. I toldja to already.[E:0]
 
-[SE:dewila2][N:Dewila][V:H]Hm?[P:15]#You would STILL like me to take care of you?
-Ah...well, if that is your wish...
-I would be glad to look after you, little darling.#Here, take these. They should help.
-[N:0][V:0]You got a potion x3![E:0]
+[SE:dewilafar0][N:Dewila][V:M]Hey! I'm in the kitchen, kiddo.
+Just keep going forward, you can't miss it.[E:0]
 
-[SE:dewila3][N:Dewila][V:H]What is it, dearest?[P:15]#You would like more potions?
-Of course, you may have as many as I can provide!
-[N:0][V:0]You got another potion![P:13]#Greedy.[E:0]
+[SE:dewilacook0][N:Dewila][V:M]Heya, kiddo. Hungry?#You're gonna hafta wait a little longer.
+Some ingredients would help. Could you get me some?[E:0]
 
+[SE:dewilacook1][N:Dewila][V:M]G'on and explore until the food is done, okay?
+Bring back some food if you find any![E:0]
 
-[SE:dewila4][N:Dewila][V:L]........
-I am afraid I do not have any more potions.
-[V:H][P:20]Oh my! Forgot a moment and used my other voice, teehee.[E:0]
+[SE:dewilacook2][N:Dewila][V:M]Hey, will you look at that!
+You found so many ingredients... and just in time too!
+Please wait a few more moments...
+.[P:20].[P:40].
+It's done!
+[N:0][V:0]You got an entire plateful! How nice.[E:0]
 
-[SE:dewilaC0][N:Dewila][V:C]YOU SILLY LITTLE CHILD!#MUAHAHAHAHAHAHA![E:0]
+[SE:dewilacook3][N:Dewila][V:M]Thanks for the help back there!
+You know, if you are going to stay here a while with me...
+You might as well know about something important.#[P:20]Very. [P:10]Important.[E:0]
 
+[SE:dewilacook4][N:Dewila][V:M]For some years now, the Queen has negelected a problem#in these lands. A plague#if you will.
+They call it Asynchrony. It could affect#anyone. And they... aren't#themselves anymore.
+It's sad, really. But it could lead them#to hurt you. I'd rather you#know how to defend yourself.[E:0]
 
+[SE:dewilacook6][N:Dewila][V:M]I'll teach you.[E:0]
 
+[SE:dewilacook5][N:Dewila][V:M]You be careful from here on out, okay?[E:0]
 
 [SE:fire0][N:0][V:0]The fire is really warm...#From the look of the wood, it has been lit fairly recently.
 Who could have...?[E:0]
 
+
+[SE:zeroStatueA0][N:0][V:0]It is a crumbling statue that looks like...a 0? An O? 
+Who knows.[E:0]
+
+[SE:zeroStatueB0][N:0][V:0]This statue kind of looks like the letter u.[E:0]
+
+[SE:zeroStatueC0][N:0][V:0]It is a really broken down statue.
+Hard to tell what it originally was.
+Maybe there are intact versions around...[E:0]
+
+[SE:zeroStatueD0][N:0][V:0]Whatever this was, it does NOT look like that anymore.[E:0]
+
+
+
+[SE:dewilatuto0][N:Dewila][V:M]Sometimes, you'll have to fight others#It's just the way it is sometimes, kiddo.
+Usually, it'll be those affected with Asynchrony.
+You can change your aim as you'd choose where to walk.[E:0]
+
+[SE:dewilatuto1][N:Dewila][V:M]Do you see the glitches all around?#Getting rid of them will help you out
+The sooner the better.[E:0]
+
+[SE:dewilatuto2][N:Dewila][V:M]Once your aim is on them, you'll have to hit them hard.
+In a real fight, they will move around, #so keep your wits about you!
+Attack them with the Space Bar.[E:0]
+
+[SE:dewilatuto3][N:Dewila][V:M]You'll see the damage you do, but they won't#go down so easily![E:0]
+
+[SE:dewilatuto4][N:Dewila][V:M]As you destroy the glitches, you'll see how the core#gets chipped away[E:0]
+
+[SE:dewilatuto5][N:Dewila][V:M]You have to destroy them all, okay?
+But be careful, those who are attacked will fight back...[E:0]
+
+[SE:dewilatuto6][N:Dewila][V:M]The enemy will try to hurt you.
+The orbs they will launch will#cause your health to drain.[E:0]
+
+[SE:dewilatuto7][N:Dewila][V:M]You can move to dodge them, but be careful.
+They will follow you several times,#it'll be tough to keep it up for long.[E:0]
+
+[SE:dewilatuto8][N:Dewila][V:M]Their mood may even get worse, and#it will cause them to chase you.
+Do your best to get away from them.[E:0]
+
+[SE:dewilatuto9][N:Dewila][V:M]Your health will worsen if those orbs#hit you, please be careful.[E:0]
+
+[SE:dewilatuto10][N:Dewila][V:M]I will show you a trick to defend yourself.
+Using the Spacebar, you will cast a shield.
+It will protect you from the attack#for a short amount of time.
+Use it wisely.[E:0]
+
+
+
+[SE:GasMouseB0][N:???][V:M]W-what happened?[E:0]
+
+[SE:GasMouseB1][N:???][V:M]M-man, I better head on back.
+It's pretty gross and creepy here, in the dumps.[E:0]
+
+[SE:GasMouseB2][N:???][V:M]You best be going too.
+Nothing but bad rumors about this place.[E:0]
+
+[SE:GasMouseBC0][N:???][V:M]My memories...#My mem...ories...#My...
+Missing... they're missing.
+Missing...#M...[E:0]
+
+[SE:GasMouseBC1][N:???][V:M]Y-you...
+You have my... M-...
+Memories. You have my#Memories. #No.
+No. No. No.#They are MINE!.
+MINE! MINE! MINE!#ONLY MINE![E:0]
+
+
+
+[SE:LadyL0][N:???][V:M]H-hey...#What am I doing here?
+This is the dump, isn't it?#It's gross here.[E:0]
+
+[SE:LadyL1][N:???][V:M]You know, it's kind of dangerous here.
+You should go home as soon as you can#But you don't look like you're#from around here.
+They say a witch lives here, you know?
+A bad one[E:0]
+
+[SE:LadyLC0][N:???][V:M]I lost something. Help me.
+Help... me... find them. I need...
+I need my memories#Please find them.[E:0]
+
+[SE:LadyLC1][N:???][V:M]Those are mine!
+Mine#Mine!#MINE!
+THE MEMORIES ARE MINE.
+THEY DONT [P:20] BELONG TO [P:5]Y[P:5]O[P:5]U[E:0]

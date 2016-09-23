@@ -1,7 +1,14 @@
-/// Turn the object's step function on and off
+/// state_toggleStepFunc(stateMachine)
 
-if (!global.state[objStateID] && state_stepFuncOK(global.state)) {
-   global.state[objStateID] = 1;
+// Turn the object's step function on and off
+
+
+var stateHandler = argument0;
+
+if (!stateHandler[objStateID] && state_stepFuncOK(stateHandler)) {
+   stateHandler[objStateID] = STATE_STATUS.ON;
 }
 
-else {global.state[objStateID] = 0;}
+else {stateHandler[objStateID] = STATE_STATUS.OFF;}
+
+return stateHandler;

@@ -10,7 +10,8 @@
 // There may be others.
 
 draw_set_color(c_white);
-draw_set_font(fnt_PkmDPPT);
+//draw_set_font(fnt_PkmDPPT);
+draw_set_font(fnt_casualEncounter12);
 draw_set_halign(fa_left);
 draw_set_valign(fa_center);
 corrupt = 0;

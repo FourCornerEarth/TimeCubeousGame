@@ -1,19 +1,13 @@
-/// scr_notifyPersistent()
-
-// I'll leave this function here.
-// The idea for this function is that it will be used in the case of an event
-// that needs to immediately override anything the player wants to do.
-// Thus, it will turn itself on and immediately shut off any other states.
-
-// Should not be needed in toggle-able objects like inventory.
-
-
-   global.state[objStateID] = 1;
-   for (var i = 0; i < array_length_1d(global.state); i++) {
-
-       if(i != objStateID && global.state[i]) {
-         global.state[i] = 0;
-       }
+/// Used to notify persistent objects
+// state_notifyPersistent(stateMachine, state)
+show_debug_message("NOTIFYING PERSISTENTS.");
+   var currentStateMachine = argument0;
+   var nextState = argument1;
+   show_debug_message("Before notifying, state machine is: " + string(currentStateMachine));
+   for (var i = 0; i < array_length_1d(currentStateMachine); i++) {
+         currentStateMachine[i] = STATE_STATUS.OFF;
    }
-   global.state[objStateID] = 1;
-
+   // Turn correct one on.
+   currentStateMachine[nextState] = STATE_STATUS.ON;
+   show_debug_message("After notifying, state machine is: " + string(currentStateMachine));
+   return currentStateMachine;

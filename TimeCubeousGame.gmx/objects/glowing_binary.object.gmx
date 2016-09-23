@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// control the speed of the animation
 
-image_speed = .18;
+image_speed = .09;
 
 timing = 50;
 </string>

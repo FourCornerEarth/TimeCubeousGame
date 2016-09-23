@@ -1,0 +1,55 @@
+[SE:Start][N:Narrator] What.[E:0]
+
+
+
+
+
+[SE:MC1][N:[X:name][V:L][X:name] is my name. It's simply said [X:name]![E:0]
+
+
+
+[SE:vxxv0][N:???][V:L]So you are [X:name]?#Don't YOU look fantastic![E:0]
+
+[SE:vxxv1][N:???][V:L]I wonder if you'll make it to the end...[E:0]
+
+[SE:vxxv2][N:???][V:L]You're still here?[E:0]
+
+[SE:vxxv3][N:???][V:L]Right. Kind of need you to live and all.#Here, take it.
+[N:[X:name][V:M]Oh, thanks-!
+[N:???][V:L]But are you sure you want to recieve these #kinds of things from strangers?
+[N:0][V:0]You got a Potion...?[E:0]
+
+[SE:vxxv4][N:???][V:L]...
+[N:0][V:T]It seems it's all he has to say...[E:0]
+
+[SE:vxxvC0][N:???][V:L]Finally... [P:10]my... [V:C]r [P:15] .... eal power...![E:0]
+
+
+
+[SE:dewila0][N:Dewila][V:H]Welcome, my dear.#I have been waiting quite a long time for you.
+Such a pity for you to be here...thrown away from your world...[E:0]
+
+[SE:dewila1][N:Dewila][V:H]I would offer what little I have to you, but#alas, that amounts to essentially nothing at all.[E:0]
+
+[SE:dewila2][N:Dewila][V:H]Hm?[P:15]#You would STILL like me to take care of you?
+Ah...well, if that is your wish...
+I would be glad to look after you, little darling.#Here, take these. They should help.
+[N:0][V:0]You got a potion x3![E:0]
+
+[SE:dewila3][N:Dewila][V:H]What is it, dearest?[P:15]#You would like more potions?
+Of course, you may have as many as I can provide!
+[N:0][V:0]You got another potion![P:13]#Greedy.[E:0]
+
+
+[SE:dewila4][N:Dewila][V:L]........
+I am afraid I do not have any more potions.
+[V:H][P:20]Oh my! Forgot a moment and used my other voice, teehee.[E:0]
+
+[SE:dewilaC0][N:Dewila][V:C]YOU SILLY LITTLE CHILD!#MUAHAHAHAHAHAHA![E:0]
+
+
+
+
+[SE:fire0][N:0][V:0]The fire is really warm...#From the look of the wood, it has been lit fairly recently.
+Who could have...?[E:0]
+
